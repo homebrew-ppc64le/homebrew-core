@@ -27,6 +27,13 @@ class M4 < Formula
     end
   end
 
+  if OS.linux_ppc64le?
+    patch :p1 do
+      url "https://src.fedoraproject.org/rpms/m4/raw/814d592134fad36df757f9a61422d164ea2c6c9b/f/m4-1.4.18-glibc-change-work-around.patch"
+      sha256 "fc9b61654a3ba1a8d6cd78ce087e7c96366c290bc8d2c299f09828d793b853c8"
+    end
+  end
+
   def install
     system "./configure", "--disable-dependency-tracking", "--prefix=#{prefix}"
     system "make"
