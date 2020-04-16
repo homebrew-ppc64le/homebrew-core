@@ -39,7 +39,15 @@ class A2ps < Formula
     sha256 "89fa3c95c329ec326e2e76493471a7a974c673792725059ef121e6f9efb05bf4"
   end
 
+  resource "config_guess" do
+    url "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;h=45001cfecde8f3e0716992163e3e211b6997f749;hb=HEAD"
+    sha256 "c081ced2d645e3b107fbf864529cc0e5954399a09b87a4f1d300470854b6dea4"
+  end
+
   def install
+    # Update config.guess so I could detect new platform
+    system "cp", "#{resource("config_guess").fetch}", "./auxdir/config.guess"
+
     system "./configure", "--disable-debug", "--disable-dependency-tracking",
                           "--prefix=#{prefix}", "--sysconfdir=#{etc}",
                           "--with-lispdir=#{elisp}"
