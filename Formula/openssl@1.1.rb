@@ -58,6 +58,8 @@ class OpensslAT11 < Formula
         arch_args << (Hardware::CPU.is_64_bit? ? "linux-x86_64" : "linux-elf")
       elsif Hardware::CPU.arm?
         arch_args << (Hardware::CPU.is_64_bit? ? "linux-aarch64" : "linux-armv4")
+      elsif Hardware::CPU.ppc64le?
+        arch_args << "linux-ppc64le"
       end
     end
 
