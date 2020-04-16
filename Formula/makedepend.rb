@@ -26,8 +26,15 @@ class Makedepend < Formula
     sha256 "d7e43376ad220411499a79735020f9d145fdc159284867e99467e0d771f3e712"
   end
 
+  resource "config_guess" do
+    url "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;h=45001cfecde8f3e0716992163e3e211b6997f749;hb=HEAD"
+    sha256 "c081ced2d645e3b107fbf864529cc0e5954399a09b87a4f1d300470854b6dea4"
+  end
+
   def install
     resource("xproto").stage do
+      # Update config.guess so I could detect new platform
+      system "cp", "#{resource("config_guess").fetch}", "./config.guess"
       system "./configure", "--disable-dependency-tracking",
                             "--disable-silent-rules",
                             "--prefix=#{buildpath}/xproto"
