@@ -28,6 +28,11 @@ class OpensslAT11 < Formula
       url "https://cpan.metacpan.org/authors/id/L/LE/LEONT/Test-Harness-3.42.tar.gz"
       sha256 "0fd90d4efea82d6e262e6933759e85d27cbcfa4091b14bf4042ae20bab528e53"
     end
+
+    resource "Text::Template" do
+      url "https://cpan.metacpan.org/authors/id/M/MS/MSCHOUT/Text-Template-1.58.tar.gz"
+      sha256 "0c465757782c4bfb9b17335307a8286771fd36ea04d259bc454ac63355f2a287"
+    end
   end
 
   # SSLv2 died with 1.1.0, so no-ssl2 no longer required.
@@ -54,6 +59,12 @@ class OpensslAT11 < Formula
         system "make", "PERL5LIB=#{ENV["PERL5LIB"]}", "CC=#{ENV.cc}"
         system "make", "install"
       end
+
+      resource("Text::Template").stage do
+        system "perl", "Makefile.PL", "INSTALL_BASE=#{libexec}"
+        system "make", "PERL5LIB=#{ENV["PERL5LIB"]}", "CC=#{ENV.cc}"
+        system "make", "install"
+      end
     end
 
     # This could interfere with how we expect OpenSSL to build.
@@ -73,7 +84,7 @@ class OpensslAT11 < Formula
       elsif Hardware::CPU.arm?
         arch_args << (Hardware::CPU.is_64_bit? ? "linux-aarch64" : "linux-armv4")
       elsif Hardware::CPU.ppc64le?
-        arch_args << "linux-ppc64le"
+        arch_args += %w[linux-ppc64le enable-ec_nistp_64_gcc_128]
       end
     end
 
