@@ -29,9 +29,9 @@ class OpensslAT11 < Formula
       sha256 "0fd90d4efea82d6e262e6933759e85d27cbcfa4091b14bf4042ae20bab528e53"
     end
 
-    resource "Text::Template" do
-      url "https://cpan.metacpan.org/authors/id/M/MS/MSCHOUT/Text-Template-1.58.tar.gz"
-      sha256 "0c465757782c4bfb9b17335307a8286771fd36ea04d259bc454ac63355f2a287"
+    resource "Test::More" do
+      url "https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-Simple-1.302175.tar.gz"
+      sha256 "c8c8f5c51ad6d7a858c3b61b8b658d8e789d3da5d300065df0633875b0075e49"
     end
   end
 
@@ -60,7 +60,7 @@ class OpensslAT11 < Formula
         system "make", "install"
       end
 
-      resource("Text::Template").stage do
+      resource("Test::More").stage do
         system "perl", "Makefile.PL", "INSTALL_BASE=#{libexec}"
         system "make", "PERL5LIB=#{ENV["PERL5LIB"]}", "CC=#{ENV.cc}"
         system "make", "install"
