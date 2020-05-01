@@ -1,15 +1,15 @@
 class Gnutls < Formula
   desc "GNU Transport Layer Security (TLS) Library"
   homepage "https://gnutls.org/"
-  url "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.12.tar.xz"
-  mirror "https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/gnutls/v3.6/gnutls-3.6.12.tar.xz"
-  sha256 "bfacf16e342949ffd977a9232556092c47164bd26e166736cf3459a870506c4b"
+  url "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.13.tar.xz"
+  mirror "https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/gnutls/v3.6/gnutls-3.6.13.tar.xz"
+  sha256 "32041df447d9f4644570cf573c9f60358e865637d69b7e59d1159b7240b52f38"
 
   bottle do
-    sha256 "3368ca58ab6284e849a47ac03c5634b799d550f6348b9dd0794d68bc747c6ca6" => :catalina
-    sha256 "f05a5a764d462c533d5f0777d3bedb3c26847255ce246c6b4eb8b6b2dfd18e15" => :mojave
-    sha256 "323964700f54c32854c860baef7f310a8a8c6b886912c22cff6503cc42f5e224" => :high_sierra
-    sha256 "1abf9c42a285f5c4e30ee36e89b1f3c5bcff4f849df0feb3b8ec1f8c6e085d14" => :x86_64_linux
+    sha256 "4b704a699428a852a8cab36803440e07d9fe4bb2d699000f7afd50194258ec71" => :catalina
+    sha256 "65e99b90567f727c64139003577fb03093e8c8913040e3cbb4993916fd9e9e87" => :mojave
+    sha256 "522ae568850ff6065e92e38953f7813073ae751fe6dea7a7a1f418945971873b" => :high_sierra
+    sha256 "7442bd01f434b32e2c196b7a8dbaf5b3208a9fe4458f9bee31952975e68d54d4" => :x86_64_linux
   end
 
   depends_on "autoconf" => :build
@@ -41,7 +41,9 @@ class Gnutls < Formula
     args << "gl_cv_func_ftello_works=yes"
 
     system "./configure", *args
-    system "make", "install"
+    # Adding LDFLAGS= to allow the build on Catalina 10.15.4
+    # See https://gitlab.com/gnutls/gnutls/-/issues/966
+    system "make", "LDFLAGS=", "install"
 
     # certtool shadows the macOS certtool utility
     mv bin/"certtool", bin/"gnutls-certtool"

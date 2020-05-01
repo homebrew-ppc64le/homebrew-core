@@ -14,6 +14,7 @@ class Glade < Formula
   depends_on "gobject-introspection" => :build
   depends_on "intltool" => :build
   depends_on "itstool" => :build
+  depends_on "libxslt" => :build
   depends_on "pkg-config" => :build
   depends_on "adwaita-icon-theme"
   depends_on "gettext"
@@ -21,7 +22,6 @@ class Glade < Formula
   depends_on "gtk-mac-integration" if OS.mac?
   depends_on "hicolor-icon-theme"
   depends_on "libxml2"
-  depends_on "libxslt" => :build
 
   def install
     # Find our docbook catalog

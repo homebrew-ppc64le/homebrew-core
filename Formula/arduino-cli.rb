@@ -2,16 +2,16 @@ class ArduinoCli < Formula
   desc "Arduino command-line interface"
   homepage "https://github.com/arduino/arduino-cli"
   url "https://github.com/arduino/arduino-cli.git",
-     :tag      => "0.9.0",
-     :revision => "e4d02b45a8e5777e701a786e18f55c1a63753ce6"
+     :tag      => "0.10.0",
+     :revision => "ec5c3ed105b32c5654fd60131a667f8557b196d5"
   head "https://github.com/arduino/arduino-cli.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "7b1ca46a923b596e62511d1e600f3cd733008ab7f4f01d2edca16e6950ca3337" => :catalina
-    sha256 "babb7bf072b439ec91e04856b36bbddd52f99829dab91e1f64dee75ccd8c9511" => :mojave
-    sha256 "4b7c66cb750089aadf05d3f40801715edeff0a1ad5b9bb3e99b920c6fe033130" => :high_sierra
-    sha256 "536dd53f425333ede0a2e0339a4bf8070363ebea70b992d4464b38b5c05073bf" => :x86_64_linux
+    sha256 "20caaeca7ed89e87bacd355e84ff2861917aad6044004ad29827d607dbcaf61d" => :catalina
+    sha256 "4b2467f1802f4fbc44c2dc96e25cf778f61179d6610730bf2be092005f6423d4" => :mojave
+    sha256 "b310e9dc896318a5b95e2f24506a6f23637d544dd0d51efe7d70f492c4db69b7" => :high_sierra
+    sha256 "f90e47ef37315b3ff1fb5a058eed52523aa0a9656bd0caf0536530169eb6668c" => :x86_64_linux
   end
 
   depends_on "go" => :build

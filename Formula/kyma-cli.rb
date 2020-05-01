@@ -2,16 +2,16 @@ class KymaCli < Formula
   desc "Kyma command-line interface"
   homepage "https://kyma-project.io"
   url "https://github.com/kyma-project/cli.git",
-      :tag      => "1.11.0",
-      :revision => "08af0d4c94f0df496a409f966333e3706587a59f"
+      :tag      => "1.11.1",
+      :revision => "b83ddad043b1d08a43111e479b88c1f47ecfd6d0"
   head "https://github.com/kyma-project/cli.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "7f778165c45d49f372f4d78515eebd6e019900d65bd781b2611116d93adea41a" => :catalina
-    sha256 "4f4e0b367ca17ef76bb401ed2df45dc55f7b05736d4c11031839e187e4ab6423" => :mojave
-    sha256 "224d91dd7d59ffd517049966d4192c46696828876f1de1ead58426519c48bac1" => :high_sierra
-    sha256 "4e063c6643b119f5f366d7ce688bf48fa6b3871d1e51e45dc5fa4ae3bfb7a5a3" => :x86_64_linux
+    sha256 "7acf496e7cd150936a9f90324f080c01c8e4d93434e7c7304cf0ce1e042cf088" => :catalina
+    sha256 "686006e04837f0a776517d14f35939cc3176dff2040e625f116c0deab0c0c082" => :mojave
+    sha256 "67fbd741876cdb523d4e4ecaaa6964d63bc9d54f67f09b82bd3791bf3ad39f4c" => :high_sierra
+    sha256 "1a9320353e0d3833c324283c9a93fade1f4124aa1e83fd67f1df972664ca05a7" => :x86_64_linux
   end
 
   depends_on "go" => :build

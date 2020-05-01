@@ -3,12 +3,13 @@ class Libvirt < Formula
   homepage "https://www.libvirt.org"
   url "https://libvirt.org/sources/libvirt-6.2.0.tar.xz"
   sha256 "aec8881f236917c4f8064918df546ed3aacd0bb8a2f312f4d37485721cce0fb1"
+  revision 1
   head "https://github.com/libvirt/libvirt.git"
 
   bottle do
-    sha256 "75ce933506b78a0e3364e9ac65c3cacf143a1c539460a7f4440d909e13090e14" => :catalina
-    sha256 "56af96f7d154639afc19087d5b0450fa746311d30772736300e9a0f760856546" => :mojave
-    sha256 "60d2df2cd9d6050c07b1cfe4bd9857c32c9de2f001fae82c22c42595ff26e385" => :high_sierra
+    sha256 "909baa2a68046cb10a1ca8a156e201aaf0588df1ec783d2709f04fa1d7a705af" => :catalina
+    sha256 "0bcf311bb7ccafc5f5cdea9efbfb50a6047ab6a1000375cd1d7f678a098f9402" => :mojave
+    sha256 "c1975f2037cf3e0a00fa6b89dd8af73b345f055ef8510550a1c4f80c990dc041" => :high_sierra
   end
 
   depends_on "docutils" => :build
@@ -46,19 +47,13 @@ class Libvirt < Formula
     # Work around a gnulib issue with macOS Catalina
     args << "gl_cv_func_ftello_works=yes"
 
-    system "./autogen.sh" if build.head?
     mkdir "build" do
+      system "../autogen.sh" if build.head?
       system "../configure", *args
 
       # Compilation of docs doesn't get done if we jump straight to "make install"
       system "make"
       system "make", "install"
-    end
-
-    # Update the libvirt daemon config file to reflect the Homebrew prefix
-    inreplace "#{etc}/libvirt/libvirtd.conf" do |s|
-      s.gsub! "/etc/", "#{etc}/"
-      s.gsub! "/var/", "#{var}/"
     end
   end
 
@@ -80,6 +75,8 @@ class Libvirt < Formula
           <key>ProgramArguments</key>
           <array>
             <string>#{sbin}/libvirtd</string>
+            <string>-f</string>
+            <string>#{etc}/libvirt/libvirtd.conf</string>
           </array>
           <key>KeepAlive</key>
           <true/>

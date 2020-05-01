@@ -3,12 +3,13 @@ class Profanity < Formula
   homepage "https://profanity-im.github.io"
   url "https://profanity-im.github.io/profanity-0.8.1.tar.gz"
   sha256 "6b7ff1f0f1b54ed3a55efce40237db775fe9475af276e5e4ed342e91a3e8d997"
+  revision 1
 
   bottle do
-    sha256 "301cf17605c91fc2c1d61a6ca5c08bca3b91676133f6cb208be0cd4539a4657b" => :catalina
-    sha256 "ba2cc6e92cd20f4b324d81c5762445f633a7318f50fe87a0cd0373a1427b00b7" => :mojave
-    sha256 "61aac65b0490da4ef367909d7427b83b98fdbfb7ebacda571d8772c624d5fc7b" => :high_sierra
-    sha256 "aa91b19ecc16c7d5cfc4ecc33ce530dd18757900789c3f1c84476408e9e47275" => :x86_64_linux
+    sha256 "c447b714d3f1dff8a32cbc6d7d3ffea2738bb37cd2c7b296d9f7caf97acd18d1" => :catalina
+    sha256 "d646b336478d46603d326e52a0b6d14e585d4df0069e5e3bee93aec863c0cc7c" => :mojave
+    sha256 "50327e2a08246b4f70aa61831bc805d27edbd2a092ca8507cafa647fe351612c" => :high_sierra
+    sha256 "6fa448692357d2b6bc15f73f8d4163ed097ff350acf54b556cdd987b59df8f31" => :x86_64_linux
   end
 
   head do
@@ -25,6 +26,7 @@ class Profanity < Formula
   depends_on "gnutls"
   depends_on "gpgme"
   depends_on "libotr"
+  depends_on "libsignal-protocol-c"
   depends_on "libstrophe"
   depends_on "openssl@1.1"
   depends_on "readline"

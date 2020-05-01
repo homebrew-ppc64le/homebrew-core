@@ -5,17 +5,19 @@ class Duplicity < Formula
   homepage "https://launchpad.net/duplicity"
   url "https://code.launchpad.net/duplicity/0.8-series/0.8.12/+download/duplicity-0.8.12.1612.tar.gz"
   sha256 "074cf847b273644459c840253bc39f5ed3d0a7f8545339d98b6e9a87f945c51a"
+  revision OS.mac? ? 2 : 3
 
   bottle do
     cellar :any
-    sha256 "fedcb582f700a4d75829c0f60692fa251494b2214f53224a6ff7c17cb41f2539" => :catalina
-    sha256 "5b063178a94cdde24d63776c369fc071484baf9bb0c272edd0f5d2fb370fd921" => :mojave
-    sha256 "9a90225fbd02bfad98caeb1fd927dee3348ebed4f4c37b199135bc167a9c5eb8" => :high_sierra
-    sha256 "e10059b556e0b4d3d3c552c028bb2f775b39cc3755ba0b16b436f0ac895c96f9" => :x86_64_linux
+    sha256 "ff8b388186caa864dc76736b3d132641d8220e38ebe01427ab2d4685de4490d1" => :catalina
+    sha256 "c3ac7c9d01751845068def59a943425d64c85209c7204c85fada52703711c1b2" => :mojave
+    sha256 "0b8a5a44381d5e86899c14f88fc0c48e694bf4e269145671b5a51def2150c941" => :high_sierra
+    sha256 "e3aae0da198cf064caf765eb331a03a68ad20305da9c692628862104bd1f65e2" => :x86_64_linux
   end
 
   depends_on "gnupg"
   depends_on "librsync"
+  depends_on "libyaml"
   depends_on "openssl@1.1"
   depends_on "python@3.8"
 

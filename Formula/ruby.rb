@@ -3,12 +3,13 @@ class Ruby < Formula
   homepage "https://www.ruby-lang.org/"
   url "https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.1.tar.xz"
   sha256 "b224f9844646cc92765df8288a46838511c1cec5b550d8874bd4686a904fcee7"
+  revision OS.mac? ? 2 : 3
 
   bottle do
     sha256 "7f5ed2afb15b25f9616b617ecca2ee376eb67cf6c105790df22221b7be9c1ef9" => :catalina
     sha256 "cc995a06e761acc8a807b040d8e7fe301902a4fc63d2beaaae40e04c710e7338" => :mojave
     sha256 "2605ad1636e40d747878a8df7d1ef51a15e58e70ce03510b9ea582c02a448e26" => :high_sierra
-    sha256 "bcf6ad258d596eaa6c75bf38f01937d471a75339828957a88b873a4ee02e298b" => :x86_64_linux
+    sha256 "ff621c4d7d5024f9fa342c329b9c5063ab4194cf6bb22ca62ff6a224a6f05327" => :x86_64_linux
   end
 
   head do
@@ -16,7 +17,7 @@ class Ruby < Formula
     depends_on "autoconf" => :build
   end
 
-  keg_only :provided_by_macos if OS.mac?
+  keg_only :provided_by_macos
 
   depends_on "pkg-config" => :build
   depends_on "libyaml"
@@ -38,11 +39,7 @@ class Ruby < Formula
   end
 
   def rubygems_bindir
-    if OS.mac?
-      HOMEBREW_PREFIX/"lib/ruby/gems/#{api_version}/bin"
-    else
-      HOMEBREW_PREFIX/"bin"
-    end
+    HOMEBREW_PREFIX/"lib/ruby/gems/#{api_version}/bin"
   end
 
   def install
@@ -69,6 +66,13 @@ class Ruby < Formula
       --without-gmp
     ]
     args << "--disable-dtrace" if OS.mac? && !MacOS::CLT.installed?
+
+    # Correct MJIT_CC to not use superenv shim
+    args << if OS.mac?
+      "MJIT_CC=/usr/bin/clang"
+    else
+      "MJIT_CC=/usr/bin/gcc"
+    end
 
     system "./configure", *args
 
@@ -99,7 +103,8 @@ class Ruby < Formula
       system "#{bin}/ruby", "setup.rb", "--prefix=#{buildpath}/vendor_gem"
       rg_in = lib/"ruby/#{api_version}"
 
-      # Remove bundled Rubygem version.
+      # Remove bundled Rubygem and Bundler
+      rm_rf rg_in/"bundler"
       rm_rf rg_in/"rubygems"
       rm_f rg_in/"rubygems.rb"
       rm_f rg_in/"ubygems.rb"
@@ -228,6 +233,7 @@ class Ruby < Formula
       source 'https://rubygems.org'
       gem 'gemoji'
     EOS
+    system bin/"bundle", "exec", "ls" # https://github.com/Homebrew/homebrew-core/issues/53247
     system bin/"bundle", "install", "--binstubs=#{testpath}/bin"
     assert_predicate testpath/"bin/gemoji", :exist?, "gemoji is not installed in #{testpath}/bin"
   end

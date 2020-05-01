@@ -30,7 +30,6 @@ class Audacious < Formula
     depends_on "libtool" => :build
   end
 
-  depends_on :macos # Due to Python 2
   depends_on "gettext" => :build
   depends_on "make" => :build
   depends_on "pkg-config" => :build
@@ -46,6 +45,7 @@ class Audacious < Formula
   depends_on "libsamplerate"
   depends_on "libsoxr"
   depends_on "libvorbis"
+  depends_on :macos # Due to Python 2
   depends_on :macos # Due to Python 2
   depends_on "mpg123"
   depends_on "neon"

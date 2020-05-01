@@ -4,12 +4,13 @@ class Guile < Formula
   url "https://ftp.gnu.org/gnu/guile/guile-2.2.7.tar.xz"
   mirror "https://ftpmirror.gnu.org/guile/guile-2.2.7.tar.xz"
   sha256 "cdf776ea5f29430b1258209630555beea6d2be5481f9da4d64986b077ff37504"
+  revision 2
 
   bottle do
-    sha256 "8832336a04f6571782ea0b36b655068ba97b4ea1e94934c8fca00a5ff855ad23" => :catalina
-    sha256 "18d1556fc704e536cfacabb46afc02c575ca04a26d177097cd60743596d43cc3" => :mojave
-    sha256 "650f5a5434b03ef01ee3eeca4ab1ae7999ca13029595e4dedbd66fb8cf56ec19" => :high_sierra
-    sha256 "cc927ac35ec177267a9c93270c99747a6019f62eab962acbc72e9e77f503729d" => :x86_64_linux
+    sha256 "6079cc2f9949612e7e7b020240b0075d4fdbdef59847c21a12f39ada6c0b6ab1" => :catalina
+    sha256 "b6438f6f46b6a5fd791d33eb9b911b870e52a0af1a64e6897568e99de6bb305b" => :mojave
+    sha256 "3cb3e051acbed35eca38eba05839b268a4792695652a362eb61ac7edac1ee5bc" => :high_sierra
+    sha256 "53eb8730b56829f1993d779f49f923f8d17b2051a89ad84473fe22ec5c8b3b48" => :x86_64_linux
   end
 
   head do
@@ -35,6 +36,9 @@ class Guile < Formula
     # Work around Xcode 11 clang bug
     # https://bitbucket.org/multicoreware/x265/issues/514/wrong-code-generated-on-macos-1015
     ENV.append_to_cflags "-fno-stack-check" if DevelopmentTools.clang_build_version >= 1010
+
+    # Avoid superenv shim
+    inreplace "meta/guile-config.in", "@PKG_CONFIG@", Formula["pkg-config"].opt_bin/"pkg-config"
 
     system "./autogen.sh" unless build.stable?
     system "./configure", "--disable-dependency-tracking",

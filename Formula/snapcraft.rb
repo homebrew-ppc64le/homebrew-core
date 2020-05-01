@@ -13,11 +13,10 @@ class Snapcraft < Formula
     sha256 "7c5dfd58bda9a380d83df3bd539b3996e1ca58b95a9417a1321a8b9998be547b" => :high_sierra
   end
 
-  depends_on :macos
-
   depends_on "libsodium"
   depends_on "libyaml"
   depends_on "lxc"
+  depends_on :macos
   depends_on "python"
   depends_on "squashfs"
   depends_on "xdelta"

@@ -12,8 +12,8 @@ class Gromacs < Formula
 
   depends_on "cmake" => :build
   depends_on "fftw"
-  depends_on "gsl"
-  depends_on "gcc" # for OpenMP
+  depends_on "gcc"
+  depends_on "gsl" # for OpenMP
   depends_on "openblas"
   depends_on "linuxbrew/xorg/xorg" unless OS.mac?
 

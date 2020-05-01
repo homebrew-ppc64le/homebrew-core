@@ -10,8 +10,10 @@ class Bento4 < Formula
     sha256 "f90b47d477917e0f567895dd96ce1f08ace1ac04719451f12cabd29f5e38aec8" => :catalina
     sha256 "8e2127cf58ec07d5c6a735072f875c458c96115b9859161e46e1a632e59547d2" => :mojave
     sha256 "d874fe1f7f65ff3a48c09b63f0dcbe5eb9a77d182165370772861d219cdbd0d2" => :high_sierra
+    sha256 "881568fae65753401ac9d52f144b96fe2c7a49912c182a7f9d2d1fdd03c375e8" => :x86_64_linux
   end
 
+  depends_on "cmake" => :build unless OS.mac?
   depends_on :xcode => :build if OS.mac?
   depends_on "python"
 
@@ -20,15 +22,26 @@ class Bento4 < Formula
     :because => "both install `mp4extract` and `mp4info` binaries"
 
   def install
-    cd "Build/Targets/universal-apple-macosx" do
-      xcodebuild "-target", "All", "-configuration", "Release", "SYMROOT=build"
-      programs = Dir["build/Release/*"].select do |f|
-        next if f.end_with? ".dylib"
-        next if f.end_with? "Test"
+    if OS.mac?
+      cd "Build/Targets/universal-apple-macosx" do
+        xcodebuild "-target", "All", "-configuration", "Release", "SYMROOT=build"
+        programs = Dir["build/Release/*"].select do |f|
+          next if f.end_with? ".dylib"
+          next if f.end_with? "Test"
 
-        File.file?(f) && File.executable?(f)
+          File.file?(f) && File.executable?(f)
+        end
+        bin.install programs
       end
-      bin.install programs
+    else
+      mkdir "cmakebuild" do
+        system "cmake", "..", *std_cmake_args
+        system "make"
+        programs = Dir["./*"].select do |f|
+          File.file?(f) && File.executable?(f)
+        end
+        bin.install programs
+      end
     end
 
     rm Dir["Source/Python/wrappers/*.bat"]

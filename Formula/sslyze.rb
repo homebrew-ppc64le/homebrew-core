@@ -5,8 +5,8 @@ class Sslyze < Formula
   homepage "https://github.com/nabla-c0d3/sslyze"
 
   stable do
-    url "https://github.com/nabla-c0d3/sslyze/archive/3.0.1.tar.gz"
-    sha256 "d78020876eb8a2e3227724ea14c9d7bb74e0cb55501dc910c53cbac8d8e47987"
+    url "https://github.com/nabla-c0d3/sslyze/archive/3.0.3.tar.gz"
+    sha256 "c86055f0d52fa4042a3cdfa312a9d1660800d36b3ffdece834587aded3f180a9"
 
     resource "nassl" do
       url "https://github.com/nabla-c0d3/nassl/archive/3.0.0.tar.gz"
@@ -16,9 +16,9 @@ class Sslyze < Formula
 
   bottle do
     cellar :any
-    sha256 "133e93307b8a617a3113bfb8a58bcbc3270fa91cb275db0b028f0887ba0f2e07" => :catalina
-    sha256 "8d68f261663ad3942f73c307517dbe4e79e9adcdea25cb32b9f01eddf2ec4a3f" => :mojave
-    sha256 "15d9ab00f883ef1b0f5affa1c618f197ec97900969384bf876044a4b3acd5199" => :high_sierra
+    sha256 "059177338cfe37cf22eee18c901c48924507052a7bbfdc229f2a2531837465c5" => :catalina
+    sha256 "f3059320e2b215133f2fef7cd6ccc2ce61750027dc005c5f853a5b3d8ab4d701" => :mojave
+    sha256 "9dbd5183d43057f4ef3760e4c585c412b636900a32270e0f0527ae9fb9c477f9" => :high_sierra
   end
 
   head do
@@ -46,8 +46,8 @@ class Sslyze < Formula
   end
 
   resource "cryptography" do
-    url "https://files.pythonhosted.org/packages/be/60/da377e1bed002716fb2d5d1d1cab720f298cb33ecff7bf7adea72788e4e4/cryptography-2.8.tar.gz"
-    sha256 "3cda1f0ed8747339bbdf71b9f38ca74c7b592f24f65cdb3ab3765e4b02871651"
+    url "https://files.pythonhosted.org/packages/9d/0a/d7060601834b1a0a84845d6ae2cd59be077aafa2133455062e47c9733024/cryptography-2.9.tar.gz"
+    sha256 "0cacd3ef5c604b8e5f59bf2582c076c98a37fe206b31430d0cd08138aff0986e"
   end
 
   resource "pycparser" do

@@ -1,18 +1,19 @@
 class Proj < Formula
   desc "Cartographic Projections Library"
-  homepage "https://proj4.org/"
-  url "https://download.osgeo.org/proj/proj-7.0.0.tar.gz"
+  homepage "https://proj.org/"
+  url "https://github.com/OSGeo/PROJ/releases/download/7.0.0/proj-7.0.0.tar.gz"
   sha256 "ee0e14c1bd2f9429b1a28999240304c0342ed739ebaea3d4ff44c585b1097be8"
 
   bottle do
-    sha256 "8016d7ac0def06a09f219ad4b567cee8ee96c5f3f5dd9b7ab2a10970aaa9fc85" => :catalina
-    sha256 "9510aa998aeab55db840127a70743322063ac9e95c0ff615410e6c4a048e1b64" => :mojave
-    sha256 "168b8ebbee214dcb84e0bf8f1db600f000d6f95c43daee76b59dc96d65191ad4" => :high_sierra
-    sha256 "b953522335ca9dac8619b6beb6fbda761e95446bb713245dce5374989270816a" => :x86_64_linux
+    rebuild 1
+    sha256 "3d45e9a534f97ed67183252e41c8d5c713e2f9f9d29df26bd1f31043d4b32731" => :catalina
+    sha256 "de1ce33e57ad23e36c5ad5bc3c902630870b9a63b1b21d819d8853881736bf7f" => :mojave
+    sha256 "719b1670cf4560071cfb64b811ef494b278655f33e00b221eeda6f209d2ba6e7" => :high_sierra
+    sha256 "2368ffd7ad1aa71d168f5599f7113f6f1a2bb08e7432c91839d03c1463201ed5" => :x86_64_linux
   end
 
   head do
-    url "https://github.com/OSGeo/proj.4.git"
+    url "https://github.com/OSGeo/proj.git"
     depends_on "autoconf" => :build
     depends_on "automake" => :build
     depends_on "libtool" => :build
@@ -34,9 +35,18 @@ class Proj < Formula
     sha256 "b9838ae7e5f27ee732fb0bfed618f85b36e8bb56d7afb287d506338e9f33861e"
   end
 
+  # Fixes https://github.com/OSGeo/PROJ/issues/2064 using https://github.com/OSGeo/PROJ/pull/2067
+  # Remove after version > 7.0.0
+  patch do
+    url "https://github.com/OSGeo/PROJ/commit/d8835f1288207ba9a7e78082050ef61af3ded1e3.diff?full_index=1"
+    sha256 "9a579a7a0fa33ea8c03639aef95f2b1d22afbc1d5167a927ce0670ff5432719e"
+  end
+
   def install
     (buildpath/"nad").install resource("datumgrid")
-
+    # we need to touch these files to stop autoreconf running and then failing due to the patch op above
+    # Remove touch op after version > 7.0.0
+    touch ["configure.ac", "aclocal.m4", "configure", "Makefile.am", "Makefile.in", "src/proj_config.h.in"]
     system "./autogen.sh" if build.head?
     system "./configure", "--disable-dependency-tracking",
                           "--prefix=#{prefix}"

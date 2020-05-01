@@ -1,14 +1,13 @@
 class Arangodb < Formula
   desc "The Multi-Model NoSQL Database"
   homepage "https://www.arangodb.com/"
-  url "https://github.com/arangodb/arangodb/archive/v3.6.2.tar.gz"
-  sha256 "2bfc406e4985eb432a5f83f2f3ca1ebee61792dad972024183408c2f8b148dbe"
-  revision 1
+  url "https://download.arangodb.com/Source/ArangoDB-3.6.3.tar.gz"
+  sha256 "76451106ab13f1bae19cdad24ecb2c895e3576c4742787d3be95d2875de4e145"
   head "https://github.com/arangodb/arangodb.git", :branch => "devel"
 
   bottle do
-    sha256 "fb38b29106260f79903967a18c775912ee0cb14024c691975e00dd0db556d063" => :catalina
-    sha256 "0727b80f9d27bd6590bd955bf77696d0a5fb2f1c91d751956a228e40db1af374" => :mojave
+    sha256 "e84209b460ddc4a8dc868d8f5ceba7d4ce478ebba51a5c204b149baa9495ec0f" => :catalina
+    sha256 "14c64c8339f728ce34b8671daad6f8d94b13fd0cda6f6875c37cfe48ad7f9b2a" => :mojave
   end
 
   depends_on "ccache" => :build
@@ -58,9 +57,7 @@ class Arangodb < Formula
 
       args << "-DCMAKE_OSX_DEPLOYMENT_TARGET=#{MacOS.version}" if OS.mac?
 
-      if ENV.compiler == "gcc-6"
-        ENV.append "V8_CXXFLAGS", "-O3 -g -fno-delete-null-pointer-checks"
-      end
+      ENV.append "V8_CXXFLAGS", "-O3 -g -fno-delete-null-pointer-checks" if ENV.compiler == "gcc-6"
 
       system "cmake", "..", *args
       system "make", "install"

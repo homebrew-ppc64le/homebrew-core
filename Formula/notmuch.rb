@@ -3,14 +3,14 @@ class Notmuch < Formula
   homepage "https://notmuchmail.org/"
   url "https://notmuchmail.org/releases/notmuch-0.29.3.tar.xz"
   sha256 "d5f704b9a72395e43303de9b1f4d8e14dd27bf3646fdbb374bb3dbb7d150dc35"
+  revision 1
   head "https://git.notmuchmail.org/git/notmuch", :using => :git
 
   bottle do
     cellar :any
-    rebuild 1
-    sha256 "b716979f4ea49239ca25a860b5e80c8b6a14fb40b7bb4cfa95993ea813a9478d" => :catalina
-    sha256 "7d2af85514a0341e949898fcfb7f7085045e1c639f6ad8bfdabf315a2868dfc3" => :mojave
-    sha256 "f766e26f85311557e59bc79839721f13b7c274377129a942866377b6b22e0776" => :high_sierra
+    sha256 "89ac85425f6d447a4796a5ada9364ebad2ffba5a7e9a135cc5ef572eda22ebdb" => :catalina
+    sha256 "91b9c8a97b4456f242e31e4d9a818cd0e1aeb90b9817ed0c319fbcd055f831d3" => :mojave
+    sha256 "bbc04b8a532c1514c023e6446badba239194e9e9dc44cda269f28b0dd680dff6" => :high_sierra
   end
 
   depends_on "doxygen" => :build
@@ -47,7 +47,7 @@ class Notmuch < Formula
     (prefix/"vim").install "vim/syntax"
 
     cd "bindings/python" do
-      system "python3", *Language::Python.setup_install_args(prefix)
+      system Formula["python@3.8"].opt_bin/"python3", *Language::Python.setup_install_args(prefix)
     end
   end
 

@@ -1,18 +1,19 @@
 class Topgrade < Formula
   desc "Upgrade all the things"
   homepage "https://github.com/r-darwish/topgrade"
-  url "https://github.com/r-darwish/topgrade/archive/v4.3.0.tar.gz"
-  sha256 "93bdd01a8572ec09fa73f9fea5db7d0a1df99cfa661e049ee618a0d95c01abde"
+  url "https://github.com/r-darwish/topgrade/archive/v4.3.1.tar.gz"
+  sha256 "549b2fe1b807256ec42a16fe5507b115fcd9c75a59a17de46dc3151ae28a1337"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "fd2ce552d9162dd66e94f0d075c8e14c8a49c57e1c3237c1d02eeed54c52b1bd" => :catalina
-    sha256 "d4e3b6c42f5ce3a347d24d3325cd9710288faa211392eb05fb11cf41a0ac9be7" => :mojave
-    sha256 "46aac690711be4d393b66b5e2bbfe09682dad3dafe97522ead75649122ac56e3" => :high_sierra
-    sha256 "0003744fd0f657fb0b452a64a65a6183298698decc3b755a95a1bb19fc354b05" => :x86_64_linux
+    sha256 "5f5983b100db5da8849bc187aeb3165772c23f24beef58d441b411b3fda54ec4" => :catalina
+    sha256 "9f73b680e52a099871540606043ca774a9544b05a1caac86606f460754aa8485" => :mojave
+    sha256 "a448474e0b0ab6aef9718b449be4979e2394dcf8b141a83ca10f1eaf981cca6a" => :high_sierra
+    sha256 "a56bfd43a2e3368db829eb73df880f37f174d1db0884cf957d63cf5c9a6de36e" => :x86_64_linux
   end
 
   depends_on "rust" => :build
+  depends_on :xcode => :build if OS.mac? && MacOS::CLT.version >= "11.4" # libxml2 module bug
 
   def install
     system "cargo", "install", "--locked", "--root", prefix, "--path", "."

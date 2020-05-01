@@ -3,13 +3,13 @@ class Pygobject3 < Formula
   homepage "https://wiki.gnome.org/Projects/PyGObject"
   url "https://download.gnome.org/sources/pygobject/3.36/pygobject-3.36.0.tar.xz"
   sha256 "8683d2dfb5baa9e501a9a64eeba5c2c1117eadb781ab1cd7a9d255834af6daef"
-  revision 1
+  revision 2
 
   bottle do
-    sha256 "075757fd61db80931583784a9c277bf02639995a4ed9c3773ff8cc7576d64b80" => :catalina
-    sha256 "bb6c6e6116e560a190e2d5e68d1b70d23351fe6c431ffeaaacf87df00651e8f2" => :mojave
-    sha256 "99ac464e907ad4e5afd6982d661b44723ec73e77257cca034e0eb654d2b99a4b" => :high_sierra
-    sha256 "443498d520db48ba60bb80f73428ff3e652e09f6cee7ce0ddae90bd9e67a4ab5" => :x86_64_linux
+    sha256 "2636d93f6867f57a6f2a20f5011e2559a8bcceb65bccfe74870b9377a238adce" => :catalina
+    sha256 "3c9b34d60ebfa6bafbcf950690794fbd047b42fdf20614f5178d7460a2c8b5ab" => :mojave
+    sha256 "0a39bc5ec20ac0acc646abf385c2eccca9910dc17d1e25342ab34e84f865352d" => :high_sierra
+    sha256 "63e27d0d33e8fefd8b7545b8ddf4dd35fde9b5e3eee1f2c387cb9687e32334e3" => :x86_64_linux
   end
 
   depends_on "meson" => :build

@@ -5,14 +5,15 @@ class Vapoursynth < Formula
   homepage "http://www.vapoursynth.com"
   url "https://github.com/vapoursynth/vapoursynth/archive/R49.tar.gz"
   sha256 "126d1e68d3a3e80d1e215c8a2a5dc8773f5fcac70a6c22dadc837bccb603bccd"
+  revision OS.mac? ? 1 : 2
   head "https://github.com/vapoursynth/vapoursynth.git"
 
   bottle do
     cellar :any
-    sha256 "637f66fa28dbcc23ff37c044451d6d395379c4cbce1c6e34048c85e1deb81893" => :catalina
-    sha256 "4cece74f6d7757ab3c92b99504c88d971b3a22be586ea22fd9e41a25b6eee22d" => :mojave
-    sha256 "de060f7f483aaa67b062f6b36259e93a836d28cc8a6ef0d8a042c6ce6467642c" => :high_sierra
-    sha256 "40deede422bf24a4492099de9a9688ccd7a2536c10afb047e5675768be390262" => :x86_64_linux
+    sha256 "8a4c0a3d08c576610946a396388561d6ce46a24af9ea2954cf592aba914b0ebf" => :catalina
+    sha256 "c1045eb58f7b9793cdb4e622dfadca7c2308fe16c1845ed7b074d647cac6b118" => :mojave
+    sha256 "9e4cfb9328289c67833192af426b263e7aa25572ab81f6ab1fbd7243867b5579" => :high_sierra
+    sha256 "827aefa0fb706eb1f8266a8e56a57e8ff365f23e249baaeae1845208aa676eb2" => :x86_64_linux
   end
 
   depends_on "autoconf" => :build
@@ -21,7 +22,7 @@ class Vapoursynth < Formula
   depends_on "nasm" => :build
   depends_on "pkg-config" => :build
   depends_on :macos => :el_capitan # due to zimg dependency
-  depends_on "python"
+  depends_on "python@3.8"
   depends_on "zimg"
 
   resource "Cython" do
@@ -30,7 +31,7 @@ class Vapoursynth < Formula
   end
 
   def install
-    venv = virtualenv_create(buildpath/"cython", "python3")
+    venv = virtualenv_create(buildpath/"cython", Formula["python@3.8"].opt_bin/"python3")
     venv.pip_install "Cython"
     system "./autogen.sh"
     inreplace "Makefile.in", "pkglibdir = $(libdir)", "pkglibdir = $(exec_prefix)"
@@ -69,9 +70,9 @@ class Vapoursynth < Formula
   end
 
   test do
-    py3 = Language::Python.major_minor_version "python3"
-    ENV.prepend_path "PYTHONPATH", lib/"python#{py3}/site-packages"
-    system "python3", "-c", "import vapoursynth"
+    xy = Language::Python.major_minor_version Formula["python@3.8"].opt_bin/"python3"
+    ENV.prepend_path "PYTHONPATH", lib/"python#{xy}/site-packages"
+    system Formula["python@3.8"].opt_bin/"python3", "-c", "import vapoursynth"
     system bin/"vspipe", "--version"
   end
 end

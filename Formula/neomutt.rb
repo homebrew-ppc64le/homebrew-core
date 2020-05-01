@@ -1,20 +1,22 @@
 class Neomutt < Formula
   desc "E-mail reader with support for Notmuch, NNTP and much more"
   homepage "https://neomutt.org/"
-  url "https://github.com/neomutt/neomutt/archive/20200320.tar.gz"
-  sha256 "69daf2e0633dee7e8bdba74ab714adfa70e8f078028b56d612228c2aa836aafa"
+  url "https://github.com/neomutt/neomutt/archive/20200424.tar.gz"
+  sha256 "e708d04f057a788041acaced765861bcfbab50f287f8e83620447ec8eb5145df"
   head "https://github.com/neomutt/neomutt.git"
 
   bottle do
-    sha256 "d94a815731036b63fbafd703c9db76e16d242e0217fad9ba4483ee65d37c3dd6" => :catalina
-    sha256 "e0b0f137b739258e461e27956866eb37ae787d942f6b82685da5b9f01e880a2b" => :mojave
-    sha256 "3423fe201ef33bb8d77644aa40773c9d5d7c93cd4c228a4b52b772d2fcbc5aae" => :high_sierra
+    sha256 "bb70e1dfafdc5e0ea6799b1f53e6940fba36773f5b50dbea58e6d30ad0ac8131" => :catalina
+    sha256 "6dc8c4e0305bc76cf4480684f0dec4c1c355da3993c9498f3cad8519c85002bf" => :mojave
+    sha256 "908e70961047ae7d943bb43bb86a618bfa34915da431df1892cb001c40a3c6c0" => :high_sierra
   end
 
+  depends_on "docbook-xsl" => :build
   depends_on "gettext"
   depends_on "gpgme"
   depends_on "libidn"
   depends_on "lmdb"
+  depends_on "lua"
   depends_on "notmuch"
   depends_on "openssl@1.1"
   depends_on "tokyo-cabinet"
@@ -26,7 +28,6 @@ class Neomutt < Formula
   def install
     ENV["XML_CATALOG_FILES"] = "#{etc}/xml/catalog"
     system "./configure", "--prefix=#{prefix}",
-                          "--disable-doc",
                           "--enable-gpgme",
                           "--with-gpgme=#{Formula["gpgme"].opt_prefix}",
                           "--gss",
@@ -35,7 +36,9 @@ class Neomutt < Formula
                           "--sasl",
                           "--tokyocabinet",
                           "--with-ssl=#{Formula["openssl@1.1"].opt_prefix}",
-                          "--with-ui=ncurses"
+                          "--with-ui=ncurses",
+                          "--lua",
+                          "--with-lua=#{Formula["lua"].prefix}"
     system "make", "install"
   end
 

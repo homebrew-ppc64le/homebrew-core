@@ -1,16 +1,16 @@
 class Telegraf < Formula
   desc "Server-level metric gathering agent for InfluxDB"
   homepage "https://influxdata.com"
-  url "https://github.com/influxdata/telegraf/archive/v1.14.0.tar.gz"
-  sha256 "8562f3bc3c9130fabc9c4dd68863b776ebbaaa9100d2d5a06b79959902b30a4f"
+  url "https://github.com/influxdata/telegraf/archive/v1.14.2.tar.gz"
+  sha256 "ac529d4110c761e3743bbf942aa7d465f188363aa4fa2a6d2c9c53f108b339b5"
   head "https://github.com/influxdata/telegraf.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "0e75d1d30a1a3e8151aee8ed22aac94a2621c7c63a236354433b4972a1d37da8" => :catalina
-    sha256 "8c9945d6a04060f35a7f4cb4b63d3ab4886ad5462ae0a8164d67d4c367c4251a" => :mojave
-    sha256 "a31ae43a8fdfd531fde621da4e727a29b6206cc9ec289005169cb4fdc250d78a" => :high_sierra
-    sha256 "eff4d3b93db4b26566517bf3582cec62fcc22322c6112a6f30a2e50867160322" => :x86_64_linux
+    sha256 "292f04fec61657c5fcc095b34fd6ee6d74c2a26ee2692bbe08bd135b475413aa" => :catalina
+    sha256 "90e5f9f62569e961490c967111121b7b9b23c5bea0c43523ccc276e0d3902f80" => :mojave
+    sha256 "32c510b90b627270659ae8654f8a4fd7a6fa0cfeab1960ce55ceb872fc7a4ac6" => :high_sierra
+    sha256 "235d18aa01f77ca78cb680a3fdcc3c39b1c354ba529ecf7f32581b615c3b7cbc" => :x86_64_linux
   end
 
   depends_on "go" => :build

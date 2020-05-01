@@ -5,21 +5,23 @@ class GitRevise < Formula
   homepage "https://github.com/mystor/git-revise"
   url "https://github.com/mystor/git-revise/archive/0.5.1.tar.gz"
   sha256 "3f64521eb056ff097eb282811459820e1afd138cf2de113d609051060459d24d"
-  revision 2
+  revision OS.mac? ? 2 : 3
   head "https://github.com/mystor/git-revise.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "2fe7e2bef591f6217c5f3a9a6b3e1f2ff6b3f466c45bf1fdff93eb374a45c4d0" => :catalina
-    sha256 "7bcefb4419a81a205bae28b633718a5bcd3fd0b8c21543159d19e3e2a2684db8" => :mojave
-    sha256 "e59554a284ee4aed9ce5d65b65c998f359af9de928064c6b857befe9551335ba" => :high_sierra
-    sha256 "23baef7f05a72e476ea3c842ca9dfc2a7ac41f6ce946be935ab110c13551d28f" => :x86_64_linux
+    rebuild 1
+    sha256 "7e23c15bd16585e0437cecbef947b4deeae17469c184563ca60aa8236e529027" => :catalina
+    sha256 "1af281b6fd52de21f78e269cfc01f869b23093d87730d4eb0d4367eabfd06f24" => :mojave
+    sha256 "19bc350c3e047b8ca4108809341bf425a63ef7b04eaa2a6585fbf1f0eb570bc8" => :high_sierra
+    sha256 "8bad2d663bac8721f8b183799dad4d43ce8825eedf2446bb51729d604b71b268" => :x86_64_linux
   end
 
   depends_on "python@3.8"
 
   def install
     virtualenv_install_with_resources
+    man1.install "git-revise.1"
   end
 
   test do

@@ -1,14 +1,14 @@
 class Deno < Formula
   desc "Command-line JavaScript / TypeScript engine"
   homepage "https://deno.land/"
-  url "https://github.com/denoland/deno/releases/download/v0.40.0/deno_src.tar.gz"
-  sha256 "d2ed1ac06fd2901145374eb39adf4519e4119f86d82851b5947e58937116c2b0"
+  url "https://github.com/denoland/deno/releases/download/v0.42.0/deno_src.tar.gz"
+  sha256 "184e2374ef92f421ae07fc24322a8d0ab89eac44cc96dcceabc5f1401fa5de74"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "b2e6bc853ba7104ed97e4000458440d1548a6a62753c50a965fb05b688cb7c56" => :catalina
-    sha256 "97aa1fecb68f5642dd09c5eb5d200c2176baa66ab50c0955482d1c417927f7a5" => :mojave
-    sha256 "2ea2c7d7653481d1e6fe3c674f5dbb0f760f0aa28df88000e11b77a36e4d34b2" => :high_sierra
+    sha256 "b4f91dd079eee18b85b157bb03b1535935a37d9fb6f078e271a7b48b2afd34ea" => :catalina
+    sha256 "84a8eb4da2582495d00de7124f2fef3f6337d8f307334aa34b129d5fa762fb22" => :mojave
+    sha256 "da96ecc72fc26eeb23fd83df934ca5a95fc9a1b02de42f732905231b2f51bee2" => :high_sierra
   end
 
   depends_on "llvm" => :build
@@ -42,9 +42,7 @@ class Deno < Formula
     ENV["CLANG_BASE_PATH"] = Formula["llvm"].prefix
     ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib
 
-    unless OS.mac?
-      system "core/libdeno/build/linux/sysroot_scripts/install-sysroot.py", "--arch=amd64"
-    end
+    system "core/libdeno/build/linux/sysroot_scripts/install-sysroot.py", "--arch=amd64" unless OS.mac?
 
     cd "cli" do
       system "cargo", "install", "-vv", "--locked", "--root", prefix, "--path", "."
@@ -63,7 +61,7 @@ class Deno < Formula
     EOS
     assert_match "hello deno", shell_output("#{bin}/deno run hello.ts")
     assert_match "console.log",
-      shell_output("#{bin}/deno run --allow-read=#{testpath} https://deno.land/std/examples/cat.ts " \
+      shell_output("#{bin}/deno run --allow-read=#{testpath} https://deno.land/std@v#{version}/examples/cat.ts " \
                    "#{testpath}/hello.ts")
   end
 end

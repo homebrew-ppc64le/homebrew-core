@@ -1,14 +1,14 @@
 class Chapel < Formula
   desc "Emerging programming language designed for parallel computing"
   homepage "https://chapel-lang.org/"
-  url "https://github.com/chapel-lang/chapel/releases/download/1.21.0/chapel-1.21.0.tar.gz"
-  sha256 "886f7ba0e0e86c86dba99417e3165f90b1d3eca59c8cd5a7f645ce28cb5d82a0"
+  url "https://github.com/chapel-lang/chapel/releases/download/1.22.0/chapel-1.22.0.tar.gz"
+  sha256 "57ba6ee5dfc36efcd66854ecb4307e1c054700ea201eff73012bd8b4572c2ce6"
 
   bottle do
-    sha256 "296700c3496e0d1a1c9f15089da47a6fb6cd30a9ece155d7da217a106655b800" => :catalina
-    sha256 "d787423d5898b796670e2cbe00280c5262d680e7ce422654ea259e47fe2777a4" => :mojave
-    sha256 "89ce0beba7d80139b4f35c475b5a0fdc20c54fb9c5e2c18d5fb8c426ecaad5f5" => :high_sierra
-    sha256 "6ccb343396c2e3014acb4d320e86cb0de98127b1adb41c4bcc24e284f8988eb3" => :x86_64_linux
+    sha256 "7d6baf3f49c5957e4ec07dafa506c62cdb8ff602ded9745559639a1fe014a7f3" => :catalina
+    sha256 "dafbcd02cd4abeece95a40f573a8ac778248de55f4ec5f054258087dcdcb08cc" => :mojave
+    sha256 "444c892f2532e62600ca4edf7b36944b6fbd89924ce6f92edb8718b42f7aad9d" => :high_sierra
+    sha256 "7786d45575e26d61e02328c66c2de0957110862a2062dfa215da317c1d35fa65" => :x86_64_linux
   end
 
   depends_on "python@3.8" unless OS.mac?

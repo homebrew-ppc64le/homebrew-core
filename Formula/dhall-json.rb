@@ -7,17 +7,18 @@ class DhallJson < Formula
   homepage "https://github.com/dhall-lang/dhall-haskell/tree/master/dhall-json"
   url "https://hackage.haskell.org/package/dhall-json-1.6.3/dhall-json-1.6.3.tar.gz"
   sha256 "6b41f69f1c97515061b02fdbb82f867076d7ad1c345c1d1a6249348b6ca6a6b6"
+  revision 1
   head "https://github.com/dhall-lang/dhall-haskell.git"
 
   bottle do
-    sha256 "5babf84a94b0854aa9557c5febb4423fe953d62af688a9c5d392051fcbdb5499" => :catalina
-    sha256 "5336561b5593fffbd178a63863bb8bdf35522053111cceb9466b406a3a4dbf61" => :mojave
-    sha256 "ef0ddd01742ba97c829c81cdb784036bf8644cf78ac92de5b1b02baf1fdbb185" => :high_sierra
-    sha256 "323d7f2b0f76ef77793ac943662cba5c982eccce6b743aa4805efe6982979be0" => :x86_64_linux
+    sha256 "3b352e16b1922c3862ed9ba90c457e045dfdfad4457aa2faadacedb0b93f9e9f" => :catalina
+    sha256 "dadd74a6807a25b0aecb859b6d19e90de6962dd88e3b722e2fcb471d493b0df9" => :mojave
+    sha256 "c2298d41f9cc418bb7033fa49c141badb380c91b956f85c0674ca8339dd24b59" => :high_sierra
+    sha256 "83e85662a566a9cf411f0e33dce0a840af3d62bb4f5f1c1dedde71641dd59a97" => :x86_64_linux
   end
 
   depends_on "cabal-install" => :build
-  depends_on "ghc@8.6" => :build
+  depends_on "ghc" => :build
 
   uses_from_macos "ncurses"
   uses_from_macos "zlib"

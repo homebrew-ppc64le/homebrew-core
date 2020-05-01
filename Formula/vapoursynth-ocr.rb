@@ -3,13 +3,14 @@ class VapoursynthOcr < Formula
   homepage "http://www.vapoursynth.com"
   url "https://github.com/vapoursynth/vapoursynth/archive/R49.tar.gz"
   sha256 "126d1e68d3a3e80d1e215c8a2a5dc8773f5fcac70a6c22dadc837bccb603bccd"
+  revision 1
   head "https://github.com/vapoursynth/vapoursynth.git"
 
   bottle do
     cellar :any
-    sha256 "605f0803589d425a97f72d3930ca0f85859ef955aa914072c259db18cff26b72" => :catalina
-    sha256 "bb6ff386fad03adde9f782293be331f286b87634abe1da23198b3e3c1f48b782" => :mojave
-    sha256 "69e70bca123a0f0b627c0e117df9611c0fbf66d42d45e54e31728b7681f28ba0" => :high_sierra
+    sha256 "c9d6ead8096251d325d2d073d9f6910c47cd98274bc99aa7349bfd6a53be366b" => :catalina
+    sha256 "53da7e4d1e8e0f0c8ae5ed38fd0751cbcff3edb98abb827bbb1bc43edcdc1d94" => :mojave
+    sha256 "185c6b666a092b6b26e5d617d9452c33bcd4ca358d2de59a077fa5c066dd6f54" => :high_sierra
   end
 
   depends_on "autoconf" => :build
@@ -38,8 +39,8 @@ class VapoursynthOcr < Formula
   end
 
   test do
-    py3 = Language::Python.major_minor_version "python3"
-    ENV.prepend_path "PYTHONPATH", lib/"python#{py3}/site-packages"
-    system "python3", "-c", "from vapoursynth import core; core.ocr"
+    xy = Language::Python.major_minor_version Formula["python@3.8"].opt_bin/"python3"
+    ENV.prepend_path "PYTHONPATH", lib/"python#{xy}/site-packages"
+    system Formula["python@3.8"].opt_bin/"python3", "-c", "from vapoursynth import core; core.ocr"
   end
 end

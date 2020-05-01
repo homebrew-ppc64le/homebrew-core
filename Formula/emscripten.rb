@@ -3,25 +3,25 @@ class Emscripten < Formula
   homepage "https://emscripten.org/"
 
   stable do
-    url "https://github.com/emscripten-core/emscripten/archive/1.39.12.tar.gz"
-    sha256 "b7e7c6918055a2a36c75ceeef27b507198ffbf590677cf82b6b3759c4e0c474d"
+    url "https://github.com/emscripten-core/emscripten/archive/1.39.13.tar.gz"
+    sha256 "4126b04d58b466efd61907566303e4a13f029979dc6a50af7257ac74c911cf5a"
 
     resource "fastcomp" do
-      url "https://github.com/emscripten-core/emscripten-fastcomp/archive/1.39.12.tar.gz"
-      sha256 "af2bd0d606e081492c58289742fc29a41d0ea6daabfb80fbc01a804a447b3ef0"
+      url "https://github.com/emscripten-core/emscripten-fastcomp/archive/1.39.13.tar.gz"
+      sha256 "69361d377aa09ae79572de2be34161b344846abeab4f225f90d0c1cde4b9a3e8"
     end
 
     resource "fastcomp-clang" do
-      url "https://github.com/emscripten-core/emscripten-fastcomp-clang/archive/1.39.12.tar.gz"
-      sha256 "c52b2ad9827cb92afe5f7b5d185420aa971b0e91b172fd1966a4f95f10b8a236"
+      url "https://github.com/emscripten-core/emscripten-fastcomp-clang/archive/1.39.13.tar.gz"
+      sha256 "e0c66facd4f0a34741d73053d25449de306aacd8950fa21a34be0659dfe9c2c3"
     end
   end
 
   bottle do
     cellar :any
-    sha256 "46ca40e8225f32894b37a290beec3b862e6e8be5e04b7c4055a81acc58d727c7" => :catalina
-    sha256 "a43f7e3dd5321d5da99f84325c5a8834c319d355aaa967a18e1432883b1820fa" => :mojave
-    sha256 "93f372f1480530cff3f20c32806b04c5d86298ba8ec48e42727139352789b2cb" => :high_sierra
+    sha256 "ce4f5a89df2a5d365917b3dfd38c730244378582bb329df2474807671eed3624" => :catalina
+    sha256 "2e5ac76bc9d339a00befa19f4904d5c148969af36a7f3457ffd8f86d86ca0290" => :mojave
+    sha256 "f9bf675eefdc2f56cc01cbbb0d98f2a3fb9fdef476151df0977253695f321e20" => :high_sierra
   end
 
   head do
@@ -39,7 +39,7 @@ class Emscripten < Formula
   depends_on "cmake" => :build
   depends_on "binaryen"
   depends_on "node"
-  depends_on "python"
+  depends_on "python@3.8"
   depends_on "yuicompressor"
 
   def install
@@ -73,7 +73,7 @@ class Emscripten < Formula
 
     %w[em++ em-config emar emcc emcmake emconfigure emlink.py emmake
        emranlib emrun emscons].each do |emscript|
-      (bin/emscript).write_env_script libexec/emscript, :PYTHON => Formula["python"].opt_bin/"python3"
+      (bin/emscript).write_env_script libexec/emscript, :PYTHON => Formula["python@3.8"].opt_bin/"python3"
     end
   end
 

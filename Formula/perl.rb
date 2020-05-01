@@ -3,13 +3,14 @@ class Perl < Formula
   homepage "https://www.perl.org/"
   url "https://www.cpan.org/src/5.0/perl-5.30.2.tar.gz"
   sha256 "66db7df8a91979eb576fac91743644da878244cf8ee152f02cd6f5cd7a731689"
+  revision 1
   head "https://github.com/perl/perl5.git", :branch => "blead"
 
   bottle do
-    sha256 "8a9d19e3d6f308b5976318d644ba11ec95b2c2be502cee4c8514060690ddb923" => :catalina
-    sha256 "632cbd8c42fd270ae4e1458e5dbb7927dbf69d5bd6ef36bb0dc981c0b2eb6759" => :mojave
-    sha256 "302bcddce16aa19d9009b63daad9d4e7d128c9df8f0973daa96e7de80a430266" => :high_sierra
-    sha256 "4217367eec98acf4cb12bcb7c6bb2734c1c2c13ddf20ff9f441648219dac804b" => :x86_64_linux
+    sha256 "b25dbfa43f3fea68a3acdf7f59e18a0d694ac18070ef60da431c0900baf14ba6" => :catalina
+    sha256 "8a141e61aa0ece017735ac9860d5077921618ea4397a02b42203b6f45507b9ea" => :mojave
+    sha256 "73d96330045dedca4805aac3a69f164935230b77487e20a1e326152f167a4391" => :high_sierra
+    sha256 "f6c3717740782d8d7fd0a36bc246d0bf8a59ad13c1d80b29159fd517182c2067" => :x86_64_linux
   end
 
   uses_from_macos "expat"
@@ -37,6 +38,7 @@ class Perl < Formula
       -Duselargefiles
       -Dusethreads
     ]
+    args << "-Dsed=/usr/bin/sed" if OS.mac?
 
     args << "-Dusedevel" if build.head?
     # Fix for https://github.com/Linuxbrew/homebrew-core/issues/405

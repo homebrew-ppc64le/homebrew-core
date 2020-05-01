@@ -3,15 +3,15 @@ require "language/node"
 class Chronograf < Formula
   desc "Open source monitoring and visualization UI for the TICK stack"
   homepage "https://docs.influxdata.com/chronograf/latest/"
-  url "https://github.com/influxdata/chronograf/archive/1.8.0.tar.gz"
-  sha256 "f1c6fa57a11e3ee11756c4a3b6e59845aede0f7e6191f41193b1f94a2453eb08"
+  url "https://github.com/influxdata/chronograf/archive/1.8.3.tar.gz"
+  sha256 "743cfec5eb1fce9f77e93d5bcf2e9bbceab6ebc035907354713ea25c9b40024f"
   head "https://github.com/influxdata/chronograf.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "836f37308ba8caf34aa8acc9190c9a6a1762bb8aee13c7c203c36744d70d2019" => :catalina
-    sha256 "ef17bb23eb3510cf38c15a35f1f2ea9d273af833d2f39cd48787f4ce7e958f56" => :mojave
-    sha256 "65aab11960c0c5176b1781be726d50adc06ee073ab821963778af522f8a73c5b" => :high_sierra
+    sha256 "3317d4d7702e392fec85d862d17fe35caaf2ca826c6efcf37aceae15d3e9edda" => :catalina
+    sha256 "2f3c7a0de9e57646ca914760a960d2f2a2905177edb52441fbedb9640175659a" => :mojave
+    sha256 "12e769176fcbfae22ad66ec884d11f52376d6107c666bde3b862a37377085cd0" => :high_sierra
   end
 
   depends_on "go" => :build
@@ -82,7 +82,7 @@ class Chronograf < Formula
     sleep 1
     assert_match %r{/chronograf/v1/layouts}, output
   ensure
-    Process.kill("SIGINT", pid)
+    Process.kill("SIGTERM", pid)
     Process.wait(pid)
   end
 end

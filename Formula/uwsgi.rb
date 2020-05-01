@@ -39,9 +39,7 @@ class Uwsgi < Formula
   def install
     # Fix file not found errors for /usr/lib/system/libsystem_symptoms.dylib and
     # /usr/lib/system/libsystem_darwin.dylib on 10.11 and 10.12, respectively
-    if OS.mac? && (MacOS.version == :sierra || MacOS.version == :el_capitan)
-      ENV["SDKROOT"] = MacOS.sdk_path
-    end
+    ENV["SDKROOT"] = MacOS.sdk_path if OS.mac? && (MacOS.version == :sierra || MacOS.version == :el_capitan)
 
     ENV.append %w[CFLAGS LDFLAGS], "-arch #{MacOS.preferred_arch}" if OS.mac?
     openssl = Formula["openssl@1.1"]
@@ -77,9 +75,7 @@ class Uwsgi < Formula
                  transformation_chunked transformation_gzip
                  transformation_offload transformation_tofile
                  transformation_toupper ugreen webdav zergpool]
-    if OS.mac?
-      plugins << "alarm_speech"
-    end
+    plugins << "alarm_speech" if OS.mac?
 
     (libexec/"uwsgi").mkpath
     plugins.each do |plugin|

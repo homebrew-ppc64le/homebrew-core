@@ -1,15 +1,14 @@
 class R < Formula
   desc "Software environment for statistical computing"
   homepage "https://www.r-project.org/"
-  url "https://cran.r-project.org/src/base/R-3/R-3.6.3.tar.gz"
-  sha256 "89302990d8e8add536e12125ec591d6951022cf8475861b3690bc8bf1cefaa8f"
-  revision 1
+  url "https://cran.r-project.org/src/base/R-4/R-4.0.0.tar.gz"
+  sha256 "06beb0291b569978484eb0dcb5d2339665ec745737bdfb4e873e7a5a75492940"
 
   bottle do
-    sha256 "87a9a56265163f342725418365989afbdab02abc997df0304e403034094f1117" => :catalina
-    sha256 "fc155a762bf9ba5aef95c50960c69635044eecc55b5cdb95d8974cc15854ba5a" => :mojave
-    sha256 "c272ce6cc5502843f31457c465804b70f990a26ef393b5c62b71cba82dfc7364" => :high_sierra
-    sha256 "f3b00df31b534d19ecbdf66d0041a997234d7b48be10f3a4886ba291ecd1ac4f" => :x86_64_linux
+    sha256 "3bef9d95610f3430495684b54276459bc9536fe36ba03d5bfa9471af2be59c49" => :catalina
+    sha256 "618b26c4ed1ea1e3a87c889c15b3df78ee1692a0a0e294a6d6539b06c3b0f5f7" => :mojave
+    sha256 "0a76ee20f84666203d85b07fbdaf45125ec0a93e0b541f91e58d92130830a6be" => :high_sierra
+    sha256 "9bb113f87fa2fa34d9c236fd17c967509403c1e107bab732b62175ba71a420de" => :x86_64_linux
   end
 
   depends_on "pkg-config" => :build
@@ -18,7 +17,7 @@ class R < Formula
   depends_on "jpeg"
   depends_on "libpng"
   depends_on "openblas"
-  depends_on "pcre"
+  depends_on "pcre2"
   depends_on "readline"
   depends_on "xz"
 
@@ -30,7 +29,7 @@ class R < Formula
   end
 
   # needed to preserve executable permissions on files without shebangs
-  skip_clean "lib/R/bin"
+  skip_clean "lib/R/bin", "lib/R/doc"
 
   resource "gss" do
     url "https://cloud.r-project.org/src/contrib/gss_2.1-12.tar.gz", :using => :nounzip

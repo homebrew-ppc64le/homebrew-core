@@ -3,15 +3,15 @@ class Nginx < Formula
   homepage "https://nginx.org/"
   # Use "mainline" releases only (odd minor version number), not "stable"
   # See https://www.nginx.com/blog/nginx-1-12-1-13-released/ for why
-  url "https://nginx.org/download/nginx-1.17.9.tar.gz"
-  sha256 "7dd65d405c753c41b7fdab9415cfb4bdbaf093ec6d9f7432072d52cb7bcbb689"
+  url "https://nginx.org/download/nginx-1.17.10.tar.gz"
+  sha256 "a9aa73f19c352a6b166d78e2a664bb3ef1295bbe6d3cc5aa7404bd4664ab4b83"
   head "https://hg.nginx.org/nginx/", :using => :hg
 
   bottle do
-    sha256 "bbfea4efeecb097256a93ccedfe592ed6fc3a3d8d7cb348ea8ef0dc11052c866" => :catalina
-    sha256 "d96a65f612fba7bd7982fadb2469b965dfc9d406c948c9a15c6407d22b64f510" => :mojave
-    sha256 "865acfbcf15641757a278127cb3a70ed500f3220b4708e10ecafc4f87192016a" => :high_sierra
-    sha256 "a238ba0634018652ada150b68c93aca7c31fde3f05340ed7baed8e435fca988a" => :x86_64_linux
+    sha256 "f53fc4b6f3dc7fd955a67c9b7fa02c12c3c4439608b5921cee0b910a8a50d7f2" => :catalina
+    sha256 "eab3afd95186461aa6e99efe2bf5afb120e894f37f9687ef1447de083726d60d" => :mojave
+    sha256 "6e29355a56328243789590b5782d23f257a67d27624e08fc726143d8b2051fcf" => :high_sierra
+    sha256 "5f68ea2ccd4d58a2eba7770128a34ec43eebb756811a278c6d52ad995d4aa25f" => :x86_64_linux
   end
 
   depends_on "openssl@1.1"
@@ -22,7 +22,10 @@ class Nginx < Formula
   def install
     # keep clean copy of source for compiling dynamic modules e.g. passenger
     (pkgshare/"src").mkpath
-    system "tar", "-cJf", (pkgshare/"src/src.tar.xz"), *("--options" if OS.mac?), *("compression-level=9" if OS.mac?), "."
+    system "tar", "-cJf",
+           (pkgshare/"src/src.tar.xz"),
+           *("--options" if OS.mac?),
+           *("compression-level=9" if OS.mac?), "."
 
     # Changes default port to 8080
     inreplace "conf/nginx.conf" do |s|

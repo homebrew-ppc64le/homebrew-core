@@ -3,12 +3,12 @@ class Dartsim < Formula
   homepage "https://dartsim.github.io/"
   url "https://github.com/dartsim/dart/archive/v6.9.2.tar.gz"
   sha256 "7d46d23c04d74d3b78331f9fa7deb5ab32fd4b0c03b93548cd84a2d67771d816"
-  revision 5
+  revision 6
 
   bottle do
-    sha256 "ee3c0dbaa4cb4d94e471c0cd22e14a896461a36b8c9b64a04feaaef48d96e9c9" => :catalina
-    sha256 "e398796449d4ee45200a8c39a0a23bcf4d026eead21aa2641360b81c9d4b7fe0" => :mojave
-    sha256 "70f764a63ed36e19410527e9e2cc3d3ba30245bc2e5434a9ed64f29e0ba21515" => :high_sierra
+    sha256 "7e6254ec5ec1a9c7d258170e8d56f66e7ff68b4208610497ee8a75ae568bb7ad" => :catalina
+    sha256 "aca25277f38e741fe792397339604438f736475903bcc44881caff5fd2f6b021" => :mojave
+    sha256 "6daaac491427029ec41259902529c355f568a44a8542fc0f5916d2524631a3dc" => :high_sierra
   end
 
   depends_on "cmake" => :build
@@ -34,6 +34,9 @@ class Dartsim < Formula
     system "cmake", ".", "-DGLUT_glut_LIBRARY=/System/Library/Frameworks/GLUT.framework",
                          *std_cmake_args
     system "make", "install"
+
+    # Clean up the build file garbage that has been installed.
+    rm_r Dir["#{share}/doc/dart/**/CMakeFiles/"]
   end
 
   test do

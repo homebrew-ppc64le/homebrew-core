@@ -2,19 +2,18 @@ class Influxdb < Formula
   desc "Time series, events, and metrics database"
   homepage "https://influxdata.com/time-series-platform/influxdb/"
   url "https://github.com/influxdata/influxdb.git",
-      :tag      => "v1.7.9",
-      :revision => "23bc63d43a8dc05f53afa46e3526ebb5578f3d88"
+      :tag      => "v1.8.0",
+      :revision => "781490de48220d7695a05c29e5a36f550a4568f5"
   head "https://github.com/influxdata/influxdb.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "43172c67fa138aaed080a19dca1311ad8b4beccc0b70bce8bf10703328806f10" => :catalina
-    sha256 "68d9383fb468504f40c8d9992cae8f4ec8dbda502ca4073f0249daa6cfde9a87" => :mojave
-    sha256 "fd216a7b67395f3a7ab19affcc51a3dcb71e978f5295daeda871933601dfe6be" => :high_sierra
-    sha256 "d014fe1fe6dae46e0f692c3d1483822516d3e5666cebe4d06ffb24a4915acccf" => :x86_64_linux
+    sha256 "79c4ceedc4829159bafc592b9363e33719ecbd105c681db0d49217a5d276e354" => :catalina
+    sha256 "6393249a983631cde5bb524dfbf2f92c3b53e5984e88082ea38d157db54d32ad" => :mojave
+    sha256 "7c8070708d95ed863c5fc37eefed541624410feb58ec3d20cc46f349528d9e8a" => :high_sierra
+    sha256 "a1ca8484dae255743e08fee3cbd8bd80b58cc1e4ee5315403592b4a2960a2eb3" => :x86_64_linux
   end
 
-  depends_on "dep" => :build
   depends_on "go" => :build
 
   def install
@@ -25,9 +24,8 @@ class Influxdb < Formula
     version = `git describe --tags`.strip
 
     cd influxdb_path do
-      system "dep", "ensure", "-vendor-only"
       system "go", "install",
-             "-ldflags", "-X main.version=#{version} -X main.commit=#{revision} -X main.branch=master",
+             "-ldflags", "-X main.version=#{version} -X main.commit=#{revision} -X main.branch=master-1.x",
              "./..."
     end
 
@@ -104,7 +102,7 @@ class Influxdb < Formula
       output = shell_output("curl -Is localhost:8086/ping")
       assert_match /X-Influxdb-Version:/, output
     ensure
-      Process.kill("SIGINT", pid)
+      Process.kill("SIGTERM", pid)
       Process.wait(pid)
     end
   end

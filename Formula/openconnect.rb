@@ -1,16 +1,15 @@
 class Openconnect < Formula
   desc "Open client for Cisco AnyConnect VPN"
   homepage "https://www.infradead.org/openconnect/"
-  url "ftp://ftp.infradead.org/pub/openconnect/openconnect-8.05.tar.gz"
-  mirror "https://fossies.org/linux/privat/openconnect-8.05.tar.gz"
-  sha256 "335c2952d0cb36822acb112eaaf5e3b4acffc6874985fb614fec0b76c4c12992"
+  url "ftp://ftp.infradead.org/pub/openconnect/openconnect-8.08.tar.gz"
+  mirror "https://fossies.org/linux/privat/openconnect-8.08.tar.gz"
+  sha256 "b74b30ebabbd4801056e46c0373e71f3d41c75b805fcc7ee8fc586fe559379e8"
 
   bottle do
-    sha256 "75337e3ef5910b8236bddb38c949bdcb0b8032716f24a67ae0f05c5a563b86ed" => :catalina
-    sha256 "440a031dc0467ba3928fc2ab380e50c0c8b64042c109885856061f03f8bf5d86" => :mojave
-    sha256 "3a4cf289c1c8c57d5a83b2993791b1a64a5af25b655ba15ff70b9a8ddd9b8bbc" => :high_sierra
-    sha256 "ffd8c90ee9cc4d69f7f6efbeb57727b2e87c910b9920786ae9055d2177e8600c" => :sierra
-    sha256 "e672e376b2ab3d604c579f821388e05af2bb2761f9d07854e4cd8354c19b446d" => :x86_64_linux
+    sha256 "df6b2594f965aad9dc946202f5840f28d757246591fb2fda2b5de8931d740075" => :catalina
+    sha256 "f6a7f879befdbc0948cb05a084b470fd689747e64aa8f4775871e6891c34b768" => :mojave
+    sha256 "323feb1da71bb70aa92cb137d29244257bc35e52422a763514cdb69b1d686567" => :high_sierra
+    sha256 "d866f81f3219b84e4fb140858b9f5afd29d6abff0e85659aa3a18534befb81cb" => :x86_64_linux
   end
 
   head do
@@ -26,8 +25,8 @@ class Openconnect < Formula
   depends_on "stoken"
 
   resource "vpnc-script" do
-    url "http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/c84fb8e5a523a647a01a1229a9104db934e19f00:/vpnc-script"
-    sha256 "20f05baf2857cb48073aca8b90d84ddc523f09b9700a5986a2f7e60e76917385"
+    url "http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/c0122e891f7e033f35f047dad963702199d5cb9e:/vpnc-script"
+    sha256 "3ddd9d6b46e92d76e6e26d89447e3a82d797ecda125d31792f14c203742dea0f"
   end
 
   def install
@@ -51,6 +50,6 @@ class Openconnect < Formula
   end
 
   test do
-    assert_match "Open client for multiple VPN protocols", pipe_output("#{bin}/openconnect 2>&1")
+    assert_match "POST https://localhost/", pipe_output("#{bin}/openconnect localhost 2>&1")
   end
 end

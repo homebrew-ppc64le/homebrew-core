@@ -1,15 +1,15 @@
 class Cacli < Formula
   desc "Train machine learning models from Cloud Annotations"
   homepage "https://cloud.annotations.ai"
-  url "https://github.com/cloud-annotations/training/archive/v1.2.30.tar.gz"
-  sha256 "f10758c46deefc90d08967f6e0f7d232947d5c795b9c533a2ffa898363391e81"
+  url "https://github.com/cloud-annotations/training/archive/v1.3.1.tar.gz"
+  sha256 "fae8c52e5d2824846641f5bd25697d48e9701d35127a2032d230fd3415b1006b"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "9b2d628a0cc4ba4e426cbd5afea64c3ec1af0877aeee605e3536ec57817e7924" => :catalina
-    sha256 "ff5f177e8708eeb3567feedf4ff48e5c233b1cc9283153dc6437e6f651da502b" => :mojave
-    sha256 "90127c81c2ae488e493ae7aae91d2a783e790fdb4809d9c620a093289f425cb0" => :high_sierra
-    sha256 "05d826420255c994cdf7910ba4528cd745b4f2d90eb33ddefb6effd181244fc4" => :x86_64_linux
+    sha256 "eb3ed4080f932a028dad2ee995d563b224aba8050ce996d081a941fe22277b23" => :catalina
+    sha256 "45221a4f754e577cb36ef5cf4da0f70c84d90020932e72478ffadcd75dc875eb" => :mojave
+    sha256 "931fed5c23af443c9dbc8cce44d31e46d6626201a2a8aaa323addfa5a5e461ae" => :high_sierra
+    sha256 "6bb21c84c89d61ae692b76c6c1c54a0235c9a7802d5c33a1a8e17d5bfe1a327a" => :x86_64_linux
   end
 
   depends_on "go" => :build
