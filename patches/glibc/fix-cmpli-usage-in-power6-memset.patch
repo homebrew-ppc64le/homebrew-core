@@ -1,0 +1,115 @@
+From patchwork Mon Oct 24 22:03:45 2016
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-Patchwork-Submitter: Joseph Myers <joseph@codesourcery.com>
+X-Patchwork-Id: 686205
+Return-Path: <libc-alpha-return-74046-incoming=patchwork.ozlabs.org@sourceware.org>
+X-Original-To: incoming@patchwork.ozlabs.org
+Delivered-To: patchwork-incoming@bilbo.ozlabs.org
+Received: from sourceware.org (server1.sourceware.org [209.132.180.131])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by ozlabs.org (Postfix) with ESMTPS id 3t2r0f65nPz9t3K
+ for <incoming@patchwork.ozlabs.org>;
+ Tue, 25 Oct 2016 09:04:18 +1100 (AEDT)
+Authentication-Results: ozlabs.org; dkim=pass (1024-bit key;
+ secure) header.d=sourceware.org header.i=@sourceware.org
+ header.b=Q+bRxGE6; dkim-atps=neutral
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=sourceware.org; h=list-id
+ :list-unsubscribe:list-subscribe:list-archive:list-post
+ :list-help:sender:date:from:to:cc:subject:message-id
+ :mime-version:content-type; q=dns; s=default; b=b2T6adAr9rFf7wTY
+ X0d1YBHOOOYjjZEO9eAPxq0Di/YkA5cxX5JNBOdtNs6RX31TwN7Qa/Ipui2mWbhV
+ Phfsow9Lq0vivFE0bwxd4/9wGPw2RCY+fmG2fOQe6ZN7hGETbHvJDhwAKkkKkEIe
+ YKpoqrQMow9QEU2FpnhotxsaT3U=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=sourceware.org; h=list-id
+ :list-unsubscribe:list-subscribe:list-archive:list-post
+ :list-help:sender:date:from:to:cc:subject:message-id
+ :mime-version:content-type; s=default; bh=j9OuzAvjLTS+n42gQgZKiQ
+ hmWl4=; b=Q+bRxGE69c7qMU+Q7aU2aoavyVTuc13JYNwg6GkaBIjsxUqt7Eqvnp
+ FxzJS695eWA1nEnEP45SLJBlqx08wbx54NB5UMThh8pg2jNO/RE/pTTdrSZNoDXq
+ jGQQUri1i0Mi35e78Wo/O+CSqpixxJEIttxbm5JJmW91U1rvJrFrM=
+Received: (qmail 120871 invoked by alias); 24 Oct 2016 22:04:06 -0000
+Mailing-List: contact libc-alpha-help@sourceware.org; run by ezmlm
+Precedence: bulk
+List-Id: <libc-alpha.sourceware.org>
+List-Unsubscribe: <mailto:libc-alpha-unsubscribe-incoming=patchwork.ozlabs.org@sourceware.org>
+List-Subscribe: <mailto:libc-alpha-subscribe@sourceware.org>
+List-Archive: <http://sourceware.org/ml/libc-alpha/>
+List-Post: <mailto:libc-alpha@sourceware.org>
+List-Help: <mailto:libc-alpha-help@sourceware.org>,
+ <http://sourceware.org/ml/#faqs>
+Sender: libc-alpha-owner@sourceware.org
+Delivered-To: mailing list libc-alpha@sourceware.org
+Received: (qmail 120726 invoked by uid 89); 24 Oct 2016 22:04:05 -0000
+Authentication-Results: sourceware.org; auth=none
+X-Virus-Found: No
+X-Spam-SWARE-Status: No, score=-1.9 required=5.0 tests=AWL, BAYES_00,
+ RCVD_IN_DNSWL_NONE, SPF_PASS,
+ URIBL_RED autolearn=ham version=3.3.2 spammy=powerpc32,
+ verifying, nearby
+X-HELO: relay1.mentorg.com
+Date: Mon, 24 Oct 2016 22:03:45 +0000
+From: Joseph Myers <joseph@codesourcery.com>
+To: <libc-alpha@sourceware.org>
+CC: <munroesj@linux.vnet.ibm.com>
+Subject: Fix cmpli usage in power6 memset
+Message-ID: <alpine.DEB.2.20.1610242200430.26381@digraph.polyomino.org.uk>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+X-ClientProxiedBy: svr-ies-mbx-01.mgc.mentorg.com (139.181.222.1) To
+ svr-ies-mbx-01.mgc.mentorg.com (139.181.222.1)
+
+Building glibc for powerpc64 with recent (2.27.51.20161012) binutils,
+with multi-arch enabled, I get the error:
+
+../sysdeps/powerpc/powerpc64/power6/memset.S: Assembler messages:
+../sysdeps/powerpc/powerpc64/power6/memset.S:254: Error: operand out of range (5 is not between 0 and 1)
+../sysdeps/powerpc/powerpc64/power6/memset.S:254: Error: operand out of range (128 is not between 0 and 31)
+../sysdeps/powerpc/powerpc64/power6/memset.S:254: Error: missing operand
+
+Indeed, cmpli is documented as a four-operand instruction, and looking
+at nearby code it seems likely cmpldi was intended.  This patch fixes
+this powerpc64 code accordingly, and makes a corresponding change to
+the powerpc32 code.
+
+Note: this patch is not tested beyond verifying that the powerpc64
+code builds where it failed to build before the patch.  In particular,
+I have not done execution testing (the systems I usually use for
+testing powerpc are pre-power6 so wouldn't use this code) or tested
+the powerpc32 change.
+
+2016-10-24  Joseph Myers  <joseph@codesourcery.com>
+
+	* sysdeps/powerpc/powerpc32/power6/memset.S (memset): Use cmplwi
+	instead of cmpli.
+	* sysdeps/powerpc/powerpc64/power6/memset.S (memset): Use cmpldi
+	instead of cmpli.
+
+diff --git a/sysdeps/powerpc/powerpc32/power6/memset.S b/sysdeps/powerpc/powerpc32/power6/memset.S
+index b2a222e..d5dbe83 100644
+--- a/sysdeps/powerpc/powerpc32/power6/memset.S
++++ b/sysdeps/powerpc/powerpc32/power6/memset.S
+@@ -394,7 +394,7 @@ L(cacheAlignedx):
+ /* A simple loop for the longer (>640 bytes) lengths.  This form limits
+    the branch miss-predicted to exactly 1 at loop exit.*/
+ L(cacheAligned512):
+-	cmpli	cr1,rLEN,128
++	cmplwi	cr1,rLEN,128
+ 	blt	cr1,L(cacheAligned1)
+ 	dcbz	0,rMEMP
+ 	addi	rLEN,rLEN,-128
+diff --git a/sysdeps/powerpc/powerpc64/power6/memset.S b/sysdeps/powerpc/powerpc64/power6/memset.S
+index c2d1c4e..d445b1e 100644
+--- a/sysdeps/powerpc/powerpc64/power6/memset.S
++++ b/sysdeps/powerpc/powerpc64/power6/memset.S
+@@ -251,7 +251,7 @@ L(cacheAlignedx):
+ /* A simple loop for the longer (>640 bytes) lengths.  This form limits
+    the branch miss-predicted to exactly 1 at loop exit.*/
+ L(cacheAligned512):
+-	cmpli	cr1,rLEN,128
++	cmpldi	cr1,rLEN,128
+ 	blt	cr1,L(cacheAligned1)
+ 	dcbz	0,rMEMP
+ 	addi	rLEN,rLEN,-128
