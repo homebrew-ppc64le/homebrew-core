@@ -64,6 +64,15 @@ class Glibc < Formula
     sha256 "654794e9e18c2401f1101a3fcf0a85eda448b4b969e9a99782a3f4f4659feda4" => :x86_64_linux
   end
 
+  on_linux do
+    # [ppc64/ppc64le] Fix cmpli usage in power6 memset
+    # https://patchwork.ozlabs.org/project/glibc/patch/alpine.DEB.2.20.1610242200430.26381@digraph.polyomino.org.uk/
+    patch do
+      url "https://raw.githubusercontent.com/homebrew-ppc64le/homebrew-core/master/patches/glibc/fix-cmpli-usage-in-power6-memset.patch"
+      sha256 "fb8285c43eb2ada084dd5327ca06f716ac19274ea12b6c700917a520d54aa99a"
+    end if Hardware::CPU.ppc? && Hardware::CPU.is_64_bit?
+  end
+
   depends_on "binutils" => :build # binutils 2.20 or later is required
   depends_on GawkRequirement => :build
   depends_on "linux-headers" => :build # Linux kernel headers 2.6.19 or later are required
