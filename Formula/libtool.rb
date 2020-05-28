@@ -36,7 +36,7 @@ class Libtool < Formula
                           "--enable-ltdl-install"
     system "make", "install"
 
-    if OS.mac?
+    if OS.mac? || (OS.linux? && Hardware::CPU.ppc64le?)
       bin.install_symlink "libtool" => "glibtool"
       bin.install_symlink "libtoolize" => "glibtoolize"
     end
