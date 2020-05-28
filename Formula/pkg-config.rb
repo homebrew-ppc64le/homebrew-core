@@ -12,6 +12,7 @@ class PkgConfig < Formula
     sha256 "0d14b797dba0e0ab595c9afba8ab7ef9c901b60b4f806b36580ef95ebb370232" => :mojave
     sha256 "8c6160305abd948b8cf3e0d5c6bb0df192fa765bbb9535dda0b573cb60abbe52" => :high_sierra
     sha256 "bc8ac04f3d8e42a748f40544f8e1b7f2471f32608f33e666e903d6108eb4dab2" => :x86_64_linux
+    sha256 "2238defcc0a7f6dbf6a562a1f6ab41d5eee88428a641837f4946f92edd3a8f9e" => :ppc64le_linux
   end
 
   pour_bottle? do
