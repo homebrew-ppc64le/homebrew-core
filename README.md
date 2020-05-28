@@ -1,3 +1,5 @@
+## This is the fork of homebrew-core formula with patches to support PowerPC 64 LE. I hope one day this fork would be merged into the main homebrew-core tree
+
 # Linuxbrew Core
 Core formulae for the Homebrew package manager.
 
