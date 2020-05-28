@@ -13,6 +13,7 @@ class Gpatch < Formula
     sha256 "81e0fb63928b01d60b9d7a1f0bdbf262679888556bd055fd02f4f57a70cb87ad" => :sierra
     sha256 "bd67af8b9c24fa785a2da2a1d3475305593dbc183331aed657313e4066de3259" => :el_capitan
     sha256 "70df1fb356ca7ccccd277110fcf467ea9fd0dc7337c93ad8ecd39848b081f95c" => :x86_64_linux
+    sha256 "2df1ffcb6ea250752d5bb768446c4cb1e9d1a8459b00f936b2ed24acb360bc70" => :ppc64le_linux
   end
 
   def install
