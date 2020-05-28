@@ -19,6 +19,7 @@ class Go < Formula
     sha256 "70ae2f7f10ccd4926be3f5f7482afe8f0d0fe78f0e4fa2eea05c20a80ffa9c6e" => :mojave
     sha256 "9b334b2eff3b1d40c74d89daeec0b08d4a0e331103c6c10c08d060e86605f61b" => :high_sierra
     sha256 "a88a7f328ba3157b7771587371bb728d812a4e70b51cbba9b2cd34ee81255d5b" => :x86_64_linux
+    sha256 "c210b63a9245d557a8a9654086ac2e62e30890cacaf432f948a3be9050be4f77" => :ppc64le_linux
   end
 
   head do
