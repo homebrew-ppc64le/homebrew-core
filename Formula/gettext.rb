@@ -11,6 +11,7 @@ class Gettext < Formula
     sha256 "52067198cab528f05fdc0b06f7b9711f7614f60a7361f1e764c4f46d3342ff22" => :mojave
     sha256 "4a999c75dcc53cbc711e3ac6545db69ab3aeca6c29c1cb6b21c353f237342457" => :high_sierra
     sha256 "ac517401cf31345f810e16b902a4c1aecce4028bfcfc4cf66e811da253d531aa" => :x86_64_linux
+    sha256 "264e6c636315b95b25f3bacd9e02e587e6a82f02ae6d9f882c938efe527c44cd" => :ppc64le_linux
   end
 
   uses_from_macos "ncurses"
