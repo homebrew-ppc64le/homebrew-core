@@ -10,6 +10,7 @@ class Ruby < Formula
     sha256 "cc995a06e761acc8a807b040d8e7fe301902a4fc63d2beaaae40e04c710e7338" => :mojave
     sha256 "2605ad1636e40d747878a8df7d1ef51a15e58e70ce03510b9ea582c02a448e26" => :high_sierra
     sha256 "ff621c4d7d5024f9fa342c329b9c5063ab4194cf6bb22ca62ff6a224a6f05327" => :x86_64_linux
+    sha256 "fa54205d7d707b6b875945fd21117bb45402b36fcc408f6bfe4a86924b276c8b" => :ppc64le_linux
   end
 
   head do
