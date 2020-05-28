@@ -20,10 +20,20 @@ class Autoconf < Formula
     sha256 "d8a7ca62ed0f84bbdb3c6206fc3d0b7b1222e28dcfffff2a0c7a91193204ccce" => :x86_64_linux
   end
 
+  # An up-to-date config.guess file fetched from http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
+  resource "config_guess" do
+    url "https://raw.githubusercontent.com/homebrew-ppc64le/homebrew-core/master/patches/config.guess"
+    version "2020-04-26"
+    sha256 "4d22e96080c64a9d5f96a0818b64a083d2160d5e5b70ef879f631e9efdd1e8a5"
+  end
+
   uses_from_macos "m4"
   uses_from_macos "perl"
 
   def install
+    # ppc64le target would be failed to pick up unless up-to-date config.guess is used
+    (buildpath/"build-aux").install resource("config_guess")
+
     ENV["PERL"] = "/usr/bin/perl" if OS.mac?
 
     # force autoreconf to look for and use our glibtoolize
