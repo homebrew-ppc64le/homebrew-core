@@ -18,6 +18,7 @@ class Autoconf < Formula
     sha256 "d153b3318754731ff5e91b45b2518c75880993fa9d1f312a03696e2c1de0c9d5" => :mavericks
     sha256 "37e77a2e7ca6d479f0a471d5f5d828efff621bd051c1884ff1363d77c5c4675e" => :mountain_lion
     sha256 "d8a7ca62ed0f84bbdb3c6206fc3d0b7b1222e28dcfffff2a0c7a91193204ccce" => :x86_64_linux
+    sha256 "8bc0b553f14de8ac2768394e1440839340d9e40e4af2a7722c0feb6b22bbdad2" => :ppc64le_linux
   end
 
   # An up-to-date config.guess file fetched from http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
