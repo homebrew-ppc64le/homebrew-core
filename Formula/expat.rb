@@ -10,6 +10,7 @@ class Expat < Formula
     sha256 "7440c3d35a2bd7d27bb6364a5d8c2f206509d6ebe09bd507039b701c133bb45d" => :mojave
     sha256 "5c51e4a42af80a11bf3f2c697a36aedc6df21b03bed3b51c3127472660b042b3" => :high_sierra
     sha256 "5d0281695b1febb80cb2dc3c64d61e586ebe1870202d4f763650ab127d2b9f01" => :x86_64_linux
+    sha256 "13cea8c784a147ece67d90f4549ad4b4c3c4da9240f2cf12c6c4a6077d8ae42f" => :ppc64le_linux
   end
 
   head do
