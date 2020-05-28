@@ -12,6 +12,7 @@ class Xz < Formula
     sha256 "44483961b5d2b535b0ece1936c9d40b4bc7d9c7281646cca0fb476291ab9d4dc" => :mojave
     sha256 "1491b2b20c40c3cb0b990f520768d7e876e4ab4a7dc1da9994d0150da34ba5c6" => :high_sierra
     sha256 "676b0e178b3e7644f86385cb2497ac5ec490e2222ba3d0147e28bd85aff365cf" => :x86_64_linux
+    sha256 "50b30fd3ab39f039d0915f27e0a3573f688b0b2c9e86eaf504bedb581f71c085" => :ppc64le_linux
   end
 
   def install
