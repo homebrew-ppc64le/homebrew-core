@@ -11,6 +11,7 @@ class Automake < Formula
     sha256 "fe26d4df57481b6a7ca0a6915c37c53648c27ffb41926b3570c45f80fdd8888e" => :mojave
     sha256 "fe26d4df57481b6a7ca0a6915c37c53648c27ffb41926b3570c45f80fdd8888e" => :high_sierra
     sha256 "58010f1a4c69947d29d90b64c5accba7246f0e7b7507bcf57076ccdc1dc41a3d" => :x86_64_linux
+    sha256 "9efb486a0dc9755fbf28135f48e30bf9516d5109c16454f12e8af427d25bb37b" => :ppc64le_linux
   end
 
   depends_on "autoconf"
