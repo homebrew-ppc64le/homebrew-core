@@ -14,6 +14,7 @@ class M4 < Formula
     sha256 "7daa296cf49de573214b4f2c72e3b621bbbc1ef5bfebfbe00fb18a70ba8e3152" => :el_capitan
     sha256 "00d9327f2e8a59996228569bf4faff1c6550653eb3e20353e77f73a34063f3eb" => :yosemite
     sha256 "5a2327087fb76145b4d0fb23acc244115adc3ced14ffc2a6231159a4f16c8a7f" => :x86_64_linux # glibc 2.19
+    sha256 "ead7e8773394529efff70e1bdd6564b193c2102e2f2662a77f991080a7f15119" => :ppc64le_linux 
   end
 
   keg_only :provided_by_macos
