@@ -40,6 +40,9 @@ class Go < Formula
       if Hardware::CPU.intel?
         url "https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz"
         sha256 "702ad90f705365227e902b42d91dd1a40e48ca7f67a2f4b2fd052aaa4295cd95"
+      elsif Hardware::CPU.ppc64le?
+        url "https://storage.googleapis.com/golang/go1.10.1.linux-ppc64le.tar.gz"
+        sha256 "91d0026bbed601c4aad332473ed02f9a460b31437cbc6f2a37a88c0376fc3a65"
       elsif Hardware::CPU.arm?
         if Hardware::CPU.is_64_bit?
           url "https://dl.google.com/go/go1.9.linux-arm64.tar.gz"
@@ -105,8 +108,22 @@ class Go < Formula
     assert_predicate libexec/"bin/godoc", :exist?
     assert_predicate libexec/"bin/godoc", :executable?
 
-    ENV["GOOS"] = "freebsd"
-    ENV["GOARCH"] = "amd64"
+    if OS.mac?
+      ENV["GOOS"] = "darwin"
+      ENV["GOARCH"] = "amd64"
+    elsif OS.linux?
+      ENV["GOOS"] = "linux"
+
+      if Hardware::CPU.ppc64le?
+        ENV["GOARCH"] = "ppc64le"
+      elseif Hardware::CPU.arm?
+        if Hardware::CPU.is_64_bit?
+          ENV["GOARCH"] = "arm64"
+        else
+          ENV["GOARCH"] = "arm"
+        end
+      end
+    end
     system bin/"go", "build", "hello.go"
   end
 end
