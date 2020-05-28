@@ -25,6 +25,7 @@ class Readline < Formula
     sha256 "29f7102a730ab39c8312cad1e7e439f6da2a67c452ce2b3380581eb185a5d8e8" => :mojave
     sha256 "896a3d50ce8962ba56e853bdd590fadeabc00ab36475d143d6c2bea5cc15bb28" => :high_sierra
     sha256 "46da47db3da04b2f248e3cf2d6d14c55aa543555d1134f6cbbf07787a5bf0bd6" => :x86_64_linux
+    sha256 "2001b89398e428655ea1c0f6c042e7d62c3a88aa832062284162fd13d12176e6" => :ppc64le_linux
   end
 
   keg_only :shadowed_by_macos, "macOS provides BSD libedit"
