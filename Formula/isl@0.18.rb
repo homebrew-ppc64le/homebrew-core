@@ -17,6 +17,7 @@ class IslAT018 < Formula
     sha256 "23c7305a7f227e1749a15584eb203ec9f1f49f1f4312753a9ee360f89b71d304" => :sierra
     sha256 "c00c85da652a572356e54cad1a6ff986f136f6088c142dfcdbfc166bd7144d1e" => :el_capitan
     sha256 "3ef95686496676a3c73c57db6eee32a9f039e9c2b7ccf173c3b1941124ef6f78" => :x86_64_linux
+    sha256 "f88371e8f605b832d18bd4efb6140bd4cd767663f4416dc69e64f0699df69593" => :x86_64_linux    
   end
 
   head do
