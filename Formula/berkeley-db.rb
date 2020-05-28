@@ -14,6 +14,7 @@ class BerkeleyDb < Formula
     sha256 "fa53aeeca3bef551d9f604b5eafb6b94bf1f14b95530a8d16e243fb7c2ad790e" => :high_sierra
     sha256 "1b3c06f6d3b1f45180068cb7127508072ed661e981e922dd273d6faef0030bc1" => :sierra
     sha256 "a61c738d8e2597fe1e662c1eda22005d1c846b2dee3516c89506c16d09fd0012" => :x86_64_linux
+    sha256 "f2c4e34030d1c803e4a4b1a79a9ab24cb608dcc81765cbdded6387a514e41913" => :ppc64le_linux
   end
 
   depends_on "openssl@1.1"
