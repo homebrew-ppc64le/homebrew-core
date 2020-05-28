@@ -12,6 +12,7 @@ class Libffi < Formula
     sha256 "d6e5efd7521676dfc58fcba567514b898091c8580df4d6253f5dd40a7ee67c82" => :mojave
     sha256 "7065f0d426921fa069c2494beded9de61e8720954f3f346103c8f871daa4ff8b" => :high_sierra
     sha256 "5a62bf6d23a44f8c764d73647b244930a38372cde8b6cd79683ab11cb819d25c" => :x86_64_linux
+    sha256 "d5910168d9b0be6882eef27f3a588f3ff77e6245fe82f2a4e3711f448fece2cb" => :ppc64le_linux    
   end
 
   head do
