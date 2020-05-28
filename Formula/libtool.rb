@@ -16,7 +16,7 @@ class Libtool < Formula
     sha256 "0eb206c0f51e8ce2e3e9340b5ce3c8ecef961ae6696f676073327a7ac04e5c0b" => :yosemite
     sha256 "2e51ef82ef2bd1ad9d921a9016b9e5d7fa82d131849e2c32a3c90daa119e2eda" => :mavericks
     sha256 "1efb2596f487af0e666e0a3d236ee8ac83db17d9e8e94066802e000f75b4b045" => :x86_64_linux # glibc 2.19
-    sha256 "f327b1a3f6ad799de6fccf84e2362923e4b9eb7cd33c2c352d32d6a2fdde0cec" => :ppc64le_linux
+    sha256 "cf54f6df9b86509c74e0704446e305c6543fd68b7fc5f4d30a06633b214714dc" => :ppc64le_linux
   end
 
   uses_from_macos "m4" => :build
