@@ -11,6 +11,7 @@ class Perl < Formula
     sha256 "8a141e61aa0ece017735ac9860d5077921618ea4397a02b42203b6f45507b9ea" => :mojave
     sha256 "73d96330045dedca4805aac3a69f164935230b77487e20a1e326152f167a4391" => :high_sierra
     sha256 "f6c3717740782d8d7fd0a36bc246d0bf8a59ad13c1d80b29159fd517182c2067" => :x86_64_linux
+    sha256 "416c83fea6dd260286926caf6c64ab6396b59d56153a4ece89570973fafc9f48" => :ppc64le_linux
   end
 
   uses_from_macos "expat"
