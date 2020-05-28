@@ -13,6 +13,7 @@ class Binutils < Formula
     sha256 "142e380448ac77bc0f7974ff9b9ddae6a90c4ef5f182cac0c2b029baa8460173" => :mojave
     sha256 "87bda0c909a5bd2043d35b073f2268cac7aed074a89d903973e4909d68dfdf46" => :high_sierra
     sha256 "c2500eb69208e13f94dff91ee34f982db40b26f14c8a84a52eb513b8d35f5f26" => :x86_64_linux
+    sha256 "b1f8ada6204a98904e7a0c9951e1e05b369bd082998516ac4d2d8ec2343c4062" => :ppc64le_linux
   end
 
   keg_only :shadowed_by_macos, "Apple's CLT provides the same tools"
