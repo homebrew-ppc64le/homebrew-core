@@ -28,6 +28,8 @@ class Gmp < Formula
     elsif !OS.mac? && Hardware::CPU.intel?
       args << "--build=core2-linux-gnu"
       args << "ABI=32" if Hardware::CPU.is_32_bit?
+    elsif OS.linux? && Hardware::CPU.ppc64le?
+      args << "--build=powerpc64-linux-gnu"
     end
 
     system "./configure", *args
