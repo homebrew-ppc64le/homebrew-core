@@ -45,7 +45,15 @@ class Binutils < Formula
     end
 
     # Reduce the size of the bottle.
-    system "strip", *Dir[bin/"*", lib/"*.a"] unless OS.mac?
+    unless OS.mac?
+      strip_target = Dir[bin/"*", lib/"*.a"]
+      # TODO: investigate why strip does not work on embedspu
+      # See https://github.com/homebrew-ppc64le/homebrew-core/issues/4
+      if Hardware::CPU.ppc? && Hardware::CPU.is_64_bit?
+        strip_target = strip_target.reject { |f| f =~ /embedspu/ }
+      end
+      system "strip", *strip_target
+    end
   end
 
   test do
