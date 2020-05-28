@@ -9,7 +9,6 @@ class Codequery < Formula
     sha256 "b3f585e17783444968f0739397eb41fb14f897584118689bf1dbb862344e4221" => :catalina
     sha256 "94fd84eb8c088b69eeddd1e09ad6bf7ed97ddd052e2ab4f6381776a6b4d3622d" => :mojave
     sha256 "da150e36ca0d9cc56f7b243aa26677e4bed67335b1be5d01f10eeaf83df6884b" => :high_sierra
-    sha256 "d17cead13209ccddea4b0316b9f567eeab3f85db4cf9553c6043590e1ef63888" => :x86_64_linux
   end
 
   depends_on "cmake" => :build

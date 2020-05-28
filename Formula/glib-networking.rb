@@ -1,20 +1,20 @@
 class GlibNetworking < Formula
   desc "Network related modules for glib"
-  homepage "https://launchpad.net/glib-networking"
+  homepage "https://gitlab.gnome.org/GNOME/glib-networking"
   url "https://download.gnome.org/sources/glib-networking/2.64/glib-networking-2.64.2.tar.xz"
   sha256 "45def0715c551f9b0b41a4e4f730ac95f3d5d4f3de8162260fbf9421cff695a7"
+  revision 1
 
   bottle do
-    sha256 "3cbb58f638d28668205aef4a314cab88b092c77823189ef0e262e6293cacbc33" => :catalina
-    sha256 "624f8c7667256d3e96cd4381668a57c8b4bf2407f9cce8c3130bfa47427f6f6d" => :mojave
-    sha256 "2f72f2275c5fd39f9330798e129b260d884d21c9759616477b615a25ed102418" => :high_sierra
-    sha256 "338708ee676af4f39446c58d3ce020263127ee30631ee3675e9b7520aebb5d39" => :x86_64_linux
+    sha256 "ca8ad4ab30e4e53fd97be99371daa90555b59d925e99ef3f00595ed111dd4ff9" => :catalina
+    sha256 "833351a49091881af38f6309e4ace7b53dc6bae187a9bd6e80af17f29e7ddaad" => :mojave
+    sha256 "42f0ddda6cb02f99ef8966538ffb4e3191b420f9d0a8ae697c22d1ca612a0c13" => :high_sierra
+    sha256 "31e5ae9bd7c6a140f941d68e3762ddde7cd982e52b906e763db65754db359652" => :x86_64_linux
   end
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
-  depends_on "python" => :build
   depends_on "glib"
   depends_on "gnutls"
   depends_on "gsettings-desktop-schemas"
@@ -27,7 +27,7 @@ class GlibNetworking < Formula
     ENV["DESTDIR"] = "/"
 
     mkdir "build" do
-      system "meson", "--prefix=#{prefix}",
+      system "meson", *std_meson_args,
                       "-Dlibproxy=disabled",
                       "-Dopenssl=disabled",
                       "-Dgnome_proxy=disabled",

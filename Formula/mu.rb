@@ -4,13 +4,13 @@
 class Mu < Formula
   desc "Tool for searching e-mail messages stored in the maildir-format"
   homepage "https://www.djcbsoftware.nl/code/mu/"
-  url "https://github.com/djcb/mu/releases/download/1.4.3/mu-1.4.3.tar.xz"
-  sha256 "f819db50a21eb200f015ff3486e9bb9db51e0a616aa9dd257b6654512c7c782a"
+  url "https://github.com/djcb/mu/releases/download/1.4.6/mu-1.4.6.tar.xz"
+  sha256 "0cd27f223a5e408ef19bc2169c94bd4e87428ee9635bee706f0cdde4e85d5797"
 
   bottle do
-    sha256 "a26882bef5284240d559de633e5f290171d27a09244799437da4ecd66347967f" => :catalina
-    sha256 "8a197c0252259e846a03983039f51646cd359707f9659db698739d8bee010dd7" => :mojave
-    sha256 "f932582f9a6d71b4d4f908b79e1370932a25e948ccae9fdc8bff60f86ce7edd7" => :high_sierra
+    sha256 "c3f1a3a24fe5b3f896b11141cb29d14bdb0792fb365905337036c47d8b0adf11" => :catalina
+    sha256 "b2f871bae773dd87eaba5a6741a691f650f7bd345757f47f18e2709a03ec0447" => :mojave
+    sha256 "9eed3037a373a31a5666c4b1cff7a4013d715079569876ce87f0db51fac9ba9c" => :high_sierra
   end
 
   head do

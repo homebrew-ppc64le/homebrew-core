@@ -1,15 +1,15 @@
 class Velero < Formula
   desc "Disaster recovery for Kubernetes resources and persistent volumes"
   homepage "https://github.com/vmware-tanzu/velero"
-  url "https://github.com/vmware-tanzu/velero/archive/v1.3.2.tar.gz"
-  sha256 "fef550f89340ee02e40aead9285dbce361de8e8c2daa5702a9b4a5b32f236aec"
+  url "https://github.com/vmware-tanzu/velero/archive/v1.4.0.tar.gz"
+  sha256 "0139071f6e69059a0a1d4897f4331b55cb53bda3d29202d099aea03268891c31"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "4966b57d66b7d8485bda2597dda2312152b2a0538a279a8a75529d429a7bf8d5" => :catalina
-    sha256 "3890637cfa96fb28545846a2826dea5704c0e79b6b5bf4bdc5114d8063806afc" => :mojave
-    sha256 "8b1b6d2788c04f3838bceb069e060517bc9f477c89343d19093d431b661915e8" => :high_sierra
-    sha256 "ca1bdaaa5027f43a36ad0c58eed044c566bd72ef19fbdd1995bd34f22d0567c7" => :x86_64_linux
+    sha256 "c1af83293cc86379b0e1b636b60471a5526903ba0d39f95926025b31d88d3f88" => :catalina
+    sha256 "0f6029061d476cf08155316302720e67c2314db9308af9224b5008b9a11e91bd" => :mojave
+    sha256 "97aaf6c788952789041bf1745870eeffd1050f5af21079fd76917616281714a3" => :high_sierra
+    sha256 "644fc2e7d4896f04d557869f7e886d09d087999de59ef298e21393faa4247807" => :x86_64_linux
   end
 
   depends_on "go" => :build

@@ -1,15 +1,15 @@
 class PostgresqlAT95 < Formula
   desc "Object-relational database system"
   homepage "https://www.postgresql.org/"
-  url "https://ftp.postgresql.org/pub/source/v9.5.21/postgresql-9.5.21.tar.bz2"
-  sha256 "7eb56e4fa877243c2df78adc5a0ef02f851060c282682b4bb97b854100fb732c"
+  url "https://ftp.postgresql.org/pub/source/v9.5.22/postgresql-9.5.22.tar.bz2"
+  sha256 "48555470a17248cb204d25ab1ad4231ef16295db55161922f006b9942d69640f"
+  revision OS.mac? ? 1 : 2
 
   bottle do
-    rebuild 1
-    sha256 "51ebc3e8d61585eb7c76b79a20248c71aa67b1f5857ed871e0e7bc2be68372df" => :catalina
-    sha256 "9bdf612f63101e9e11c86756250994730831d39f2a1f7d606e7deb7f74bfac83" => :mojave
-    sha256 "ae4330614b20bc49ba17b6dd1f2403021f4630e5f7e51951894b8e1b7a5307dc" => :high_sierra
-    sha256 "6138a1ad4126a27086e7a67464c9c23b46e80a6256dcf83394211e4bb4376868" => :x86_64_linux
+    sha256 "9ad944bf158f180a3a3c8771b6f3d179b96b099b9921069d47842126d9a41766" => :catalina
+    sha256 "e26219b804f08bbadd8fda68d067d2cf06b50217745baf7929a437727379c5e5" => :mojave
+    sha256 "3f64e3cd2e6c8506cc899e2647c059f0f217b1786458e7171ec0d2221a7812ea" => :high_sierra
+    sha256 "ba81ff8ef8272c326ab011381b672e2038209a6accb6a821f83a3e91c32685e2" => :x86_64_linux
   end
 
   keg_only :versioned_formula
@@ -48,32 +48,8 @@ class PostgresqlAT95 < Formula
         --with-gssapi
         --with-ldap
         --with-pam
+        --with-tcl
       ]
-    end
-
-    # The CLT is required to build Tcl support on 10.7 and 10.8 because
-    # tclConfig.sh is not part of the SDK
-    if OS.mac? && (MacOS.version >= :mavericks || MacOS::CLT.installed?)
-      args << "--with-tcl"
-      if File.exist?("#{MacOS.sdk_path}/System/Library/Frameworks/Tcl.framework/tclConfig.sh")
-        args << "--with-tclconfig=#{MacOS.sdk_path}/System/Library/Frameworks/Tcl.framework"
-      end
-    end
-
-    # As of Xcode/CLT 10.x the Perl headers were moved from /System
-    # to inside the SDK, so we need to use `-iwithsysroot` instead
-    # of `-I` to point to the correct location.
-    # https://www.postgresql.org/message-id/153558865647.1483.573481613491501077%40wrigleys.postgresql.org
-    if DevelopmentTools.clang_build_version >= 1000
-      inreplace "configure",
-                "-I$perl_archlibexp/CORE",
-                "-iwithsysroot $perl_archlibexp/CORE"
-      inreplace "contrib/hstore_plperl/Makefile",
-                "$(perl_archlibexp)/CORE",
-                "-iwithsysroot $(perl_archlibexp)/CORE"
-      inreplace "src/pl/plperl/GNUmakefile",
-                "$(perl_archlibexp)/CORE",
-                "-iwithsysroot $(perl_archlibexp)/CORE"
     end
 
     system "./configure", *args
@@ -95,6 +71,12 @@ class PostgresqlAT95 < Formula
       system "make", "install", "all", *dirs
     else
       system "make", "install-world", *dirs
+    end
+
+    unless OS.mac?
+      inreplace lib/"pgxs/src/Makefile.global",
+                "LD = #{HOMEBREW_PREFIX}/Homebrew/Library/Homebrew/shims/linux/super/ld",
+                "LD = #{HOMEBREW_PREFIX}/bin/ld"
     end
   end
 

@@ -3,17 +3,18 @@ class Netpbm < Formula
   homepage "https://netpbm.sourceforge.io/"
   # Maintainers: Look at https://sourceforge.net/p/netpbm/code/HEAD/tree/
   # for stable versions and matching revisions.
-  url "https://svn.code.sf.net/p/netpbm/code/stable", :revision => 3779
-  version "10.86.12"
+  url "https://svn.code.sf.net/p/netpbm/code/stable", :revision => 3806
+  version "10.86.13"
   version_scheme 1
   head "https://svn.code.sf.net/p/netpbm/code/trunk"
 
   bottle do
     cellar :any
-    sha256 "202308bce16ef8c2b069191732381fd7b0615bb2321f65d38db61ccbd1e9a81e" => :catalina
-    sha256 "ee899046de3e9fa348679eb22352306652080fd816ebea3ec6b4f5e801926597" => :mojave
-    sha256 "f902a6eff453d9c89f019cb65a0e2032420d53c48df8030f31f87a29dbb23d62" => :high_sierra
-    sha256 "599c447efe3bcd7b061264fa90f8c97efe30e7d4c859e778fc0a232afe3cdb19" => :x86_64_linux
+    rebuild 1
+    sha256 "9e71235d1f28b7d929f73a17711946e4424af4a65788e7b8dbf4090c6b99f87a" => :catalina
+    sha256 "ef247da24981c815fdc80b8f1efcaf7132fcbe1fcc78947a983a8a2a06b28146" => :mojave
+    sha256 "13780d3a1ab3ec9856a8da98909829a4457f514031db7844245158a649d9feea" => :high_sierra
+    sha256 "b4d35ff43c349559fbac0901b9a4c78f40af0a8b57cfd39893b52e386663e07e" => :x86_64_linux
   end
 
   depends_on "jasper"
@@ -24,8 +25,6 @@ class Netpbm < Formula
   uses_from_macos "flex" => :build
   uses_from_macos "libxml2"
   uses_from_macos "zlib"
-
-  conflicts_with "jbigkit", :because => "both install `pbm.5` and `pgm.5` files"
 
   def install
     # Fix file not found errors for /usr/lib/system/libsystem_symptoms.dylib and
@@ -64,9 +63,6 @@ class Netpbm < Formula
       end
 
       prefix.install %w[bin include lib misc]
-      # do man pages explicitly; otherwise a junk file is installed in man/web
-      man1.install Dir["man/man1/*.1"]
-      man5.install Dir["man/man5/*.5"]
       lib.install Dir["staticlink/*.a"]
       lib.install Dir["sharedlink/*.dylib"] if OS.mac?
       (lib/"pkgconfig").install "pkgconfig_template" => "netpbm.pc"

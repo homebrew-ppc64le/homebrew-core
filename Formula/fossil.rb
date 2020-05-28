@@ -1,16 +1,16 @@
 class Fossil < Formula
   desc "Distributed software configuration management"
   homepage "https://www.fossil-scm.org/"
-  url "https://www.fossil-scm.org/index.html/uv/fossil-src-2.10.tar.gz"
-  sha256 "d8a3776d2ce77385ed5ff20a2776d13bb534fb2508e87351e14e94f91cd12b10"
+  url "https://www.fossil-scm.org/index.html/uv/fossil-src-2.11.tar.gz"
+  sha256 "3d5a04bbe0075edd7f04c64ffc8f3af71d16565bf606b753f5d5752e48ff3631"
   head "https://www.fossil-scm.org/", :using => :fossil
 
   bottle do
     cellar :any
-    sha256 "16afbe0d2eb0df60423b5274e368fd002bd9ab5af565c96535e0bae2c966f85c" => :catalina
-    sha256 "901b5ea0ef15aa3cbe195dc33c925a6e6dbca03b2ff012ee1bfca800e58eca5f" => :mojave
-    sha256 "6ae2eb58d9c1bfb35371a60a43a546fe619dd73350395ac4d11976bb5bebf486" => :high_sierra
-    sha256 "7713d4c14390727930a8c5b3623722aa884dc78822d204f6d253c91e9310d018" => :x86_64_linux
+    sha256 "7150f265bb051a7fa08ec937cfbbca186f9a17d3a2cee97fcbf9cdc1d7640a0d" => :catalina
+    sha256 "747af87e2e1be5c9b5ffe39f7623a38c6c02fa79d2e0c57f1388a7bf226d4a8d" => :mojave
+    sha256 "b1fa6b1c31527b905a46dead91e1692a1c04240776a9a91b263c020c96e97ae0" => :high_sierra
+    sha256 "a5177e08aa1cad1bbee57dbc412cf44bb0142439440c5a41b78e0eeed5a39613" => :x86_64_linux
   end
 
   depends_on "openssl@1.1"

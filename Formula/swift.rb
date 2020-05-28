@@ -1,12 +1,12 @@
 class Swift < Formula
   desc "High-performance system programming language"
-  homepage "https://github.com/apple/swift"
-  url "https://github.com/apple/swift/archive/swift-5.2.2-RELEASE.tar.gz"
-  sha256 "92b0d1225e61a521ea10fe25f2cc35a2ad50ac55d1690d710f675d4db0c13b35"
+  homepage "https://swift.org"
+  url "https://github.com/apple/swift/archive/swift-5.2.4-RELEASE.tar.gz"
+  sha256 "94c44101c3dd6774887029110269bbaf9aff68cce5ea0783588157cc08d82ed8"
 
   bottle do
-    sha256 "59f15b07a9f1c3cf4d120d41a264b0ccbeadf720fe9ad6a758c7faa09d6eccfd" => :catalina
-    sha256 "97b6b476fc7a0a538719ecd84c50d310dfb66a5d4c6fa67d79cfaddaf4504d6c" => :mojave
+    sha256 "3ab59265cd42fb656737cddfa4a31012d50762526623a7ccb6655846e9609398" => :catalina
+    sha256 "62f5bf3be8b993ce5647d768b232edfec4bb908cbc87d01002caeff14757d32d" => :mojave
   end
 
   keg_only :provided_by_macos
@@ -20,37 +20,34 @@ class Swift < Formula
 
   uses_from_macos "icu4c"
 
-  # This formula is expected to have broken/missing linkage to
-  # both UIKit.framework and AssetsLibrary.framework. This is
-  # simply due to the nature of Swift's SDK Overlays.
   resource "llvm-project" do
-    url "https://github.com/apple/llvm-project/archive/swift-5.2.2-RELEASE.tar.gz"
-    sha256 "2c30e793e4bc29dc396fab522bebda731bb25be0019b07f314e70139c94de552"
+    url "https://github.com/apple/llvm-project/archive/swift-5.2.4-RELEASE.tar.gz"
+    sha256 "e36edc6c19e013a81b9255e329e9d6ffe7dfd89e8f8f23e1d931464c5f717d3a"
   end
 
   resource "cmark" do
-    url "https://github.com/apple/swift-cmark/archive/swift-5.2.2-RELEASE.tar.gz"
-    sha256 "0992aa8065beb88c8471e30e414a243be3e270b02b66e4c242ba741169baafe4"
+    url "https://github.com/apple/swift-cmark/archive/swift-5.2.4-RELEASE.tar.gz"
+    sha256 "d5f656777961390987ed04de2120e73e032713bbd7b616b5e43eb3ae6e209cb5"
   end
 
   resource "llbuild" do
-    url "https://github.com/apple/swift-llbuild/archive/swift-5.2.2-RELEASE.tar.gz"
-    sha256 "b54ec43c58bf2fddfcc4e83fe744567f05274feb024dd2a39dba6b1badb49fac"
+    url "https://github.com/apple/swift-llbuild/archive/swift-5.2.4-RELEASE.tar.gz"
+    sha256 "66b5374a15998a80cd72e7c1312766a8cbfe427a850f7b97d39b5d0508306e6c"
   end
 
   resource "swiftpm" do
-    url "https://github.com/apple/swift-package-manager/archive/swift-5.2.2-RELEASE.tar.gz"
-    sha256 "6d259436b1c09512e285187eb8794bbf550bdb513e243bc46e4790df0b1b9be8"
+    url "https://github.com/apple/swift-package-manager/archive/swift-5.2.4-RELEASE.tar.gz"
+    sha256 "383bf75f6dea96c4d48b2242bd3116154365e0e032aa3dce968f2c434732446c"
   end
 
   resource "indexstore-db" do
-    url "https://github.com/apple/indexstore-db/archive/swift-5.2.2-RELEASE.tar.gz"
-    sha256 "e7fe557a21a357025ef27a4036582a3b2393d37ba1182e2ce535f10fded2f6a1"
+    url "https://github.com/apple/indexstore-db/archive/swift-5.2.4-RELEASE.tar.gz"
+    sha256 "f1a96c7c9182e6c4f43b04db4a3236b0ff3306132de305fafbdcfd36f2081da2"
   end
 
   resource "sourcekit-lsp" do
-    url "https://github.com/apple/sourcekit-lsp/archive/swift-5.2.2-RELEASE.tar.gz"
-    sha256 "a712da9e3e2ff5d3d584ab2030e786c095bd25ecf33a00eda6bea5f261685c09"
+    url "https://github.com/apple/sourcekit-lsp/archive/swift-5.2.4-RELEASE.tar.gz"
+    sha256 "6bbc728aa852a969fcab25a4ab0e1016823a0c7ec606ef3d61d0a442cfba02db"
   end
 
   def install
@@ -104,6 +101,19 @@ class Swift < Formula
 
       system "#{workspace}/swift/utils/build-script", *args
     end
+  end
+
+  def caveats
+    <<~EOS
+      The toolchain has been installed to:
+        #{opt_prefix}/Swift-#{version}.xctoolchain
+
+      You can find the Swift binary at:
+        #{opt_prefix}/Swift-#{version}.xctoolchain/usr/bin/swift
+
+      You can also symlink the toolchain for use within Xcode:
+        ln -s #{opt_prefix}/Swift-#{version}.xctoolchain ~/Library/Developer/Toolchains/Swift-#{version}.xctoolchain
+    EOS
   end
 
   test do

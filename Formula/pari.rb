@@ -1,18 +1,19 @@
 class Pari < Formula
   desc "Computer algebra system designed for fast computations in number theory"
   homepage "https://pari.math.u-bordeaux.fr/"
-  url "https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.11.3.tar.gz"
-  sha256 "c7100a467eaf908942bb403cbd38036a26d7222e6ee6d39b50ab667d052ca6c9"
+  url "https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.11.4.tar.gz"
+  sha256 "bfc88fc4f7352f4840e6e352c72f0369cbea8a45403b1834a6269f3709970b1c"
 
   bottle do
-    sha256 "bfac783202e3e6470d3ced0543dbebaf83a1da1b91f8f7bb191ab4bcc9ff3a19" => :catalina
-    sha256 "ecac057aed38361682df4fd71803fc258e44e7b84907cfb3f82c7c4668979c4a" => :mojave
-    sha256 "9504d484f5f4f7794355a0c0790d11cdd566f2b9d513a6b22a4aba207920eb06" => :high_sierra
-    sha256 "8c5dbd86ef0a66b8cae7613876d3c0c06cdc32a367b808456f5bb1b04abe7b4d" => :x86_64_linux
+    sha256 "34bff086dc53fc97511828c3329f71ab67c394011f88d551dc5d820fad455a93" => :catalina
+    sha256 "bb2a09ef34d5e55b7f357169c34cd8e5942bb074770b789757e21388d440d80d" => :mojave
+    sha256 "13613061281235cc2ffb502fd6541775a305ab61aa6ff85ed8ca15b23ec44ae4" => :high_sierra
+    sha256 "4684074cd7adb997277add1cb66c5aef82e88e008d205950d4829389cd16e676" => :x86_64_linux
   end
 
   depends_on "gmp"
   depends_on "readline"
+  depends_on "texlive" => :build unless OS.mac?
 
   def install
     readline = Formula["readline"].opt_prefix
@@ -24,6 +25,10 @@ class Pari < Formula
     # make needs to be done in two steps
     system "make", "all"
     system "make", "install"
+
+    # Avoid references to Homebrew shims
+    os = OS.mac? ? "mac" : "linux"
+    inreplace lib/"pari/pari.cfg", HOMEBREW_LIBRARY/"Homebrew/shims/#{os}/super/", "/usr/bin/"
   end
 
   def caveats

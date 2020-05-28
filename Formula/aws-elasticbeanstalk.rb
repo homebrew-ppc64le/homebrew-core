@@ -3,16 +3,15 @@ class AwsElasticbeanstalk < Formula
 
   desc "Client for Amazon Elastic Beanstalk web service"
   homepage "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html"
-  url "https://files.pythonhosted.org/packages/6b/3e/4141fb952d335fcd8243412a62e2a717d50d1de1d7e4b6a8fe485aa9ff5b/awsebcli-3.18.0.tar.gz"
-  sha256 "26b419b5a5c6b971a1c19f1b8e1ccc01c76b799d14ad1ecd1dc482e757401d59"
-  revision 1 unless OS.mac?
+  url "https://files.pythonhosted.org/packages/13/c4/fbdbb9a6d0fb3f268240d0506c5b48bc31ee1bf0303f3f90fda81b149824/awsebcli-3.18.1.tar.gz"
+  sha256 "a44fb91b3f6b35ea1166200df1954f8dde2228e0e1b37267b2ca6b8fa66809b5"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "6be846688b67cf050fdd3314683886474f6266e734d7c4524271cd4802a631d0" => :catalina
-    sha256 "62dfe29cfb8ead9039605b74389884ee70923d247d14a1defa414779099715c3" => :mojave
-    sha256 "be6ca4d25170c228bf86ea134461cb634ab96e6b49f1b6aec81dd9094b5eabf7" => :high_sierra
-    sha256 "4b1a6e911efdee2e109ec050ff663362977097e6045b79761494bee5b417b2ea" => :x86_64_linux
+    sha256 "d14253acd05c343f517faa6d1f24a7ca4fa6290dd4ab28fd5a67769508dbd1fc" => :catalina
+    sha256 "52baaf0d0f9d339358d8b6241ae5b0f0b0d7f9b5bd870c986eeee9c2badddabd" => :mojave
+    sha256 "42cb725eb85274070418f47eb1300f010e79222da68f010840ec6b6831ce2517" => :high_sierra
+    sha256 "f3e44606f2559f7f210a7296029a9546da11b717f05db01aeafbcfedc6690f05" => :x86_64_linux
   end
 
   depends_on "python@3.8"
@@ -34,8 +33,8 @@ class AwsElasticbeanstalk < Formula
   end
 
   resource "blessed" do
-    url "https://files.pythonhosted.org/packages/16/f2/9b5a546b7aad60fdbaa21da06e017cf263953b0769aaf706c1282b6050b9/blessed-1.17.4.tar.gz"
-    sha256 "320a619c83298a9c9d632dbd8fafbb90ba9a38b83c7e64726c572fb186dd0781"
+    url "https://files.pythonhosted.org/packages/e1/53/38b2da489d31a111c85d5040a65eee3ef001c8d80f78bd45bfd1816652e1/blessed-1.17.5.tar.gz"
+    sha256 "926916492220af741657ec4668aba95f54a8c32445e765cfa38c7ccd3343cc6f"
   end
 
   resource "botocore" do
@@ -74,8 +73,8 @@ class AwsElasticbeanstalk < Formula
   end
 
   resource "cryptography" do
-    url "https://files.pythonhosted.org/packages/9d/0a/d7060601834b1a0a84845d6ae2cd59be077aafa2133455062e47c9733024/cryptography-2.9.tar.gz"
-    sha256 "0cacd3ef5c604b8e5f59bf2582c076c98a37fe206b31430d0cd08138aff0986e"
+    url "https://files.pythonhosted.org/packages/56/3b/78c6816918fdf2405d62c98e48589112669f36711e50158a0c15d804c30d/cryptography-2.9.2.tar.gz"
+    sha256 "a0c30272fb4ddda5f5ffc1089d7405b7a71b0b0f51993cb4e5dbb4590b2fc229"
   end
 
   resource "docker" do

@@ -1,15 +1,15 @@
 class B3sum < Formula
   desc "The BLAKE3 cryptographic hash function"
   homepage "https://github.com/BLAKE3-team/BLAKE3"
-  url "https://github.com/BLAKE3-team/BLAKE3/archive/0.3.3.tar.gz"
-  sha256 "33af07ddb519818aca75f876fc704c1bd1b92daee04d9ed6d39ded006356b1e3"
+  url "https://github.com/BLAKE3-team/BLAKE3/archive/0.3.4.tar.gz"
+  sha256 "64028224507b568a677919ef6577debe30c959a147c66cd94cdf84f7f6b33e5d"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "769a93780c86cfc4374ba08083426e83f46c79f77c8327d44c35cc92f85d5212" => :catalina
-    sha256 "a2ad0b97c285aa63a01649887b59adee3d9d0278c406f71a71c07aa17ba4a50d" => :mojave
-    sha256 "1e405d7388a324ec43d04ae02c6e64dd050fe3201e5335c2a54ffcf827f0b38d" => :high_sierra
-    sha256 "a3c379c3dda81924f04c35467f4f70f3f934dc89e87c5862887f1fa21c1ef872" => :x86_64_linux
+    sha256 "ca1b6befbfcc0f9b29988734eb9e7f4a4733f93eaad4fd044979dd92b6e7db27" => :catalina
+    sha256 "ffa534e58550dd15036ab9cffc692b1d1fac2fe8cd2f69edda255e056169c927" => :mojave
+    sha256 "1b12778aa33337ea2212e925fb0779a15b0eac8d939a5c402e8271ea91e12815" => :high_sierra
+    sha256 "c8dc6b93f6bf294e388e88ace9311664560746e02b77bd6333d44dd9e972d2c7" => :x86_64_linux
   end
 
   depends_on "rust" => :build

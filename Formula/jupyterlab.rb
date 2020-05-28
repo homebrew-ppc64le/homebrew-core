@@ -3,15 +3,15 @@ class Jupyterlab < Formula
 
   desc "Interactive environments for writing and running code"
   homepage "https://jupyter.org/"
-  url "https://files.pythonhosted.org/packages/7c/33/4464c4966b2e4c164ff56302e66f82cf0b75ce955d8bb10b315104a03a77/jupyterlab-2.1.1.tar.gz"
-  sha256 "2dec7e509ffa3892c67d9ac7c89d7c6a860c151d969d89420d9e20e753b2fb29"
+  url "https://files.pythonhosted.org/packages/64/b4/65b608ca9d7a78adf403bb1dd6ca0c7b3ce2cedbe1255184b3dc88436723/jupyterlab-2.1.2.tar.gz"
+  sha256 "380c29d674f6dcf8e380615334c7813bb4feb7bbb6222baf1d4c9f8318f4b104"
 
   bottle do
     cellar :any
-    sha256 "672ea0309603f7b8fe886a29b75c5d6dbfd89987be4aa8c3e658342e74b052fc" => :catalina
-    sha256 "0ee950175a14a431f706fff95431619e7c0732d728e62d1d94ed627f505aa332" => :mojave
-    sha256 "82dc5744312b7a0f11bfddb08bd5f1ba04c583ad35b53a1cc73d309fb499a281" => :high_sierra
-    sha256 "3836ffeeea708b978310f6ff03207ef1d89e6c49e42ea2579f1dd4189785bbc0" => :x86_64_linux
+    sha256 "c2cd185651374a98f19b714001b9de870e2304ccf380639ab7f8ec8158501ed3" => :catalina
+    sha256 "a883539fcbeba209b72f67317d75ddee61d5d5f5c7d23012cebf5884d1612027" => :mojave
+    sha256 "4e8de18c95fdfcc864c5fc0fa591d9d08c1315a4a2bdd4613560a94a259ba47f" => :high_sierra
+    sha256 "a1821e9470cddc7531b6ff2a1c701c39f6d58b2f95d0fffd36d1fcd79d56cd66" => :x86_64_linux
   end
 
   depends_on "ipython"

@@ -3,15 +3,15 @@ class CfnLint < Formula
 
   desc "Validate CloudFormation templates against the CloudFormation spec"
   homepage "https://github.com/aws-cloudformation/cfn-python-lint/"
-  url "https://files.pythonhosted.org/packages/51/53/594f54e97e1744eeb01459c1f77ad967b3e7c2ab37d92e1a17357f617fab/cfn-lint-0.29.6.tar.gz"
-  sha256 "d3a127e19f36cd0492c00aedec9bf2dc42911622d879755b24f6f8ed57e4902c"
+  url "https://files.pythonhosted.org/packages/63/cd/688fe28ade2a7db0a7bd7d5d75c0d8176ab3f8eba3f37b0cbf9f15e1eb58/cfn-lint-0.32.1.tar.gz"
+  sha256 "96dedfaa72b84aed2c93c82f0ad68e0d0385cb986a3cc3fa8b7491cc5f565292"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "0b9743740db8de0b798640aae4e66aec50e1f78885ae3151549247a5436c4652" => :catalina
-    sha256 "eea256df2e28c29de1b4aa6e8bed3e6219f7a5c4f70f1f9c9dc52edbe0feda8a" => :mojave
-    sha256 "a084396b7c64874b581620d95edbc064a29f562fdf1b2d59a5aabd853d2a610e" => :high_sierra
-    sha256 "dfc219a91a24845cb96b5963a77ca8552acedd63a6c0da0b638f890b2cf505ae" => :x86_64_linux
+    sha256 "f95feaa4276cf6b882a389c4b418f2ce3398bbca933676a6692b2bd0abecc56c" => :catalina
+    sha256 "92d042be16eabf6dbd095f44cba009662f0dc167ce15e92298dce4ce989f5605" => :mojave
+    sha256 "0db0d0e89c73e73b92e6b3fb1a5c9c658b69956b67324f3f2a319d3dd3793293" => :high_sierra
+    sha256 "c96d5940eb16aa5f439cf9f1f5f08b998a1e9b8c1bc1026b4410da9369fdaf0e" => :x86_64_linux
   end
 
   depends_on "python@3.8"
@@ -22,18 +22,18 @@ class CfnLint < Formula
   end
 
   resource "aws-sam-translator" do
-    url "https://files.pythonhosted.org/packages/f3/c3/c24bc68e6d1b905bfd9b407e00a71e5ac86b143e6064073d5a3fbc332897/aws-sam-translator-1.22.0.tar.gz"
-    sha256 "3ba6a821eda29ca8ea1306e27a8135256d6136f1b0b29c6cbf9a107dfd1c2dd9"
+    url "https://files.pythonhosted.org/packages/bf/22/4f51e6d337c165051dd4e455d2935987558e747d98aba10acb8f69cefb41/aws-sam-translator-1.23.0.tar.gz"
+    sha256 "6e847b02661247e5d9b99b3bd22351fc6ed614e0f12e0598c0181cb796b3967e"
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/42/ec/7c7383defbaf6cb51b774219c63905b61e977983cab983959c873f6c0f91/boto3-1.12.46.tar.gz"
-    sha256 "4f7f11e7489c267f9ea0c6193bfbe20ef1a8dd639d780aea0ac61a769de722e1"
+    url "https://files.pythonhosted.org/packages/0a/d9/41ad5cc02dc36e9b9a92a6179e5e1a3689a21a908d01890d49f75ffcdf74/boto3-1.13.1.tar.gz"
+    sha256 "7a2474db6576d7d3f5c3336ec54450e34211d44e2342e501a67e2fae35916e63"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/2b/d9/d1a341bec0f264eddba169b0d40aaa6da064fabba3e4a0d482b149c6fb84/botocore-1.15.46.tar.gz"
-    sha256 "ae39899dc450570968e3e128d2c8a011e5f8d4f6fd07a7d1f01df10a11ef332d"
+    url "https://files.pythonhosted.org/packages/e5/bf/75a853c77538aebc3ce7c6bcbde51153468e6347321d6ddd441a8ef3c71d/botocore-1.16.1.tar.gz"
+    sha256 "879cedb22baf9446323240f1cf57d4e0e7ba262ba6fde6d3540cf7fdd7ddad34"
   end
 
   resource "certifi" do
@@ -85,6 +85,12 @@ class CfnLint < Formula
   resource "jsonschema" do
     url "https://files.pythonhosted.org/packages/69/11/a69e2a3c01b324a77d3a7c0570faa372e8448b666300c4117a516f8b1212/jsonschema-3.2.0.tar.gz"
     sha256 "c8a85b28d377cc7737e46e2d9f2b4f44ee3c0e1deac6bf46ddefc7187d30797a"
+  end
+
+  # only doing this because junit-xml source is not available in PyPI for v1.9
+  resource "junit-xml" do
+    url "https://github.com/kyrus/python-junit-xml.git",
+        :revision => "4bd08a272f059998cedf9b7779f944d49eba13a6"
   end
 
   resource "more-itertools" do

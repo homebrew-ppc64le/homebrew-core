@@ -2,15 +2,15 @@ class Chezmoi < Formula
   desc "Manage your dotfiles across multiple machines, securely"
   homepage "https://chezmoi.io/"
   url "https://github.com/twpayne/chezmoi.git",
-      :tag      => "v1.8.0",
-      :revision => "017a83f4055a98ac90b030d5739aa560dde239b7"
+      :tag      => "v1.8.1",
+      :revision => "4def4f3b96cb01cefe8d7887e8dbfb77908ef267"
   revision 1
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "5cc7963049cf98fdb7bf92a99d3de7509e04c50d6519618d6a190d61e209fd7b" => :catalina
-    sha256 "0318dc5f9e3b4ff6dfa256bfebfa8b8e7b4cb16359ebb5b615977c3bc20e956b" => :mojave
-    sha256 "6c790ed8bbc68733d44239fc336746b549c9fa585afcfca0961897f4594c83af" => :high_sierra
+    sha256 "d710e4191da60fe000518c9e234d9ab3b8893a052418fc897cc3d846c3b06114" => :catalina
+    sha256 "aedbf0d3a525a7429e32a8e72bdf55b7eae2fde1a2e9dc8c5b88bd87fb0f333f" => :mojave
+    sha256 "528643626bee5953ca37e0530be8fdf379b6457efd56bd44fa12d3931ef4863d" => :high_sierra
   end
 
   depends_on "go" => :build
@@ -28,7 +28,7 @@ class Chezmoi < Formula
 
     bash_completion.install "completions/chezmoi-completion.bash"
     fish_completion.install "completions/chezmoi.fish"
-    zsh_completion.install "completions/chezmoi.zsh"
+    zsh_completion.install "completions/chezmoi.zsh" => "_chezmoi"
 
     prefix.install_metafiles
   end

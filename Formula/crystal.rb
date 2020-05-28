@@ -1,6 +1,7 @@
 class Crystal < Formula
   desc "Fast and statically typed, compiled language with Ruby-like syntax"
   homepage "https://crystal-lang.org/"
+  revision 1 unless OS.mac?
 
   stable do
     url "https://github.com/crystal-lang/crystal/archive/0.34.0.tar.gz"
@@ -16,6 +17,7 @@ class Crystal < Formula
     sha256 "7f6f09fefecbeab7ff11bcd35b501339f99aa2b4409c8612e1eae2c4ad0a206c" => :catalina
     sha256 "a2a5055a9abe2db444e2a165133703a1c203d692f66c0e1fb326c97a28c8ef80" => :mojave
     sha256 "c37811acb4753d689d8d7455b0ddfd64bf9530c430240563608e05b6bed8cedd" => :high_sierra
+    sha256 "7a1dbe1bf7b314b502852d49cbdc48a7a9a21b62552525c2ca397fa09b5a00ad" => :x86_64_linux
   end
 
   head do
@@ -96,7 +98,7 @@ class Crystal < Formula
 
     # Build shards
     resource("shards").stage do
-      system buildpath/"boot/embedded/bin/shards", "install",
+      system buildpath/"boot/#{OS.mac? ? "embedded/" : ""}bin/shards", "install",
                                                    "--production"
 
       system buildpath/"bin/crystal", "build",
@@ -111,7 +113,7 @@ class Crystal < Formula
     bin.install ".build/shards"
     libexec.install ".build/crystal"
     (bin/"crystal").write_env_script libexec/"crystal",
-      :PKG_CONFIG_PATH => "${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}#{Formula["openssl"].opt_lib/"pkgconfig"}"
+      :PKG_CONFIG_PATH => "${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}#{Formula["openssl@1.1"].opt_lib/"pkgconfig"}"
 
     prefix.install "src"
     (prefix/"embedded/lib").install "#{buildpath/"gc"}/.libs/libgc.a"

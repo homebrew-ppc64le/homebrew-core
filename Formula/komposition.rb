@@ -3,16 +3,18 @@ class Komposition < Formula
   homepage "https://github.com/owickstrom/komposition"
   url "https://github.com/owickstrom/komposition/archive/v0.2.0.tar.gz"
   sha256 "cedb41c68866f8d6a87579f566909fcd32697b03f66c0e2a700a94b6a9263b88"
+  revision 1
   head "https://github.com/owickstrom/komposition.git"
 
   bottle do
-    sha256 "f28f804f8ca5d9c9c23f8fd9d35edb3276e2d397abbbf73fda33b543d5654611" => :catalina
-    sha256 "2f7008e5a901c7c4739104124c0a3faea211f3d7509c0c19f6a28f8de162be08" => :mojave
-    sha256 "75c13e6a1a9f53273974f6445d4d59adc76c16399480f305547e7bddd5237fbd" => :high_sierra
+    cellar :any
+    sha256 "a3e41338fe5cdaa4745c7474034e0cdaec05db8ce4a78d8968f073b167c2140b" => :catalina
+    sha256 "e3e7217341af01242291cc0f72f5b43e9a357cebeff90f28cbc863bde2099db5" => :mojave
+    sha256 "28679e559da361a27761bf1398d5c6cfeb48baba4d7b56e034d7e65621a873ec" => :high_sierra
   end
 
   depends_on "cabal-install" => :build
-  depends_on "ghc" => :build
+  depends_on "ghc@8.8" => :build
   depends_on "pkg-config" => :build
   depends_on "ffmpeg"
   depends_on "gobject-introspection"
@@ -25,6 +27,14 @@ class Komposition < Formula
   depends_on "sox"
 
   uses_from_macos "libffi"
+
+  # fix a constraint issue with protolude
+  # remove once new version with
+  # https://github.com/owickstrom/komposition/pull/102 is included
+  patch do
+    url "https://github.com/owickstrom/komposition/pull/102.diff?full_index=1"
+    sha256 "bdf561d07f1b8d41a4c030e121becab3b70882da8ccee53c1e91c6c0931fee0c"
+  end
 
   def install
     system "cabal", "v2-update"

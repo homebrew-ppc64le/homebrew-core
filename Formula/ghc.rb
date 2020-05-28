@@ -5,19 +5,18 @@ class Ghc < Formula
 
   desc "Glorious Glasgow Haskell Compilation System"
   homepage "https://haskell.org/ghc/"
-  url "https://downloads.haskell.org/~ghc/8.8.3/ghc-8.8.3-src.tar.xz"
-  sha256 "e0dcc0aaf3e234c5978f29e6df62947e97720ab404ec0158343df211c5480f89"
+  url "https://downloads.haskell.org/~ghc/8.10.1/ghc-8.10.1-src.tar.xz"
+  sha256 "4e3b07f83a266b3198310f19f71e371ebce97c769b14f0d688f4cbf2a2a1edf5"
 
   bottle do
-    rebuild 1
-    sha256 "644f628d168a0d6b0c711d8c06517a28fdeeee070bbcc002f43c7c04ee1d8f9b" => :catalina
-    sha256 "d613300e67690faa5bc229df61897928c5e522cbdf3c2fb13f8aba0eca41e60d" => :mojave
-    sha256 "6e29df6f20aea87a4328b9b23646b5378b1db7d7dc02417837dff6f5e93d312a" => :high_sierra
-    sha256 "f731f2057cc01b89fed48207f2c20c803d0029fe993dccdb8ffec5f5c797fbc4" => :x86_64_linux
+    sha256 "0771a43a5fd75ac8f3814367e0b99b27881b6730ced580eca109516aa250be4a" => :catalina
+    sha256 "12b0bfdf7570a348bda4ff916f3319a30c8cd82957725a78ba0ef25a1e42fdcc" => :mojave
+    sha256 "ab8ed6381773c90a5687843743b67e80ea7305cbebf056d0c1cceedb0ecc3490" => :high_sierra
+    sha256 "52efa3e137afcbfaa95a70046a0d488451f9593b99f2e5f1572273c8203f8b16" => :x86_64_linux
   end
 
   head do
-    url "https://gitlab.haskell.org/ghc/ghc.git", :branch => "ghc-8.8"
+    url "https://gitlab.haskell.org/ghc/ghc.git", :branch => "ghc-8.10"
 
     depends_on "autoconf" => :build
     depends_on "automake" => :build
@@ -47,17 +46,16 @@ class Ghc < Formula
     sha256 "87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912"
   end
 
-  # https://www.haskell.org/ghc/download_ghc_8_6_5.html#macosx_x86_64
+  # https://www.haskell.org/ghc/download_ghc_8_10_1.html#macosx_x86_64
   # "This is a distribution for Mac OS X, 10.7 or later."
-  # Need to use 8.6.5 to build 8.8.1 because of
-  # https://gitlab.haskell.org/ghc/ghc/issues/17146
+  # A binary of ghc is needed to bootstrap ghc
   resource "binary" do
     if OS.linux?
-      url "https://downloads.haskell.org/~ghc/8.6.5/ghc-8.6.5-x86_64-deb8-linux.tar.xz"
-      sha256 "c419fd0aa9065fe4d2eb9a248e323860c696ddf3859749ca96a84938aee49107"
+      url "https://downloads.haskell.org/~ghc/8.10.1/ghc-8.10.1-x86_64-deb9-linux.tar.xz"
+      sha256 "d1cf7886f27af070f3b7dbe1975a78b43ef2d32b86362cbe953e79464fe70761"
     else
-      url "https://downloads.haskell.org/~ghc/8.6.5/ghc-8.6.5-x86_64-apple-darwin.tar.xz"
-      sha256 "dfc1bdb1d303a87a8552aa17f5b080e61351f2823c2b99071ec23d0837422169"
+      url "https://downloads.haskell.org/~ghc/8.10.1/ghc-8.10.1-x86_64-apple-darwin.tar.xz"
+      sha256 "65b1ca361093de4804a7e40b3e68178e1ef720f84f743641ec8d95e56a45b3a8"
     end
   end
 
@@ -122,7 +120,7 @@ class Ghc < Formula
 
     resource("binary").stage do
       # Change the dynamic linker and RPATH of the binary executables.
-      if OS.linux? && Formula["glibc"].installed?
+      if OS.linux? && Formula["glibc"].any_version_installed?
         keg = Keg.new(prefix)
         ["ghc/stage2/build/tmp/ghc-stage2"].concat(Dir["libraries/*/dist-install/build/*.so",
             "rts/dist/build/*.so*", "utils/*/dist*/build/tmp/*"]).each do |s|

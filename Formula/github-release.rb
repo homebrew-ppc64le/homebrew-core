@@ -1,16 +1,16 @@
 class GithubRelease < Formula
   desc "Create and edit releases on Github (and upload artifacts)"
   homepage "https://github.com/github-release/github-release"
-  url "https://github.com/github-release/github-release/archive/v0.8.0.tar.gz"
-  sha256 "abe9bf867d26736361c267114f8ece35301fe2e2f063b77e79122f6386d22bf8"
+  url "https://github.com/github-release/github-release/archive/v0.8.1.tar.gz"
+  sha256 "c32d615e94cfa1d7c64af5ca84820bfc6193c867b0e9041b4e21b40f0b3df307"
   head "https://github.com/github-release/github-release.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "5efe98cdd8183f167d0e80bf674707348da4bdad39336e878d97f014d2c2484c" => :catalina
-    sha256 "984db7e9b0ace7730dcc508284467c935fbd1b24f04fd13ff26e513262537b99" => :mojave
-    sha256 "ef971a577e3e673602d225e5ada1caed5dde39936a4ea6362d2c411daae9ba50" => :high_sierra
-    sha256 "ab6b927d66268aa2a0b428140b11b281ce3289caec2deb4cb6a52d1bc75f1970" => :x86_64_linux
+    sha256 "67399d81e62c8b1fb7d5b26ebea79de5d806757cd194d2055dcd5dc8935167e2" => :catalina
+    sha256 "3640960eb97bed10dfe75237cc61b3e8fb36f526c9d50c6820cd07c841432842" => :mojave
+    sha256 "53b5ef103a6190a891f53a5c52019ab2e12e31f15f4f97775cb2cb169befefa1" => :high_sierra
+    sha256 "38dab5ce6e77b7f10cae06c1020dc5ca5c994edb9dffe237403dbba7b6c2f759" => :x86_64_linux
   end
 
   depends_on "go" => :build

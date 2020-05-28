@@ -1,16 +1,15 @@
 class Guile < Formula
   desc "GNU Ubiquitous Intelligent Language for Extensions"
   homepage "https://www.gnu.org/software/guile/"
-  url "https://ftp.gnu.org/gnu/guile/guile-2.2.7.tar.xz"
-  mirror "https://ftpmirror.gnu.org/guile/guile-2.2.7.tar.xz"
-  sha256 "cdf776ea5f29430b1258209630555beea6d2be5481f9da4d64986b077ff37504"
-  revision 2
+  url "https://ftp.gnu.org/gnu/guile/guile-3.0.2.tar.xz"
+  mirror "https://ftpmirror.gnu.org/guile/guile-3.0.2.tar.xz"
+  sha256 "53c47d320533c80a3145adbd83e14bbe107c0441c18a8b214ff20849b28a9f8a"
 
   bottle do
-    sha256 "6079cc2f9949612e7e7b020240b0075d4fdbdef59847c21a12f39ada6c0b6ab1" => :catalina
-    sha256 "b6438f6f46b6a5fd791d33eb9b911b870e52a0af1a64e6897568e99de6bb305b" => :mojave
-    sha256 "3cb3e051acbed35eca38eba05839b268a4792695652a362eb61ac7edac1ee5bc" => :high_sierra
-    sha256 "53eb8730b56829f1993d779f49f923f8d17b2051a89ad84473fe22ec5c8b3b48" => :x86_64_linux
+    sha256 "2177e9ef48e8c0799f06ff8f0a79182da8e574f5024bd38fe89081905ed22616" => :catalina
+    sha256 "671957c077171576cc2d7598aae337492e2552bce75140e664dde11ac96c5096" => :mojave
+    sha256 "db9dd8dbb89b538da5d359f0ac17bd9df91102c92176525359e3fde279d66cd3" => :high_sierra
+    sha256 "4572e4f5381b4fabdbf7b2148455f702a3b2c172aa39b2b5b15ffad0aa1340a9" => :x86_64_linux
   end
 
   head do
@@ -56,7 +55,7 @@ class Guile < Formula
     # --with-xyz-prefix= for libffi and bdw-gc or a solid argument for
     # Homebrew automatically removing Cellar paths from .pc files in favour
     # of opt_prefix usage everywhere.
-    inreplace lib/"pkgconfig/guile-2.2.pc" do |s|
+    inreplace lib/"pkgconfig/guile-3.0.pc" do |s|
       s.gsub! Formula["bdw-gc"].prefix.realpath, Formula["bdw-gc"].opt_prefix
       s.gsub! Formula["libffi"].prefix.realpath, Formula["libffi"].opt_prefix
     end

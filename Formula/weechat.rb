@@ -3,14 +3,14 @@ class Weechat < Formula
   homepage "https://www.weechat.org"
   url "https://weechat.org/files/src/weechat-2.8.tar.xz"
   sha256 "553ea295edad3b03cf88e6029c21e7bde32ff1cc026d35386ba9da3e56a6018c"
-  revision 1
+  revision 3
   head "https://github.com/weechat/weechat.git"
 
   bottle do
-    sha256 "d2b4aeb0d4349ec46fd27d92f2c1038d13af574308da9ac2b684851ccf3ee958" => :catalina
-    sha256 "77a4fe0ef4ccd5da236df05319d113949c24a5f1bf063b0e18ce7c48e31cde7b" => :mojave
-    sha256 "5d83bb60e84a70bac570ad4075049683dbd29c69baaff6c2304ede19b51996c2" => :high_sierra
-    sha256 "53e455c94ea449be343e562ab37488724fef8762dd832bef7b17ab8fdd2bd59d" => :x86_64_linux
+    sha256 "31c5f286775a8acdc083613748b7945de5b87332ceb0e7272c4476cfa25b7106" => :catalina
+    sha256 "5ec616d4867e0972c98a95d9165d410fa49489bba566f0a2b602af1342b988f3" => :mojave
+    sha256 "21d9fceb145b0348bd2efb4740b852a46438b2227b76b56a91099fce2f1b8d2b" => :high_sierra
+    sha256 "a7b7867ea370b2acfcb0832680fdff3859de1fb3b01f08ef2ee451ab5c416f12" => :x86_64_linux
   end
 
   depends_on "asciidoctor" => :build
@@ -24,7 +24,7 @@ class Weechat < Formula
   depends_on "lua"
   depends_on "ncurses"
   depends_on "perl"
-  depends_on "python"
+  depends_on "python@3.8"
   depends_on "ruby"
 
   uses_from_macos "curl"
@@ -34,14 +34,13 @@ class Weechat < Formula
     args = std_cmake_args + %W[
       -DENABLE_MAN=ON
       -DENABLE_GUILE=OFF
-      -DCA_FILE=#{etc}/openssl/cert.pem
+      -DCA_FILE=#{Formula["gnutls"].pkgetc}/cert.pem
       -DENABLE_JAVASCRIPT=OFF
       -DENABLE_PHP=OFF
     ]
 
-    if OS.mac? && MacOS.version >= :mojave && MacOS::CLT.installed?
-      ENV["SDKROOT"] = ENV["HOMEBREW_SDKROOT"] = MacOS::CLT.sdk_path(MacOS.version)
-    end
+    # Fix system gem on Mojave
+    ENV["SDKROOT"] = ENV["HOMEBREW_SDKROOT"]
 
     mkdir "build" do
       system "cmake", "..", *args

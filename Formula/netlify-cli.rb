@@ -3,16 +3,16 @@ require "language/node"
 class NetlifyCli < Formula
   desc "Netlify command-line tool"
   homepage "https://www.netlify.com/docs/cli"
-  url "https://registry.npmjs.org/netlify-cli/-/netlify-cli-2.48.0.tgz"
-  sha256 "3fcc90051023aa9b322901c4fb0099f521df8ef9502b8659bdd29f76116952a6"
+  url "https://registry.npmjs.org/netlify-cli/-/netlify-cli-2.51.0.tgz"
+  sha256 "95a3b4ecfd5e6f61479b42e5669cf692038341bceeac2c52d85dfba3863715fd"
   head "https://github.com/netlify/cli.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "81307af28a5c165b6cf5177f417d5942429247a8fe0e431b29a94599f131fe3c" => :catalina
-    sha256 "895688ad9cc327662c6c78d9c8a95e376130c553defc9a9ecb2fdae6e7220c55" => :mojave
-    sha256 "a32d2bbb24090088640134c7e7f6ac1df23e77feab1b488441b09979174b4702" => :high_sierra
-    sha256 "1d463f2000b8027022209fece81e5fe713d4e5b0e28af4a7b676b1a61c6aa790" => :x86_64_linux
+    sha256 "6d36004db2e924c2a81bd71a32ec11ba4499f27b47bbe5e52b2396bd5c7883bc" => :catalina
+    sha256 "16529fd384f05d77e7159284c87f91a5d254216fea88a7b1c5838386d992fe22" => :mojave
+    sha256 "56cd0daaa8c5ce7bca53e0b9f103568d4945cbd3a8089e4c5b42dcb8e5d2331e" => :high_sierra
+    sha256 "97f0d80510c47fd405f6f1d5811fe893f91d6a9d942656740bc8b5da94e9dde5" => :x86_64_linux
   end
 
   depends_on "node"

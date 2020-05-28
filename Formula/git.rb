@@ -4,13 +4,14 @@ class Git < Formula
   # Note: Please keep these values in sync with git-gui.rb when updating.
   url "https://www.kernel.org/pub/software/scm/git/git-2.26.2.tar.xz"
   sha256 "6d65132471df9e531807cb2746f8be317e22a343b9385bbe11c9ce7f0d2fc848"
+  revision 1
   head "https://github.com/git/git.git", :shallow => false
 
   bottle do
-    sha256 "74d378f6530877383f38b6d1a923e85fcb8b724ab02c49a6857f92ecc1a0b88f" => :catalina
-    sha256 "24c59ff8304d769971f3ed812245b80e8e8b07e0564dd702d141038636b35592" => :mojave
-    sha256 "a2dbc7b901424f621f8832a0848f9ded2079a3f98640814c0784676724dbb86a" => :high_sierra
-    sha256 "65c21c14a6aacc53fd7557da2e533210cc135ccd1b863567c3ef49adb5124243" => :x86_64_linux
+    sha256 "8796a6c37723ae33d22fe5bfc249b9135b309c87ec2b41e6025d726df1a2dee6" => :catalina
+    sha256 "592f95984655ada33979a863f5d12e07fca9a67b7c6e7eab9f17b597f9cd9fc9" => :mojave
+    sha256 "4d765a420dec19d5261e12b336b6912e9e5fb571ffb5bc4b5d7eae7f7766347d" => :high_sierra
+    sha256 "d660d3b902d88cad68e8b2a57168ad7860a9483d8f5f959d75e38bfa3c452cc9" => :x86_64_linux
   end
 
   depends_on "gettext"
@@ -52,7 +53,6 @@ class Git < Formula
     # If these things are installed, tell Git build system not to use them
     ENV["NO_FINK"] = "1"
     ENV["NO_DARWIN_PORTS"] = "1"
-    ENV["NO_R_TO_GCC_LINKER"] = "1" # pass arguments to LD correctly
     ENV["PYTHON_PATH"] = which("python")
     ENV["PERL_PATH"] = which("perl")
     ENV["USE_LIBPCRE2"] = "1"
@@ -71,8 +71,6 @@ class Git < Formula
         "#{p}/Library/Perl/#{perl_version}/darwin-thread-multi-2level"
       end.join(":")
     end
-
-    ENV["NO_PERL_MAKEMAKER"] = "1" unless quiet_system ENV["PERL_PATH"], "-e", "use ExtUtils::MakeMaker"
 
     # Ensure we are using the correct system headers (for curl) to workaround
     # mismatched Xcode/CLT versions:
@@ -153,9 +151,6 @@ class Git < Formula
     chmod 0644, Dir["#{share}/doc/git-doc/**/*.{html,txt}"]
     chmod 0755, Dir["#{share}/doc/git-doc/{RelNotes,howto,technical}"]
 
-    # To avoid this feature hooking into the system OpenSSL, remove it
-    rm "#{libexec}/git-core/git-imap-send" if !OS.mac? && MacOS.version >= :yosemite
-
     # git-send-email needs Net::SMTP::SSL
     resource("Net::SMTP::SSL").stage do
       (share/"perl5").install "lib/Net"
@@ -198,6 +193,8 @@ class Git < Formula
     system bin/"git", "config", "user.name", "Your Name"
 
     system bin/"git", "add", "haunted", "house"
+    system bin/"git", "config", "user.name", "'A U Thor'"
+    system bin/"git", "config", "user.email", "author@example.com"
     system bin/"git", "commit", "-a", "-m", "Initial Commit"
     assert_equal "haunted\nhouse", shell_output("#{bin}/git ls-files").strip
 

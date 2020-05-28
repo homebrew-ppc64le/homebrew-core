@@ -3,21 +3,21 @@ class Rust < Formula
   homepage "https://www.rust-lang.org/"
 
   stable do
-    url "https://static.rust-lang.org/dist/rustc-1.43.0-src.tar.gz"
-    sha256 "75f6ac6c9da9f897f4634d5a07be4084692f7ccc2d2bb89337be86cfc18453a1"
+    url "https://static.rust-lang.org/dist/rustc-1.43.1-src.tar.gz"
+    sha256 "cde177b4a8c687da96f20de27630a1eb55c9d146a15e4c900d5c31cd3c3ac41d"
 
     resource "cargo" do
       url "https://github.com/rust-lang/cargo.git",
-          :tag      => "0.44.0",
-          :revision => "3532cf738db005a56d1fe81ade514f380d411360"
+          :tag      => "0.44.1",
+          :revision => "2cbe9048efc5c904b33191d799f97dc4698debaa"
     end
   end
 
   bottle do
-    sha256 "5b24bc9e45f31e9d9db268207ae198bba0393c1beaef994003bae0ea0d400a93" => :catalina
-    sha256 "ff7e3a351573fd4528cc49d3ed18e2011957e9a076250620877e718fc2a38247" => :mojave
-    sha256 "dd233197b81c522f5f2b475cb4f91b4dc9671b7532f092286469a6d77578228c" => :high_sierra
-    sha256 "9636cb7454ea90a80874f1c88f12aa5222859bba1c6a0541dc2f8553110bd477" => :x86_64_linux
+    sha256 "ed2a0f6af491d1f7c9733cd32f0518281bc9bcb5f418e62c3fefd582a0f66b2f" => :catalina
+    sha256 "53dff98ebf7561798da4c21af2bbe49ccdb6da3c66a45b667031c67432c9e65a" => :mojave
+    sha256 "f93422b8fa5616fb2cfba7bdf755c0e57892cbb26ee0276794aabfbde110e7e6" => :high_sierra
+    sha256 "92fb7f81f62bd52869fe9335b5756932333d4fcce2fb67f2bb6d49999e5c42a6" => :x86_64_linux
   end
 
   head do

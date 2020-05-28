@@ -2,18 +2,19 @@ class PhpAT72 < Formula
   desc "General-purpose scripting language"
   homepage "https://www.php.net/"
   # Should only be updated if the new version is announced on the homepage, https://www.php.net/
-  url "https://www.php.net/distributions/php-7.2.30.tar.xz"
-  sha256 "aa93df27b58a45d6c9800ac813245dfdca03490a918ebe515b3a70189b1bf8c3"
-  revision 1
+  url "https://www.php.net/distributions/php-7.2.31.tar.xz"
+  sha256 "8beaa634bb878a96af9bc8643811ea46973f5f41ad2bfb6ab4cfd290e5a39806"
 
   bottle do
-    sha256 "b8bce118cc8888d59e7376d39c752ef3f8bd458173a93f4aa3a2f691689bd926" => :catalina
-    sha256 "9df0b7b66ecac16c9cb266f0a5ae67c8d02bba4a46f6a9cd0f6f79e9fd3ff5d8" => :mojave
-    sha256 "ce6eb7dd8509a2cca5ea95b28ad7f7e6dd8a15ea32e60b9e55fac7bb89ae4991" => :high_sierra
-    sha256 "f2f70dcfad2c2442b143e4a939591a9d49f26c93755f1ed88e292153c1bef9d5" => :x86_64_linux
+    sha256 "2196d071cb0db0da7eaca2eee897993184db0ba1836b5a8124c771d5a7ded682" => :catalina
+    sha256 "512c7e54071d1657cb06d54569a9a9a323265cb86fd1e0f6e4d88dcc5c9edb48" => :mojave
+    sha256 "c5b5e0955bb4b9c40268e25fb8c543426f7f79f4c463d0b4258138b5a054303c" => :high_sierra
+    sha256 "eb009f778674262e92d84016827b464905290efe0e301f628561e3e543c0fab2" => :x86_64_linux
   end
 
   keg_only :versioned_formula
+
+  deprecate! :date => "November 30, 2020"
 
   depends_on "httpd" => [:build, :test]
   depends_on "pkg-config" => :build
@@ -205,10 +206,11 @@ class PhpAT72 < Formula
       "extension_dir = \"#{HOMEBREW_PREFIX}/lib/php/pecl/#{orig_ext_dir}\""
 
     # Use OpenSSL cert bundle
+    openssl = Formula["openssl@1.1"]
     inreplace "php.ini-development", /; ?openssl\.cafile=/,
-      "openssl.cafile = \"#{etc}/openssl@1.1/cert.pem\""
+      "openssl.cafile = \"#{openssl.pkgetc}/cert.pem\""
     inreplace "php.ini-development", /; ?openssl\.capath=/,
-      "openssl.capath = \"#{etc}/openssl@1.1/certs\""
+      "openssl.capath = \"#{openssl.pkgetc}/certs\""
 
     config_files = {
       "php.ini-development"   => "php.ini",

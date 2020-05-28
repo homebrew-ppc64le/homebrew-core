@@ -1,15 +1,15 @@
 class Quill < Formula
   desc "C++14 Asynchronous Low Latency Logging Library"
   homepage "https://github.com/odygrd/quill"
-  url "https://github.com/odygrd/quill/archive/v1.2.3.tar.gz"
-  sha256 "f318fa87a39aea76c66cfe09c686f5ce2cacaf2980678ada310acac8cf42ffd0"
+  url "https://github.com/odygrd/quill/archive/v1.3.2.tar.gz"
+  sha256 "bf7090c4770cf548d0093499ffb15c0d80c87d74c9bd4cb648f6b6c1e8de35b5"
   head "https://github.com/odygrd/quill.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "bd4ea149d9473fb5bc744ca097cd4770df914f9d979f97862d3da3f8348caa4a" => :catalina
-    sha256 "578baed8aef3ef312b549fd355f5bf1360b838feb0015cf17469faceda9333d7" => :mojave
-    sha256 "84424b32d74b31deaa9542232b154bf7c2368b045125532c3a14e0eb07999e39" => :high_sierra
+    sha256 "d38c9b0d87a2e817c913fa8d45c29342c7cc31ca942ef0ce8ee7b5e2ddf113c4" => :catalina
+    sha256 "19664e186c0f9f01ac54497749166cf3267bdd202531796370bb3739a9d70087" => :mojave
+    sha256 "45aa31dee147e09e72987911692af54ae2b0e0025764ded37794941fb23d22c8" => :high_sierra
   end
 
   depends_on "cmake" => :build
@@ -19,7 +19,7 @@ class Quill < Formula
 
     mkdir "quill-build" do
       args = std_cmake_args
-      args << "-Dpkg_config_libdir=#{lib}" << ".."
+      args << ".."
       system "cmake", *args
       system "make", "install"
     end

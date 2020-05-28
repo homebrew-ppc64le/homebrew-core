@@ -1,17 +1,15 @@
 class Wimlib < Formula
   desc "Library to create, extract, and modify Windows Imaging files"
   homepage "https://wimlib.net/"
-  url "https://wimlib.net/downloads/wimlib-1.13.1.tar.gz"
-  sha256 "47f4bc645c1b6ee15068d406a90bb38aec816354e140291ccb01e536f2cdaf5f"
+  url "https://wimlib.net/downloads/wimlib-1.13.2.tar.gz"
+  sha256 "7295be7ef00d265aef4090c9d26af82097db651c5f8399db9d44c60f47f5a945"
 
   bottle do
     cellar :any
-    rebuild 1
-    sha256 "ea449f8e0aeea806e5925974a0a3f8a04ac256a5a44edc858272a57c5f88814d" => :catalina
-    sha256 "7969f20ce9f26b7435b4242fb241c2527848581469be0cad09a3f5de77b11a05" => :mojave
-    sha256 "33a3397f536e339ca4177d3639b55e223040883af9d5afbbb47cc3e9b1bb87e9" => :high_sierra
-    sha256 "66a39e7eaa96a26f988a0c6eba0ad614ca449b0bb5688ebd70830f8863da5244" => :sierra
-    sha256 "61613be1a3dc76ae6eef007b1f491ad6872af83407100523b86682a1fc3548d3" => :x86_64_linux
+    sha256 "9b1f59782b773025346f9e466926467035c3e007f54acc77caa332b73a9308bf" => :catalina
+    sha256 "9c516e253677057ba243d2d0c30894df407c5d24a23d055d8b7152f6f3267991" => :mojave
+    sha256 "543e598241edae31ae469dd6da5ceaf10f1ef658ea051e1be0d5241393d167b6" => :high_sierra
+    sha256 "cfec451c3ebd1d7268a0463ecc00b23c50b5636e33eb0fbb5c308c1219553b0c" => :x86_64_linux
   end
 
   depends_on "pkg-config" => :build

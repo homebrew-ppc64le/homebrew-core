@@ -7,15 +7,16 @@ class Opusfile < Formula
 
   bottle do
     cellar :any
-    sha256 "880361a708feef58ac653b5d75c8097424e5b3103a7ff00ac147020de1b7d925" => :catalina
-    sha256 "3ed382fc35e4038c6453b73f7f4de91563c5d46ec42661ef0c6f2fc3ce73f0fa" => :mojave
-    sha256 "a02bf319a06dce9af3eb978a1cc4f787883bdbe64aa2085f7e30279bee27d732" => :high_sierra
-    sha256 "ec6639a35be7e6c52129231be4c20e1d078bea09862ee573ecaf359a5c3cd7d6" => :sierra
-    sha256 "57727ad3f2f52b01c644d4c33a76d368be9e5866b8eb860699a005299dc08141" => :x86_64_linux
+    rebuild 1
+    sha256 "acd200760db74feb30ea28bdb14cdf8b3ebdeb5a65759e1095fad3f9583c3ef3" => :catalina
+    sha256 "44e1c4d26cac791ff40de7b15fb2718c6aaa99856a128c23a3c542a3132e2053" => :mojave
+    sha256 "7f83ce800aaa0dedb44b18332e1628e307bf83d693586ed6359b02e6ea21737e" => :high_sierra
+    sha256 "66cc97376bf816dbda0026b9f1194123dd41ba771d04c0a7c5502025e5eea661" => :x86_64_linux
   end
 
   head do
-    url "https://git.xiph.org/opusfile.git"
+    url "https://gitlab.xiph.org/xiph/opusfile.git"
+
     depends_on "autoconf" => :build
     depends_on "automake" => :build
     depends_on "libtool" => :build
@@ -27,7 +28,7 @@ class Opusfile < Formula
   depends_on "opus"
 
   resource "music_48kbps.opus" do
-    url "https://www.opus-codec.org/examples/samples/music_48kbps.opus"
+    url "https://www.opus-codec.org/static/examples/samples/music_48kbps.opus"
     sha256 "64571f56bb973c078ec784472944aff0b88ba0c88456c95ff3eb86f5e0c1357d"
   end
 
@@ -39,6 +40,7 @@ class Opusfile < Formula
   end
 
   test do
+    testpath.install resource("music_48kbps.opus")
     (testpath/"test.c").write <<~EOS
       #include <opus/opusfile.h>
       #include <stdlib.h>
@@ -59,7 +61,6 @@ class Opusfile < Formula
                              "-L#{lib}",
                              "-lopusfile",
                              "-o", "test"
-    resource("music_48kbps.opus").stage testpath
     system "./test", "music_48kbps.opus"
   end
 end

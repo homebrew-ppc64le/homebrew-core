@@ -1,15 +1,16 @@
 class Gh < Formula
   desc "GitHub command-line tool"
   homepage "https://github.com/cli/cli"
-  url "https://github.com/cli/cli/archive/v0.7.0.tar.gz"
-  sha256 "c8966ee2c9fe8138ae7773c66b9a85dd2bfbffc7ca26ce189b294ae0b3e4c05c"
+  url "https://github.com/cli/cli/archive/v0.9.0.tar.gz"
+  sha256 "318295e5a662f785662751f1e2cd4b1f613ec3aced1c4e7f1755d27922dbfdbf"
+  revision 1
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "72455290a218359b87f061f059a03d0aa597fc6dfd380d5a4d9230b1bd32032c" => :catalina
-    sha256 "b59b2944887b847068136757005b53e25f21a02d93d6366137704990b2cb2d4b" => :mojave
-    sha256 "93fd06ac250de37b99cbf885cccb564d2988a4641d935435b5c99ab85c8bc9dd" => :high_sierra
-    sha256 "73b7d157df1942ebc9d28b12dcc08a3e38b0a12360077c0fa415c899657d09aa" => :x86_64_linux
+    sha256 "8f3207fc10b3f11c3821817bfeaec688b7dbffa3b7e5cb46bba58516c119d098" => :catalina
+    sha256 "2ef36b969325e2a4ff5bff3e726f0aca62744e708b92d861e07f9ce8905302ac" => :mojave
+    sha256 "f03c5689148154498bc5fb3267b839bdce5a6a7803187df7b2eb84b65838d610" => :high_sierra
+    sha256 "2ec7b0ab09872173db059158db1019994cd848a8694b75edf359535f4a2ebc60" => :x86_64_linux
   end
 
   depends_on "go" => :build
@@ -20,8 +21,9 @@ class Gh < Formula
       -X github.com/cli/cli/command.BuildDate=#{Date.today}
       -s -w
     ]
-    system "go", "build", "-trimpath", "-ldflags", ldflags.join(" "), "-o", bin/name, "./cmd/gh"
-
+    system "make", "bin/gh", "manpages", "LDFLAGS=#{ldflags.join(" ")}"
+    bin.install "bin/gh"
+    man1.install Dir["share/man/man1/gh*.1"]
     (bash_completion/"gh").write `#{bin}/gh completion -s bash`
     (fish_completion/"gh.fish").write `#{bin}/gh completion -s fish`
     (zsh_completion/"_gh").write `#{bin}/gh completion -s zsh`

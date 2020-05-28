@@ -1,19 +1,19 @@
 class Postgrest < Formula
   desc "Serves a fully RESTful API from any existing PostgreSQL database"
   homepage "https://github.com/PostgREST/postgrest"
-  url "https://github.com/PostgREST/postgrest/archive/v7.0.0.tar.gz"
-  sha256 "f3018c23d859255248cc741909e68bb3f12b87bf14d51cf275f54ec64b6eb891"
+  url "https://github.com/PostgREST/postgrest/archive/v7.0.1.tar.gz"
+  sha256 "12f621065b17934c474c85f91ad7b276bff46f684a5f49795b10b39eaacfdcaa"
   head "https://github.com/PostgREST/postgrest.git"
 
   bottle do
-    sha256 "0eb4f01b0a0b9fa5c3a3896c4d31fcbb22d0628d47637927df175229a24fae90" => :catalina
-    sha256 "9cb7f00e906a8569d70d02d445691c465739148c258e6afc6c60710b94dac032" => :mojave
-    sha256 "75a2037ab29b7888f1640f0508cab3221c1572d057ba8bdc7b982d2e48b9d9cf" => :high_sierra
-    sha256 "bc31542085297ec078dc95846545011e6bb910c960182c6b12fc0d3deab76037" => :x86_64_linux
+    sha256 "691546e89701fd582d47c697dc27551ef3284ee21933a5912f406e6fee4dd272" => :catalina
+    sha256 "34c0413e71a41bc8550b7ea5286e0330aa888990d2e2a8fe6d81b57152c83d61" => :mojave
+    sha256 "6ca3bb9cd14c9ab4ddd028493e4ffd70ddae571be74723997b677c6c67542c87" => :high_sierra
+    sha256 "eebd15397089be906915d5839a5e1b115f41c78f440158c92826f5d9a3c82765" => :x86_64_linux
   end
 
   depends_on "cabal-install" => :build
-  depends_on "ghc" => :build
+  depends_on "ghc@8.8" => :build
   depends_on "postgresql"
 
   def install

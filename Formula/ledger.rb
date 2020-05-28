@@ -1,16 +1,15 @@
 class Ledger < Formula
   desc "Command-line, double-entry accounting tool"
   homepage "https://ledger-cli.org/"
-  url "https://github.com/ledger/ledger/archive/v3.1.3.tar.gz"
-  sha256 "b248c91d65c7a101b9d6226025f2b4bf3dabe94c0c49ab6d51ce84a22a39622b"
-  revision 5
+  url "https://github.com/ledger/ledger/archive/v3.2.1.tar.gz"
+  sha256 "92bf09bc385b171987f456fe3ee9fa998ed5e40b97b3acdd562b663aa364384a"
   head "https://github.com/ledger/ledger.git"
 
   bottle do
-    sha256 "3b02ee846c8db3ef9957f12b17e6643eae29185fdb17ba8bafef56be146aa465" => :catalina
-    sha256 "d493c478fbb1b38024562f907b726ef85c3ce4407a3d54b7eeccd1e7288f08c2" => :mojave
-    sha256 "cdd130ebc5d4809f403f10dc012ee6abf1d339b98e236a7785a294b7d748358c" => :high_sierra
-    sha256 "e1e02ccb75cfa947e9119de729d463c78b1d057af46c46bab8d502cec56f98ad" => :x86_64_linux
+    sha256 "66d5a0700f708ed2030db289e5fb9437185f3f0cebc03d24a5a18ba299c94063" => :catalina
+    sha256 "a39a1ce36e416f8d8b920173d598a2635a51e6a15d86da5eee8a02c55c88744b" => :mojave
+    sha256 "442b0e1736797ca9686168635e991ba36924759e889c3a01052b4e39ba1b7d51" => :high_sierra
+    sha256 "16039893f5b574b5196b225cbac3dda8faf594ed9cf9f768e6e388146f6b243a" => :x86_64_linux
   end
 
   depends_on "cmake" => :build

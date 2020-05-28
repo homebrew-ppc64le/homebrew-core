@@ -3,22 +3,17 @@ class Jc < Formula
 
   desc "Serializes the output of command-line tools to structured JSON output"
   homepage "https://github.com/kellyjonbrazil/jc"
-  url "https://files.pythonhosted.org/packages/17/7f/5820ca206b8ce79142c5385ff5a4262757a0f568d96beee45945dfbd83db/jc-1.10.6.tar.gz"
-  sha256 "b4995a9c2b1e5ba15152d5253089535440ca1c715a0e53267fb61997278f5422"
+  url "https://files.pythonhosted.org/packages/ad/11/898a574b3bb132284dea1927ee35394d6b6153125260b70cd98af8bbf0bd/jc-1.11.1.tar.gz"
+  sha256 "4de55cd708c1c470c07b663f62c3ec0090ee08ac9a97df14a9e6abff054f024f"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "71f79a385201786f36f86584ae5a91ec8126ceddfd904ce896f843df8ef9d35d" => :catalina
-    sha256 "f56ea8eb22716909b06cc79325683322cbf891b30b62d198713fe27360ff191b" => :mojave
-    sha256 "09c29bc4985def19211eb214864ddcd6feaccc7687a5ed2985613b01064d3ab6" => :high_sierra
+    sha256 "41e71f4f9fc3e10d282afb05873dcded021d04c2f8da15116b64c061d0c39937" => :catalina
+    sha256 "e630df5735ca80e436e2939e8cd39aa7a6486e021a97dda42e223146903b7145" => :mojave
+    sha256 "3c1330f6be780259785289c55d0bf9c7deada9abc433e711381802260e9f9166" => :high_sierra
   end
 
   depends_on "python@3.8"
-
-  resource "ifconfig-parser" do
-    url "https://files.pythonhosted.org/packages/19/58/887683fe9baa51f307e1fe58d8beea5beb714a210b2ff6e6430a1430bb34/ifconfig-parser-0.0.5.tar.gz"
-    sha256 "6c512f12da0d7f314bb16f883e2d7d89d53198e88f6272a2465330cef117c58a"
-  end
 
   resource "ruamel.yaml" do
     url "https://files.pythonhosted.org/packages/16/8b/54a26c1031595e5edd0e616028b922d78d8ffba8bc775f0a4faeada846cc/ruamel.yaml-0.16.10.tar.gz"

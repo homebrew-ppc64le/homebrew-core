@@ -3,16 +3,15 @@ class Tox < Formula
 
   desc "Generic Python virtualenv management and test command-line tool"
   homepage "https://tox.readthedocs.org/"
-  url "https://files.pythonhosted.org/packages/c0/7f/46ff5bae3cef87400719e65de5f6b488699687a2e8a3a02f91c89c775aeb/tox-3.14.6.tar.gz"
-  sha256 "a4a6689045d93c208d77230853b28058b7513f5123647b67bf012f82fa168303"
-  revision 2 unless OS.mac?
+  url "https://files.pythonhosted.org/packages/31/20/3daf87b70ce61deecdf7ab5092ae03a29cd8c87ecb04080d3717f1578a88/tox-3.15.1.tar.gz"
+  sha256 "8c9ad9b48659d291c5bc78bcabaa4d680d627687154b812fa52baedaa94f9f83"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "5d87c680cd5a3201480c28fa3703275564ce75f17e5859c5867ead3e04fa8be5" => :catalina
-    sha256 "3660909850f58c4a48ff8c271c2425c8be9949536a3fcc61c182268f4af6fa1f" => :mojave
-    sha256 "13e5972d0aaefed0b4abc5279c7ff745f6278394e77e713ce74d6e6c5235e55c" => :high_sierra
-    sha256 "ba86bba8f2323b203fd5bc2abd8dd31ff7af1b5004534fece55ec9630c2f8c2d" => :x86_64_linux
+    sha256 "95efc18c3944d8a0aabf8450aa3589eecc5ca4f5b8dc4f87599cd77382e40275" => :catalina
+    sha256 "85200a541237bc95f78c3405f1c37989599eda005a2d278c78b0707ca9fc2aa6" => :mojave
+    sha256 "2d685b59a51a8b7d2bd374df8fbad269e9b19ab5f8d10222f8b055b8dfd465a4" => :high_sierra
+    sha256 "56e50b045266c8dc30a5ad6b34be9ae816238c859c314c7beff32744e6e89073" => :x86_64_linux
   end
 
   depends_on "python@3.8"
@@ -48,8 +47,8 @@ class Tox < Formula
   end
 
   resource "pyparsing" do
-    url "https://files.pythonhosted.org/packages/a2/56/0404c03c83cfcca229071d3c921d7d79ed385060bbe969fde3fd8f774ebd/pyparsing-2.4.6.tar.gz"
-    sha256 "4c830582a84fb022400b85429791bc551f1f4871c33f23e44f353119e92f969f"
+    url "https://files.pythonhosted.org/packages/c1/47/dfc9c342c9842bbe0036c7f763d2d6686bcf5eb1808ba3e170afdb282210/pyparsing-2.4.7.tar.gz"
+    sha256 "c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"
   end
 
   resource "six" do
@@ -63,8 +62,8 @@ class Tox < Formula
   end
 
   resource "virtualenv" do
-    url "https://files.pythonhosted.org/packages/98/30/13ec6895dd1e2aaef956cc587e19c88fca00b2be52bb29cc4b09995aded5/virtualenv-20.0.15.tar.gz"
-    sha256 "9e81279f4a9d16d1c0654a127c2c86e5bca2073585341691882c1e66e31ef8a5"
+    url "https://files.pythonhosted.org/packages/cc/d4/b0e9c0926b08ae4d3f2439bae3c370917ff8c32fc254acf7023fd131eeb0/virtualenv-20.0.20.tar.gz"
+    sha256 "fd0e54dec8ac96c1c7c87daba85f0a59a7c37fe38748e154306ca21c73244637"
   end
 
   def install

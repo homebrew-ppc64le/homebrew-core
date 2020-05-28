@@ -2,14 +2,15 @@ class Zeek < Formula
   desc "Network security monitor"
   homepage "https://www.zeek.org"
   url "https://github.com/zeek/zeek.git",
-      :tag      => "v3.1.2",
-      :revision => "df348b789002454cd0386757f3783f04398e5ae6"
+      :tag      => "v3.1.3",
+      :revision => "4f695cae3ba720981ab7e38c16d4ab1adf4f01f5"
+  revision 1
   head "https://github.com/zeek/zeek.git"
 
   bottle do
-    sha256 "f9f3fdd9475077828cec227a85365666ca95a39e67306dda80a58d3725c8a8d7" => :catalina
-    sha256 "ec5a351d756dcd7c75939adfa56780079805112bff56d5d2e6a6221c587e956d" => :mojave
-    sha256 "bb765b9265c65b12dea73f35c441b502511340f0a8cb159b0a8cb6be42d09ec6" => :high_sierra
+    sha256 "1d87ba343d034214a1ae746020136f57204f68b9e4f02f2b181aa05c1558c0da" => :catalina
+    sha256 "20ae87dfb2d6f51ce25ec25dffd41f1c8d3c759b51eed049cc5e336a02774a8f" => :mojave
+    sha256 "eb97aa9b288b7848705abba3c51742a1ef94d374bff2f8fcaf61d9c17f39c436" => :high_sierra
   end
 
   depends_on "bison" => :build

@@ -3,19 +3,19 @@ class Yosys < Formula
   homepage "http://www.clifford.at/yosys/"
   url "https://github.com/YosysHQ/yosys/archive/yosys-0.9.tar.gz"
   sha256 "f2e31371f9cf1b36cb4f57b23fd6eb849adc7d935dcf49f3c905aa5136382c2f"
-  revision 1
+  revision 2
   head "https://github.com/YosysHQ/yosys.git"
 
   bottle do
-    sha256 "a85ecf7a99c222619a6ab700a9c48e297a40bfb26aa0e7cf3bd62c1f866f7f77" => :catalina
-    sha256 "4600fbbe390a05e56acf53bf6c74af99d3cd9504fe5077a35b6aaf6a4e3d134b" => :mojave
-    sha256 "bc5262478fddbea5a59542221d7d77d7b4eb679a5938bc5fb72682911870be46" => :high_sierra
+    sha256 "4fb59d68ecc03d90966b442d32d2107854403a772915f5d6543d3ceab008d7ec" => :catalina
+    sha256 "b20a335e6a787663fe6bc35a653f4330532047898dae9b9ddda67c40533143d6" => :mojave
+    sha256 "a45b22aa4a58d1aa5757d5b19de374c02a41e7a1ade80d7ce8053537fe8f0829" => :high_sierra
   end
 
   depends_on "bison" => :build
   depends_on "pkg-config" => :build
   depends_on "libffi"
-  depends_on "python"
+  depends_on "python@3.8"
   depends_on "readline"
 
   def install

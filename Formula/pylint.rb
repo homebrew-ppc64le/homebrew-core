@@ -3,22 +3,22 @@ class Pylint < Formula
 
   desc "It's not just a linter that annoys you!"
   homepage "https://github.com/PyCQA/pylint"
-  url "https://files.pythonhosted.org/packages/ff/ea/f4dada656f59cb60a223a5f4e83718f41ec82770f7f96b4b54140a4e5df9/pylint-2.5.0.tar.gz"
-  sha256 "588e114e3f9a1630428c35b7dd1c82c1c93e1b0e78ee312ae4724c5e1a1e0245"
+  url "https://files.pythonhosted.org/packages/b4/2d/c209a539c32e2d9c7396e69bab95ad4332b73cdc360bbc89495d7e49d332/pylint-2.5.2.tar.gz"
+  sha256 "b95e31850f3af163c2283ed40432f053acbc8fc6eba6a069cb518d9dbf71848c"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "b4aa05c3217eafcbc9d0b62309bb4e96f01474fa05617e7c9fa17187b923ffd2" => :catalina
-    sha256 "cb02dea951f077fcd35d4ca4076c6377e5762eb5a0ba24c14d6eb906a9e23704" => :mojave
-    sha256 "e81c3c68c60cbef27e5c8367e6c32d8331c6ead9c8cf2af9c19651deb4328497" => :high_sierra
-    sha256 "7cb82a1ddbab41b4387592565c48c8b241e4fd9edf9969e18220f9276ffa15d8" => :x86_64_linux
+    sha256 "92d527a0aafd6763b79d82692440a780660b2964468502ca9966461e74e98139" => :catalina
+    sha256 "0fde58f98f90eb124bd6b700ca3ca968d9cf76550c5e3a3c39ff00f2495e3105" => :mojave
+    sha256 "e8424a8394848a73f29ecb9b90d8149c8bdd1f425e5b248ab57619c422a9d51e" => :high_sierra
+    sha256 "83c95a4b622db9de5cb6b8868f9b299e812e0b63ce307be10e9d532185664487" => :x86_64_linux
   end
 
   depends_on "python@3.8"
 
   resource "astroid" do
-    url "https://files.pythonhosted.org/packages/c7/77/b63d5956ffaa237981fa99f902d1963f2c097c1dd9700447b4815dedceb9/astroid-2.4.0.tar.gz"
-    sha256 "29fa5d46a2404d01c834fcb802a3943685f1fc538eb2a02a161349f5505ac196"
+    url "https://files.pythonhosted.org/packages/c4/82/30e5f146863fb34b733bd57e82f96a6c61a6cb3692fc838e20d0091ee752/astroid-2.4.1.tar.gz"
+    sha256 "4c17cea3e592c21b6e222f673868961bad77e1f985cb1694ed077475a89229c1"
   end
 
   resource "isort" do

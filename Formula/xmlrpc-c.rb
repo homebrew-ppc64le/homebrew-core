@@ -12,7 +12,11 @@ class XmlrpcC < Formula
     sha256 "19784c94e65b73ea524331452a28458eaa29b78419955805226a50f1632ce6d1" => :sierra
     sha256 "503a064edf4638c671b6377d91045c7f0990203b9b8d6f873d84415c8c98b614" => :el_capitan
     sha256 "6fb643c4bc7e7fdef6c276f533eedafe77d325fd505218bdbd8244af5577db31" => :yosemite
+    sha256 "7323e4873c7a1ac0545d27522769469808d33d367773dcabcf4bb162d204a6ec" => :x86_64_linux
   end
+
+  uses_from_macos "curl"
+  uses_from_macos "libxml2"
 
   def install
     ENV.deparallelize

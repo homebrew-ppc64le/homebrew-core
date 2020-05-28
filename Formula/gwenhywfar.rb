@@ -9,7 +9,6 @@ class Gwenhywfar < Formula
     sha256 "43fbdfc140f948cac62e00c6468b310856797b3bd732e8e7db2dee4983ec2787" => :mojave
     sha256 "b14e191f6863b0bd133367cd1e5e22a0785550edbf3637930b5d16ec2a83ecd9" => :high_sierra
     sha256 "a006e0b29c726b480bcdcfc40192d776c7ce2e8e44196122d7aabf3884857c5f" => :sierra
-    sha256 "e080c25beceb5079517ee5a87b320e9ec3cbd6c42808841829891e9d34000aca" => :x86_64_linux
   end
 
   depends_on "pkg-config" => :build

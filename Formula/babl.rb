@@ -3,14 +3,15 @@ class Babl < Formula
   homepage "http://www.gegl.org/babl/"
   url "https://download.gimp.org/pub/babl/0.1/babl-0.1.74.tar.xz"
   sha256 "9a710b6950da37ada94cd9e2046cbce26de12473da32a7b79b7d1432fc66ce0e"
+  revision 2
   # Use GitHub instead of GNOME's git. The latter is unreliable.
   head "https://github.com/GNOME/babl.git"
 
   bottle do
-    sha256 "2ef985cee9f141135a50598a283ed465798ffb0385c515a30dab0c25a27dc4c8" => :catalina
-    sha256 "55b7746f0c997a0833ff8fec9d892ac6b81382b1c5d7d80f9c939b4b2f27e733" => :mojave
-    sha256 "460bca8dc9a0dbe38e7c659d746a0b3c0df80237c0dfc8884d8750bad75729d9" => :high_sierra
-    sha256 "f604bcc6f573ed961756e400f761ef8b41b98f508dcd7eb7135fe858257e3471" => :x86_64_linux
+    sha256 "bf355edff79acdd3cb2925486c285e335159998e9c1033b50ac1d3e45bcb8bf2" => :catalina
+    sha256 "006a8102eb5512992ac1cca31851026a4202eb11cc80dababd95662680637a4b" => :mojave
+    sha256 "de56e5e2e7df44e673e1aacfa0742b9d2753d3803da8fb6d68cb82739782206f" => :high_sierra
+    sha256 "40493de97dbb826ae5e0de67435c10e5ecef2850e39c5da50c84818d6a6487d3" => :x86_64_linux
   end
 
   depends_on "glib" => :build # for gobject-introspection
@@ -18,17 +19,11 @@ class Babl < Formula
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
-  depends_on "python" => :build
   depends_on "little-cms2"
 
   def install
-    args = %W[
-      --prefix=#{prefix}
-      -Dwith-docs=false
-    ]
-
     mkdir "build" do
-      system "meson", *args, ".."
+      system "meson", *std_meson_args, "-Dwith-docs=false", ".."
       system "ninja", "-v"
       system "ninja", "install", "-v"
     end

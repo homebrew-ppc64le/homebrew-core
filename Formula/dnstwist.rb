@@ -3,14 +3,14 @@ class Dnstwist < Formula
 
   desc "Test domains for typo squatting, phishing and corporate espionage"
   homepage "https://github.com/elceef/dnstwist"
-  url "https://github.com/elceef/dnstwist/archive/20200427.tar.gz"
-  sha256 "ee1e0b6b1710b09ae1d3db2279f00bab8a95eddada5af904f30b7643c8dc2731"
+  url "https://github.com/elceef/dnstwist/archive/20200521.tar.gz"
+  sha256 "d382da5ec9c85531f418a07d7cf944cea31273551629a5552d35f1ad109219d6"
 
   bottle do
     cellar :any
-    sha256 "591c731cb45a43c32e3f233fce4573551719519069ea8b1e8d913dd10afb5667" => :catalina
-    sha256 "486c95755a10d5d5446bdf7b7972a3553ecfe6ceed73915fed9ea3610173fab9" => :mojave
-    sha256 "df58c586c3035a4c31fcd549db481ddfe23da3743939174f124462b815804f41" => :high_sierra
+    sha256 "3487d1b280ded2ae95a3847a2847832c9c5b71f0b5d01cc63a6241765084acf5" => :catalina
+    sha256 "2801041f95aee68919ff9811d826c885ade18b9896e1de9ca3585ff73d9f81e3" => :mojave
+    sha256 "19b709cc1314ada034f1cbc9de43536e0540d6cb468de43473a63a6dfde1c4d2" => :high_sierra
   end
 
   depends_on "geoip"
@@ -95,10 +95,11 @@ class Dnstwist < Formula
   end
 
   test do
-    output = shell_output("#{bin}/dnstwist -rsw brew.sh")
+    output = shell_output("#{bin}/dnstwist -rsw --thread=1 brew.sh")
 
     assert_match version.to_s, output
-    assert_match /Processing \d+ domain variants/, output
+    assert_match "Fetching content from: http://brew.sh", output
+    assert_match /Processing \d+ permutations/, output
     assert_not_match /notice: missing module/, output
   end
 end

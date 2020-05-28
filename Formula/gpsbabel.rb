@@ -10,7 +10,6 @@ class Gpsbabel < Formula
     sha256 "0d5fa17f760e4ff0ebf88bf4b461c1fba6498278edd57ab77caee7576f5c4609" => :mojave
     sha256 "e147b5217a57fdf32a8073f53718e6423f227e967f9d495cb3a0bc38b5e2ad3a" => :high_sierra
     sha256 "e982a298816049c9094762699799f238cfc8d7804cf5d72f6816ebd0e8aa414e" => :sierra
-    sha256 "ef937dbb8369b49a27f7a7817cd43d2daa38b650eaa71121f9114de23a1ee32f" => :x86_64_linux
   end
 
   depends_on "libusb"

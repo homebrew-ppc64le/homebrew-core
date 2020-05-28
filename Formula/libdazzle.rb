@@ -3,26 +3,26 @@ class Libdazzle < Formula
   homepage "https://gitlab.gnome.org/GNOME/libdazzle"
   url "https://download.gnome.org/sources/libdazzle/3.36/libdazzle-3.36.0.tar.xz"
   sha256 "82b31bbf550fc62970c78bf7f9d55e5fae5b8ea13b24fe2d13c8c6039409d958"
+  revision 1
 
   bottle do
-    sha256 "2bfc647ec712a7b949e5356bc9a1d13f28154ca71ca89e5dd020ddb8d2de3182" => :catalina
-    sha256 "c00b9764eaa408bbc4881ff581225cc8a15f51ac568e057c2228315df9c89f00" => :mojave
-    sha256 "f9cbbdc898a2ad09a14664cfddb0775b44fabdc88a06d967a6481a1f27421f41" => :high_sierra
-    sha256 "7d41d49320b61bf670e715fc25b2bdde512ae904c440c16f9dfa5f6b9b732931" => :x86_64_linux
+    sha256 "9e998d97789abd2087bdba47264c941326643ef3a68eab023062d1235273427d" => :catalina
+    sha256 "36ff52568b819c34b3d4f559f00bf01637d3595d049c7740e04cacfd487a4bca" => :mojave
+    sha256 "b19d3740cbbb2dc6e001b92a8f72cb372af2ea0a8f9e10db9adc5e06026dd866" => :high_sierra
+    sha256 "2237af8a18145b78a836fcfe598811b07a816c0504d05dcbba9953841a1d2212" => :x86_64_linux
   end
 
   depends_on "gobject-introspection" => :build
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
-  depends_on "python" => :build
   depends_on "vala" => :build
   depends_on "glib"
   depends_on "gtk+3"
 
   def install
     mkdir "build" do
-      system "meson", "--prefix=#{prefix}", "-Dwith_vapi=true", ".."
+      system "meson", *std_meson_args, "-Dwith_vapi=true", ".."
       system "ninja", "-v"
       system "ninja", "install", "-v"
     end

@@ -10,7 +10,6 @@ class Fltk < Formula
     sha256 "3ea6ccc2fec9151f3ed0f20761794b9fe0477d168dbc4e83ba88b3f3d16c530b" => :mojave
     sha256 "6edac0b91f19783376ec95c84819405a6f029d7d2bf8ac636d421682fc064e34" => :high_sierra
     sha256 "e2bd28a348c8fbf948f2400d3df29ba786a2ca9cc3f87b3727477fb49ebf57f0" => :sierra
-    sha256 "f6acbd352e06b9fbd53a005f903ef3de4e2f5f8bb555c7b62fa5b7ac25eaa59b" => :x86_64_linux
   end
 
   depends_on "jpeg"

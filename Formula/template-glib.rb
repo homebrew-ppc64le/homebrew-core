@@ -3,26 +3,25 @@ class TemplateGlib < Formula
   homepage "https://gitlab.gnome.org/GNOME/template-glib"
   url "https://download.gnome.org/sources/template-glib/3.34/template-glib-3.34.0.tar.xz"
   sha256 "216bef6ac3607666b8ca72b936467f7020ce6421c02755c301d079576c9c3dfd"
-  revision 1
+  revision 2
 
   bottle do
     cellar :any
-    sha256 "563f6666bee39272afb3f9d144385ad4c1df465799c49baa5b332c3f6199b21a" => :catalina
-    sha256 "9b7efaccfbeb16432f131fa1bdd8f9f305a8940746b22a7f5a0967961d78f0bd" => :mojave
-    sha256 "54a873e731547d17e1ffc513c74760bcb0005b81171715ef1d40de7441ce7cd7" => :high_sierra
+    sha256 "9076cc6161b090edf56b7ffdb0dcb31f3590c5b359b3e74fb78c1c0119b2c256" => :catalina
+    sha256 "b5cbd61d31bcf899a1940b0e0c00b2a788a6dc1316d90847a0668973525a6048" => :mojave
+    sha256 "4e0560a1eb5ac91fdd4ea3dc89086f0b50cc65d68c32c3c8bb4fa49e0d05454d" => :high_sierra
   end
 
   depends_on "bison" => :build # does not appear to work with system bison
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
-  depends_on "python@3.8" => :build
   depends_on "glib"
   depends_on "gobject-introspection"
 
   def install
     mkdir "build" do
-      system "meson", "--prefix=#{prefix}", "-Dwith_vapi=false", ".."
+      system "meson", *std_meson_args, "-Dwith_vapi=false", ".."
       system "ninja", "-v"
       system "ninja", "install", "-v"
     end

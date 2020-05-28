@@ -12,7 +12,6 @@ class Inspectrum < Formula
     sha256 "e54bcce14f93b2c84b738ca978b4b931df3b59d8c444288c5619a759b378a04c" => :high_sierra
     sha256 "0877551fa20ea67f1aab886ccd90577760ad7ab295787dd37e509283cb2129d2" => :sierra
     sha256 "ae97d37f999dab31422a9a9dac70756e8f5b97a0f6520cb59ae94bee5a992755" => :el_capitan
-    sha256 "7d0552b4d03946982cbc4a2b3b94b6c3650575311d6f46d64a0a02bc2e63a419" => :x86_64_linux
   end
 
   depends_on "cmake" => :build

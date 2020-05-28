@@ -1,16 +1,16 @@
 class Redis < Formula
   desc "Persistent key-value database, with built-in net interface"
   homepage "https://redis.io/"
-  url "http://download.redis.io/releases/redis-5.0.9.tar.gz"
-  sha256 "53d0ae164cd33536c3d4b720ae9a128ea6166ebf04ff1add3b85f1242090cb85"
+  url "http://download.redis.io/releases/redis-6.0.3.tar.gz"
+  sha256 "bca46dce81fe92f7b2de4cf8ae41fbc4b94fbd5674def7f12c87e7f9165cbb3a"
   head "https://github.com/antirez/redis.git", :branch => "unstable"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "4d8c4759c1429c11f586bcf870f94f218d6352fd56ac5e4ee1d5dfadbc6e0304" => :catalina
-    sha256 "4cad6cbf05beaab5549a12dc66650a4936f3e468ae421c8fcf9fd38ede66c793" => :mojave
-    sha256 "ef9ac989dd55b0aae732ded463ae82e248795a77fd0f7d9021fd9c6f4fdbee73" => :high_sierra
-    sha256 "690237c98dda20271b9bf2436c740bde26f958db0b619d03d112f0bb3d764c5a" => :x86_64_linux
+    sha256 "697a7d23ed18368d613ed1ee98e3acff2ee25bf0a467fea7eba2bba2bf318358" => :catalina
+    sha256 "c73516ff4a9049dc500901fc6288ddbc8da493fc44a04eebcce6d38aafeae753" => :mojave
+    sha256 "fd65764b4e0949911693d4004deae63e8bfe6831cf3f57c9defea2e47f98bbfc" => :high_sierra
+    sha256 "dbd1164d9e04d6878030796054eb575bfcb7b9219a0a1f7e93a5874f8d30d02d" => :x86_64_linux
   end
 
   def install

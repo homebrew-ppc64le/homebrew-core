@@ -3,14 +3,14 @@ class Cpl < Formula
   homepage "https://www.eso.org/sci/software/cpl/index.html"
   url "ftp://ftp.eso.org/pub/dfs/pipelines/libraries/cpl/cpl-7.1.2.tar.gz"
   sha256 "b6d20752420e2333e86d9a08c24a08057351a9fef97c32f5894e63fbfece463a"
-  revision 4
+  revision 5
 
   bottle do
     cellar :any
-    sha256 "06b23f3fed234e018af9df86077cdaf16e2c3e60e509067c26c872c762bc8e52" => :catalina
-    sha256 "6bd5f0bbd133fac5d7196cdeb9d0002b747cd03d978410b22001797d76c99939" => :mojave
-    sha256 "3bed418a92c92292a0583f5ea1401fdea4e0d860c179f1f9f7d54cfeb013aa76" => :high_sierra
-    sha256 "f0b7d332df4c285599a35be646a32aec8102597ea5f97b2d2bc4aab67bdba0aa" => :x86_64_linux
+    sha256 "477077e46d63da4596429a0f71012969a8bec6a91db94aa838a7e040c18713c7" => :catalina
+    sha256 "64c1e2fb6caadfcdb36731d7e197dd234a03afbe531ce0d418fe05b4719a96d3" => :mojave
+    sha256 "8959f7d8558635bf89222d668ab7ef4f6f91059652350c74bc493d17d66b7c54" => :high_sierra
+    sha256 "7d9346a069f5136e0f3e6008fe5a39e3575afde3071a022c2c848c4ffd7c236b" => :x86_64_linux
   end
 
   depends_on "cfitsio"

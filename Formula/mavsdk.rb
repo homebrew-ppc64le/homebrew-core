@@ -2,15 +2,15 @@ class Mavsdk < Formula
   desc "API and library for MAVLink compatible systems written in C++11"
   homepage "https://mavsdk.mavlink.io"
   url "https://github.com/mavlink/MAVSDK.git",
-    :tag      => "v0.24.0",
-    :revision => "38ec5f6ee52190f2e1f6e14e8d371caec5341009"
+    :tag      => "v0.26.0",
+    :revision => "62fa8925d1d7e98b0dd4f167b9a319e84d16c152"
 
   bottle do
     cellar :any
-    sha256 "2dd542f036c298a7b96fb05a2d99ad2434e7d4ef38d44b2cfc3895575877a1e4" => :catalina
-    sha256 "efe55369ba19e122fb6e37807441eff614511391c4a5fcfd5835c7b9be899448" => :mojave
-    sha256 "f15e2683f4851c4fca3fbd10b2c664711401bff00f20c4f151c0213bda145d0d" => :high_sierra
-    sha256 "5f53351d145452a7d2609120aa82731bedcfa6d1dc4d2da1c8a56465b9ed1ed5" => :x86_64_linux
+    sha256 "3c1d4d0b516c4d7ac452f547e544c6ff47c628982a151c924d1b463a6495081f" => :catalina
+    sha256 "f5e229da5563049e46a9897e830e13761ab9fbb65b8f836054def66efbd5b3f6" => :mojave
+    sha256 "c56be88b8ae42004960dd87e9b8150d6ae44c79270440b83eb219eaae8e28529" => :high_sierra
+    sha256 "d2cfc76c1d68b998986a753c8a30182ee3d859b22c92055108f9af3531fcf69c" => :x86_64_linux
   end
 
   depends_on "cmake" => :build

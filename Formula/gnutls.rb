@@ -4,12 +4,13 @@ class Gnutls < Formula
   url "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.13.tar.xz"
   mirror "https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/gnutls/v3.6/gnutls-3.6.13.tar.xz"
   sha256 "32041df447d9f4644570cf573c9f60358e865637d69b7e59d1159b7240b52f38"
+  revision 2
 
   bottle do
-    sha256 "4b704a699428a852a8cab36803440e07d9fe4bb2d699000f7afd50194258ec71" => :catalina
-    sha256 "65e99b90567f727c64139003577fb03093e8c8913040e3cbb4993916fd9e9e87" => :mojave
-    sha256 "522ae568850ff6065e92e38953f7813073ae751fe6dea7a7a1f418945971873b" => :high_sierra
-    sha256 "7442bd01f434b32e2c196b7a8dbaf5b3208a9fe4458f9bee31952975e68d54d4" => :x86_64_linux
+    sha256 "40615ea7396142c9337b7f1d8d70d7d1e1d61672cf10a60b09fa22faea6aa06b" => :catalina
+    sha256 "d4bcb18b32154069da1878f8499bdf0f391f9b537d6843a445279a6b819fd1b7" => :mojave
+    sha256 "7c063a60ae1ab8719bdda9af5d87579f967ea53b158ecbc8f5a8b54a7e9e4f8e" => :high_sierra
+    sha256 "6a491f987661c2a607c7515a9d5b4870caf61c1a37233aa69d8e3000ca9d0ae5" => :x86_64_linux
   end
 
   depends_on "autoconf" => :build
@@ -31,7 +32,7 @@ class Gnutls < Formula
       --disable-static
       --prefix=#{prefix}
       --sysconfdir=#{etc}
-      --with-default-trust-store-file=#{etc}/openssl/cert.pem
+      --with-default-trust-store-file=#{pkgetc}/cert.pem
       --disable-guile
       --disable-heartbeat-support
       --with-p11-kit
@@ -69,9 +70,8 @@ class Gnutls < Formula
       $CHILD_STATUS.success?
     end
 
-    openssldir = etc/"openssl"
-    openssldir.mkpath
-    (openssldir/"cert.pem").atomic_write(valid_certs.join("\n"))
+    pkgetc.mkpath
+    (pkgetc/"cert.pem").atomic_write(valid_certs.join("\n"))
   end
 
   test do

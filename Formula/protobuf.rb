@@ -2,21 +2,21 @@ class Protobuf < Formula
   desc "Protocol buffers (Google's data interchange format)"
   homepage "https://github.com/protocolbuffers/protobuf/"
   url "https://github.com/protocolbuffers/protobuf.git",
-      :tag      => "v3.11.4",
-      :revision => "d0bfd5221182da1a7cc280f3337b5e41a89539cf"
+      :tag      => "v3.12.1",
+      :revision => "a37cc13b2f6d11303811011b0bfbc867e7c0bf2b"
   head "https://github.com/protocolbuffers/protobuf.git"
 
   bottle do
-    sha256 "b6eca888405b4998b1a5be7c7425d94f9ef2db76fcd9355ac920deaee3e2d15d" => :catalina
-    sha256 "809461047f541cfc72d836ea7c7af95ad18f0900ea9bd163f478abf53d3fafaf" => :mojave
-    sha256 "ae2dd1abf649a9a9c313caa958bd08d175b5a8a88828b44770526e29c83c807e" => :high_sierra
-    sha256 "e883669c1432e638c98a3a27f12443fa3d60cf3b9b38e565243295e7a828701d" => :x86_64_linux
+    sha256 "6b13b089c2754bb9df99f2621ea0fd0fd5feccca601aaca10dc6982927c6fc3a" => :catalina
+    sha256 "b09bdcad4bde73a6d9f5675979da6f10b16b9620a26b5bc6a7639d03e3b7fccb" => :mojave
+    sha256 "af2d9b9bc381ef83a030cef3960a5e72bd1007e5ae34d5b8a9f3b7901cdfdd19" => :high_sierra
+    sha256 "8cda963affc5fb4165ad414c0594294696e16915170f3292a94a26731d5235f5" => :x86_64_linux
   end
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
-  depends_on "python" => [:build, :test]
+  depends_on "python@3.8" => [:build, :test]
 
   resource "six" do
     url "https://files.pythonhosted.org/packages/21/9f/b251f7f8a76dec1d6651be194dfba8fb8d7781d10ab3987190de8391d08e/six-1.14.0.tar.gz"
@@ -50,14 +50,14 @@ class Protobuf < Formula
     ENV.append_to_cflags "-L#{lib}"
 
     resource("six").stage do
-      system "python3", *Language::Python.setup_install_args(libexec)
+      system Formula["python@3.8"].opt_bin/"python3", *Language::Python.setup_install_args(libexec)
     end
     chdir "python" do
-      system "python3", *Language::Python.setup_install_args(libexec),
+      system Formula["python@3.8"].opt_bin/"python3", *Language::Python.setup_install_args(libexec),
                         "--cpp_implementation"
     end
 
-    version = Language::Python.major_minor_version "python3"
+    version = Language::Python.major_minor_version Formula["python@3.8"].opt_bin/"python3"
     site_packages = "lib/python#{version}/site-packages"
     pth_contents = "import site; site.addsitedir('#{libexec/site_packages}')\n"
     (prefix/site_packages/"homebrew-protobuf.pth").write pth_contents
@@ -76,6 +76,6 @@ class Protobuf < Formula
     EOS
     (testpath/"test.proto").write testdata
     system bin/"protoc", "test.proto", "--cpp_out=."
-    system "python3", "-c", "import google.protobuf"
+    system Formula["python@3.8"].opt_bin/"python3", "-c", "import google.protobuf"
   end
 end

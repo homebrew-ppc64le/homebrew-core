@@ -2,16 +2,16 @@ class Tanka < Formula
   desc "Flexible, reusable and concise configuration for Kubernetes using Jsonnet"
   homepage "https://tanka.dev"
   url "https://github.com/grafana/tanka.git",
-    :tag     => "v0.9.2",
-    :revsion => "178f4bef263581a8cdf298a11365d412e11b6351"
+    :tag      => "v0.10.0",
+    :revision => "7f5f485a411aa08752fd6ed4847c8013e95f92d1"
   head "https://github.com/grafana/tanka.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "d3005e8323875d7daaa31a8c035198bc7c50c7102d82a12058f08d17cdf459de" => :catalina
-    sha256 "856493555f7da9fa5cb04a560a7ec99464b295bc790cb731efb35fe8bb05b988" => :mojave
-    sha256 "2ca310b05a3bca4177f7195db45acf3b685c1a5ef28b9668ff971fb4637236ea" => :high_sierra
-    sha256 "a0b98561299610bbcbdb329fd957c183954fcfe0b382abfc23a7467ecaa1b794" => :x86_64_linux
+    sha256 "a54f8f418c6ecdfe47395565087a4cd178e6e1a88e211c9af09ac65088e24125" => :catalina
+    sha256 "e6dea5997e1f3d171eb3ab3dfe3ece611ac47a89b94e46aa679e1ed407a3d475" => :mojave
+    sha256 "c540615f2c51aa62fd70c6b0ca31686c2b24216c5873c0e93520ef349296f8db" => :high_sierra
+    sha256 "92d38c71cb23f6c52829b3059da5d72ac148b6968864c4e5b5848676c04ca8fb" => :x86_64_linux
   end
 
   depends_on "go" => :build

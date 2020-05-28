@@ -6,16 +6,15 @@ class Libvorbis < Formula
 
   bottle do
     cellar :any
-    sha256 "893672680486cd93229556f0dc573d06bf5b21061193580e3b0a21b5b4ae4e40" => :catalina
-    sha256 "ac35ee835666c32cd678636e1d19899dfef55191bcc776eeddedcd5ad19eac03" => :mojave
-    sha256 "a9ec94abce8d34210ce323d2398ae689c330e7f069ecde0d4c40ef3b8259f6ba" => :high_sierra
-    sha256 "b0912f4af1e8e229b1cf80cceb9a2ad4357e77206691afd628973f360ad8af1d" => :sierra
-    sha256 "a888a452d5089281a05607449f10df9d8d6eb09c8effb93470f0f4f06349df8b" => :el_capitan
-    sha256 "1e2dde0e71f4889b0f5c4288987e006c2ca9be3fc7dcb30ac1b8b85fa955ca62" => :x86_64_linux
+    rebuild 1
+    sha256 "78dd589f9c2110c204e8762d3ee2899b209cded2bd372603be0fc8c748f52cd4" => :catalina
+    sha256 "2fdfb811a94b56091aa3175708e92f7371c59a961a798fe8dfb2a82d0241406e" => :mojave
+    sha256 "434729ebb5c161e3240dde60f752af6bbec324af3b7df87f802d48134db92afb" => :high_sierra
+    sha256 "39eef213df783ebcee233503664973a3d56719f28915aa0f392a86b2858ee6cd" => :x86_64_linux
   end
 
   head do
-    url "https://git.xiph.org/vorbis.git"
+    url "https://gitlab.xiph.org/xiph/vorbis.git"
 
     depends_on "autoconf" => :build
     depends_on "automake" => :build

@@ -1,15 +1,15 @@
 class Ngt < Formula
   desc "Neighborhood graph and tree for indexing high-dimensional data"
   homepage "https://github.com/yahoojapan/NGT"
-  url "https://github.com/yahoojapan/NGT/archive/v1.11.0.tar.gz"
-  sha256 "23217060b51a54e2812fefd0767f298012e5eb2486aa661d2fab8ac9a249d944"
+  url "https://github.com/yahoojapan/NGT/archive/v1.11.6.tar.gz"
+  sha256 "d7449e4486efd8819288f62fe274193a694a2d3ecb27461122bbb3f8cb877987"
 
   bottle do
     cellar :any
-    sha256 "2b379f9d965c216978fb3afce5218e4f33d2e8adc4d7a93751eaad9441f225e1" => :catalina
-    sha256 "afe91fbd2b7f3568b76bb8aebc0f58ca4508a36e913f26ff3ee8acc9a3c7e727" => :mojave
-    sha256 "efd5d3990a06f2b2cd03b24faa02771ca276fd148b1063c478ee152fc305dfad" => :high_sierra
-    sha256 "94d251c9df5e13414c6c6969066453e1b86eae3f1aa8f2fc1cf3006090259e29" => :x86_64_linux
+    sha256 "20d0b230f7a4ca0c478402e827ffbc1d5c3492818622bfede04b5c60a5daa9f2" => :catalina
+    sha256 "4dd35ae5acda58cbe9b840a0f45116eb73a2bebcb0752cafc7439c898c3e6bc2" => :mojave
+    sha256 "2a47ea878b03ed9c6bbdfe4007e21b291f2ff3bc6ad7606abe23f1efd5e85d78" => :high_sierra
+    sha256 "795313f0a7eaf9a8cdc067facca9aafd823db7c2861c1be4c3e4c57d2e08e639" => :x86_64_linux
   end
 
   depends_on "cmake" => :build

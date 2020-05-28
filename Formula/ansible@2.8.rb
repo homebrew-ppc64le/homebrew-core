@@ -3,15 +3,15 @@ class AnsibleAT28 < Formula
 
   desc "Automate deployment, configuration, and upgrading"
   homepage "https://www.ansible.com/"
-  url "https://releases.ansible.com/ansible/ansible-2.8.11.tar.gz"
-  sha256 "156caa8b6c60b9f0d5c7d57ee0f4e46d8e226147b58546be6a8ac52925a9c191"
+  url "https://releases.ansible.com/ansible/ansible-2.8.12.tar.gz"
+  sha256 "2a4ce2a3f387d2595ee3f968c3ea50d6db0ab2d8306f0e81ab96c2a15a683124"
 
   bottle do
     cellar :any
-    sha256 "9bab83ee265c5e124229c4f9258af04a36237ba7720de2915367f726ea542867" => :catalina
-    sha256 "c7d5496063d4a1d72bcdfffc53dfbfdec3d0751e9c8965c35ef31205cf436789" => :mojave
-    sha256 "3f0a597a2beed699a18b11db6242a3f269f09489bf029e9c8b9d3bc293d2a1e4" => :high_sierra
-    sha256 "02fe2309b974b1d25e95f25536d369f6856aec40610d10481d5e473f50d68d39" => :x86_64_linux
+    sha256 "3f0467a5aca03c891f6c2102f5ca2b1264146187db78e6618d94696886ed6a17" => :catalina
+    sha256 "fd902917ccd334d1e247f5e49777458ec65fb91efd21c408be9ca0f4a3d7a6f7" => :mojave
+    sha256 "601eed0bea47d9bcea98a403a0a5c13d5ffb1a5a9598bdde3c7c170c22d3bf0f" => :high_sierra
+    sha256 "ab2f15e7c8c67a3a287c23711d27e382864b7ceebe5d38ef6af4e8bf5dac4154" => :x86_64_linux
   end
 
   keg_only :versioned_formula
@@ -19,7 +19,7 @@ class AnsibleAT28 < Formula
   depends_on "pkg-config" => :build
   depends_on "libyaml"
   depends_on "openssl@1.1"
-  depends_on "python"
+  depends_on "python@3.8"
 
   uses_from_macos "libffi"
   uses_from_macos "libxslt"
@@ -596,7 +596,7 @@ class AnsibleAT28 < Formula
   end
 
   def install
-    ENV.prepend_path "PATH", Formula["python"].opt_libexec/"bin"
+    ENV.prepend_path "PATH", Formula["python@3.8"].opt_libexec/"bin"
 
     # Fix "ld: file not found: /usr/lib/system/libsystem_darwin.dylib" for lxml
     ENV["SDKROOT"] = MacOS.sdk_path if OS.mac? && MacOS.version == :sierra

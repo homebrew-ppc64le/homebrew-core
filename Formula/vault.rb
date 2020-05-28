@@ -5,29 +5,23 @@ class Vault < Formula
   desc "Secures, stores, and tightly controls access to secrets"
   homepage "https://vaultproject.io/"
   url "https://github.com/hashicorp/vault.git",
-      :tag      => "v1.4.0",
-      :revision => "d808ace758b9bac5c84a9634ffbfae43c5f5a3ad"
+      :tag      => "v1.4.2",
+      :revision => "18f1c494be8b06788c2fdda1a4296eb3c4b174ce"
   head "https://github.com/hashicorp/vault.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "1c4f878351dc096f0e0d51b54ae0380780d949e7aece9f08d7f205cb6c6391d6" => :catalina
-    sha256 "c33752ff38c1578c85044087f70fe66dd5d615ef9fb98536492d857f0cd154b5" => :mojave
-    sha256 "9c1fa0610b597f5a3dce30415aa634b5c5381376f48774b2bd3e12b9c3434b6c" => :high_sierra
-    sha256 "1d89b7865f3f4143fbe87cbe20f6640c7a084f5e6eb55c07c0abcf7652c62b99" => :x86_64_linux
+    sha256 "e5fc1b82276bbae49e9279b387c508781079dc26b11cdf8c3b23b75b3f4940cf" => :catalina
+    sha256 "f1841e6f4f8e9b9a63a6f40cf53e66b7f7bc96d8a56f32e598b6591db0ea0580" => :mojave
+    sha256 "41fc846d9f8aacde4ba3963111dc91d9dc77259c22e64bbea1f97dee533a774b" => :high_sierra
+    sha256 "3bd5687c9184921fe70df10bb16e89e5a169cf1561d2a819c5f98190b0bdfefc" => :x86_64_linux
   end
 
-  depends_on "go@1.13" => :build
+  depends_on "go" => :build
   depends_on "gox" => :build
 
   def install
     ENV["GOPATH"] = buildpath
-
-    # GOPRIVATE should be removed when v1.4.1 is released.
-    #
-    # https://github.com/macports/macports-ports/pull/6818
-    # https://github.com/hashicorp/vault/issues/8696
-    ENV["GOPRIVATE"] = "github.com/hashicorp/vault-plugin*"
 
     contents = buildpath.children - [buildpath/".brew_home"]
     (buildpath/"src/github.com/hashicorp/vault").install contents

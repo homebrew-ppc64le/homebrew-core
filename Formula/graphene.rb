@@ -3,25 +3,24 @@ class Graphene < Formula
   homepage "https://ebassi.github.io/graphene/"
   url "https://download.gnome.org/sources/graphene/1.10/graphene-1.10.0.tar.xz"
   sha256 "406d97f51dd4ca61e91f84666a00c3e976d3e667cd248b76d92fdb35ce876499"
-  revision 1
+  revision 2
 
   bottle do
-    sha256 "8e9ccfc7e14e4755ec082dd5ca83fbb1c1025a311949b63cbd74c59841c9b527" => :catalina
-    sha256 "a083a3f2126a6adbf43167b553d60bb65fc08c4abd47334dfbca1bfea3ce3b59" => :mojave
-    sha256 "ffd7960ecb178c6e60672ceabafca351e5f7843d1bbb964da48c3896fbe8374f" => :high_sierra
-    sha256 "34e1041cc33447f6cccaee39e113fe7f077f33308f0d96bfd3571a94ae6d5e97" => :x86_64_linux
+    sha256 "311714c109289ca8e7482597caaec84560c04a09bb72eee16321e59245b0b7d1" => :catalina
+    sha256 "709d0e1fd062908d9ffb2a3e827090fe293b1483c91ae147d46b28d5b0913e4b" => :mojave
+    sha256 "314c03ef076f4e2c07ac9213790e19601f83a069b86970c4643a5e340c946d90" => :high_sierra
+    sha256 "c80d53748bd3538395b71c49e5b9abe9966a400cf459f5a3b0c503bc8f952803" => :x86_64_linux
   end
 
   depends_on "gobject-introspection" => :build
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
-  depends_on "python@3.8" => :build
   depends_on "glib"
 
   def install
     mkdir "build" do
-      system "meson", "--prefix=#{prefix}", ".."
+      system "meson", *std_meson_args, ".."
       system "ninja", "-v"
       system "ninja", "install", "-v"
     end

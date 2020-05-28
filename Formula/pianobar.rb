@@ -3,14 +3,15 @@ class Pianobar < Formula
   homepage "https://github.com/PromyLOPh/pianobar/"
   url "https://6xq.net/pianobar/pianobar-2020.04.05.tar.bz2"
   sha256 "6c173b6b29ccc1f432e0013fb425e8f9cb4261539b58d344e0b2274963726480"
+  revision 1
   head "https://github.com/PromyLOPh/pianobar.git"
 
   bottle do
     cellar :any
-    sha256 "72960248085d1258e84a2d864bff4a93f0b4f16aac3f8dff3a9d593fdcf0244f" => :catalina
-    sha256 "8169c7859a1dc35bd9c7eb1d353517fed364511cf875477d321b0e20313f665a" => :mojave
-    sha256 "e397752de16144f63aaed8e1341a602ee5ca5e4f7f02d5669091ecae1f8f02c3" => :high_sierra
-    sha256 "4546e391dcb10566121ff24e03f341ad3ce5ce49a2273a541b74251c13f18324" => :x86_64_linux
+    sha256 "45d8acd295e2b16f929e97aedcc9892bc0519f6e131bdd8e73b63ea2fae630ac" => :catalina
+    sha256 "c4dfe301062cc41817e8de58846fdc0954f0d0c964d0948b44783447a962d0fd" => :mojave
+    sha256 "83363cbe9335f668b82da4a54af47f29d11b5ade66011492e2053c7360fde488" => :high_sierra
+    sha256 "23f98b3b87b200cd1621b1a7a089c456ed73125d2e6971781e1da08db64bec9e" => :x86_64_linux
   end
 
   depends_on "pkg-config" => :build

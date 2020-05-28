@@ -1,13 +1,13 @@
 name: GitHub Actions CI
-on:
-  push:
-    branches: master
-  pull_request: []
+
+on: pull_request
+
 jobs:
   tap_syntax:
+    if: startsWith(github.event.pull_request.title, 'Merge') == true
     runs-on: ubuntu-latest
     container:
-      image: homebrew/brew
+      image: homebrew/ubuntu16.04:master
     steps:
       - name: Check out tap
         uses: actions/checkout@v2
@@ -23,17 +23,15 @@ jobs:
           export HOMEBREW_NO_AUTO_UPDATE=1
           cd "$(brew --repo)"
           brew tap homebrew/test-bot
-          brew update-reset Library/Taps/homebrew/homebrew-test-bot
 
       - name: Run brew test-bot --only-tap-syntax
         run: brew test-bot --only-tap-syntax
 
   tests:
-    needs: tap_syntax
-    if: github.event_name == 'pull_request' && startsWith(github.event.pull_request.title, 'Merge') == false
+    if: startsWith(github.event.pull_request.title, 'Merge') == false
     runs-on: ubuntu-latest
     container:
-      image: homebrew/brew
+      image: homebrew/ubuntu16.04:master
     steps:
       - name: Check out tap
         uses: actions/checkout@v2

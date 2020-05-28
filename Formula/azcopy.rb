@@ -1,14 +1,14 @@
 class Azcopy < Formula
   desc "Azure Storage data transfer utility"
   homepage "https://github.com/Azure/azure-storage-azcopy"
-  url "https://github.com/Azure/azure-storage-azcopy/archive/v10.4.1.tar.gz"
-  sha256 "a83f4d46a189f1e8803acd96596662deab4ed8903130ef6dc8637c195cf51319"
+  url "https://github.com/Azure/azure-storage-azcopy/archive/v10.4.3.tar.gz"
+  sha256 "c363d22db83bd3549494c5e922918b245aeb29db024ab5b904d26b498292457d"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "2516fca04d2b6a551b9a474fe721e6bb76e51e306abbb565871c37d5353e654d" => :catalina
-    sha256 "611e60817a4e0be00bda6c1fca60d519942cc84fbb955df5a4784e8c565815b3" => :mojave
-    sha256 "5aec253fedad3fc8489b1d83530d54c28ba16a751651ba3d974201020d53cae2" => :high_sierra
+    sha256 "009ce3db54395bb07c8938f63178495b39d933ffea7fb805023bab16e40361dd" => :catalina
+    sha256 "3cf64d1335193e4083b9c430d9bdb4b611390a3e72df9f6ec62017860e888a01" => :mojave
+    sha256 "975f0f8d7d078c307b95541882aebbe3d63240d140702b52594be021022cebf0" => :high_sierra
   end
 
   depends_on "go" => :build

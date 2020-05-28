@@ -1,23 +1,19 @@
 class Fd < Formula
   desc "Simple, fast and user-friendly alternative to find"
   homepage "https://github.com/sharkdp/fd"
-  url "https://github.com/sharkdp/fd/archive/v8.0.0.tar.gz"
-  sha256 "fba93204c10266317e0981914c630b08e12cd322c75ff2a2e504ff1dce17d557"
+  url "https://github.com/sharkdp/fd/archive/v8.1.1.tar.gz"
+  sha256 "7b327dc4c2090b34c7fb3e5ac7147f7bbe6266c2d44b182038d36f3b1d347cc1"
   head "https://github.com/sharkdp/fd.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "d3eafb3efc4c62d824ebc316c73ca1562cb92eca8049864ae1716144969c8c3d" => :catalina
-    sha256 "c6c7349e7bfbe9893478d06c7c599934c1e07e017ced1b5d13a5716487327de3" => :mojave
-    sha256 "49998bf05261897f03f5026a8394c5106e83bec4eb79dcd1b0846c3248e2573b" => :high_sierra
-    sha256 "6a730a22b1320d7df40bb3db4ed62fdafbd755c958c0f1b1bd4d59dffd52c913" => :x86_64_linux
+    sha256 "4625e56da438b94dfe331a2fe1df759b140931241af097df91f29d8ac314f2d3" => :catalina
+    sha256 "d002e8d8de192b6fad189ff7830d4fe9fc7d4ca9e81aa5ac66bb5200c590703a" => :mojave
+    sha256 "c269bbc76090614e7262c81e1b21d784050a71a51a5921686845f0d3c0855400" => :high_sierra
+    sha256 "253bd0d8662ebc8e176dea1db9863bb8b236b6c7e3909e77febcd7153c1c88f3" => :x86_64_linux
   end
 
   depends_on "rust" => :build
-
-  # Work around issue with rust/jemalloc on Catalina
-  # https://github.com/sharkdp/fd/issues/498
-  patch :DATA
 
   def install
     ENV["SHELL_COMPLETIONS_DIR"] = buildpath
@@ -34,31 +30,3 @@ class Fd < Formula
     assert_equal "test_file", shell_output("#{bin}/fd test").chomp
   end
 end
-__END__
-diff -pur a/Cargo.toml b/Cargo.toml
---- a/Cargo.toml	2019-09-15 19:29:15.000000000 +0200
-+++ b/Cargo.toml	2019-10-19 10:14:25.000000000 +0200
-@@ -52,9 +52,6 @@ features = ["suggestions", "color", "wra
- [target.'cfg(all(unix, not(target_os = "redox")))'.dependencies]
- libc = "0.2"
-
--[target.'cfg(all(not(windows), not(target_env = "musl")))'.dependencies]
--jemallocator = "0.3.0"
--
- [dev-dependencies]
- diff = "0.1"
- tempdir = "0.3"
-diff -pur a/src/main.rs b/src/main.rs
---- a/src/main.rs
-+++ b/src/main.rs
-@@ -29,11 +29,6 @@ use crate::filter::{SizeFilter, TimeFilter};
- use crate::options::Options;
- use crate::regex_helper::pattern_has_uppercase_char;
-
--// We use jemalloc for performance reasons, see https://github.com/sharkdp/fd/pull/481
--#[cfg(all(not(windows), not(target_env = "musl")))]
--#[global_allocator]
--static ALLOC: jemallocator::Jemalloc = jemallocator::Jemalloc;
--
- fn run() -> Result<ExitCode> {
-     let matches = app::build_app().get_matches_from(env::args_os());

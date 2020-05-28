@@ -6,10 +6,11 @@ class Reminiscence < Formula
 
   bottle do
     cellar :any
-    sha256 "08914eb6ff7af4b482d75d78f69b0d9b8f30df76bef4cd04e88ddc4e457d6b38" => :catalina
-    sha256 "a56001c98f255e684babd5ddbcb28e36ed8699c559730f28fc3939edcdb25a5e" => :mojave
-    sha256 "f6f27f326bb5020cced4c0e1c42f6f4638bfe05092440b51fd8257a1ce9e5288" => :high_sierra
-    sha256 "5a1fed60a774c6425eb2af755ed08ac1d6d6da5064115e64f331f582f319d562" => :x86_64_linux
+    rebuild 1
+    sha256 "a587449c5846115b5bb4100e1ec50af6256e48bc770c35dad4985850ab8e1b3c" => :catalina
+    sha256 "a1a752e53d40822409ea80a273b38d307e6e6afdfc52d856dee8e8dcc6ae32d8" => :mojave
+    sha256 "537b631728a9b8e322cc835d20b3d8bac832c5c14ebc0bdedde43fe0b607bcd2" => :high_sierra
+    sha256 "2eee98eb4ac2a1e39ac97ebbcf607c842f09e3bbd62858fc1a000d7c3a93adb3" => :x86_64_linux
   end
 
   depends_on "autoconf" => :build
@@ -23,7 +24,7 @@ class Reminiscence < Formula
   uses_from_macos "zlib"
 
   resource "tremor" do
-    url "https://git.xiph.org/tremor.git",
+    url "https://gitlab.xiph.org/xiph/tremor.git",
         :revision => "7c30a66346199f3f09017a09567c6c8a3a0eedc8"
   end
 

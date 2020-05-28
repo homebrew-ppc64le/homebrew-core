@@ -5,10 +5,10 @@ class Gupnp < Formula
   sha256 "9a80bd953e5c8772ad26b72f8da01cbe7241a113edd6084903f413ce751c9989"
 
   bottle do
-    sha256 "8af437527ff0740e1746f470e197231927e0f6c9873ac61c5e3edf6be4758952" => :catalina
-    sha256 "5d949c4b677089f4aff00e47b25b89edb623aeb9e54f79968573c29eddbd92fb" => :mojave
-    sha256 "90bedfbb94cade43ff9a0ed9a26ded2070d19f4dabb83bc4d635a6236480626f" => :high_sierra
-    sha256 "c06c8c24fad3cdf8fea7b71858d86ccb2b7541b8ee52996a3bdf438ded4c054d" => :x86_64_linux
+    rebuild 1
+    sha256 "6035c0c11dcbbb621d02eb5927586148d76263a2a77ffd2530b8ed5bb34a59bf" => :catalina
+    sha256 "a87a97704971d8b5a9a58ab2a05c1c347591ca0f02228601885aa18ba5235c6a" => :mojave
+    sha256 "992103509a9d4529027fe8a04a0af41e55f07a55b0f23f707c27f035765d1988" => :high_sierra
   end
 
   depends_on "gobject-introspection" => :build
@@ -19,10 +19,12 @@ class Gupnp < Formula
   depends_on "glib"
   depends_on "gssdp"
   depends_on "libsoup"
+  depends_on "python@3.8"
 
   def install
+    Language::Python.rewrite_python_shebang(Formula["python@3.8"].opt_bin/"python3")
     mkdir "build" do
-      system "meson", "--prefix=#{prefix}", ".."
+      system "meson", *std_meson_args, ".."
       system "ninja"
       system "ninja", "install"
     end

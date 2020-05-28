@@ -1,17 +1,16 @@
 class Mvtools < Formula
   desc "Filters for motion estimation and compensation"
   homepage "https://github.com/dubhater/vapoursynth-mvtools"
-  url "https://github.com/dubhater/vapoursynth-mvtools/archive/v21.tar.gz"
-  sha256 "dc267fce40dd8531a39b5f51075e92dd107f959edb8be567701ca7545ffd35c5"
-  revision 1
+  url "https://github.com/dubhater/vapoursynth-mvtools/archive/v23.tar.gz"
+  sha256 "3b5fdad2b52a2525764510a04af01eab3bc5e8fe6a02aba44b78955887a47d44"
   head "https://github.com/dubhater/vapoursynth-mvtools.git"
 
   bottle do
     cellar :any
-    sha256 "4f37597f1c6d47ca51fe0d6ba4935eafc6326de6ccbcc489a7873540a867d7ea" => :catalina
-    sha256 "99c7c063c8a28be18c1d121d0dcca4bc54a0f693b1ab22035f02c25100075610" => :mojave
-    sha256 "b29cbe91c882323a3e5e14526b1bef4da076a838c4696ef4c634d09505a2ab3c" => :high_sierra
-    sha256 "033980e38356058604d796e0344612c3d57915727c83306d31b7e73aeff8e67b" => :x86_64_linux
+    sha256 "0da74491af99cf7cb20d4387d449af550b94abdf6f5330fd95da083689bb80b0" => :catalina
+    sha256 "9349ea16136c2d54c9f132af9e5c1768f486ce4ed6bcababf3f1f2f1944a7389" => :mojave
+    sha256 "d8dfbb4ea0e148a954fb50745230b3827f4e02457d739599d2fdec76e31058d8" => :high_sierra
+    sha256 "29d69437c0c99cbaac59f9fa17e747982c11a46025285139408d470b9a8b752f" => :x86_64_linux
   end
 
   depends_on "autoconf" => :build

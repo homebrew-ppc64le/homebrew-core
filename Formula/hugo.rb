@@ -1,16 +1,16 @@
 class Hugo < Formula
   desc "Configurable static site generator"
   homepage "https://gohugo.io/"
-  url "https://github.com/gohugoio/hugo/archive/v0.69.2.tar.gz"
-  sha256 "1cd3caaa13ca14cd4258a04528b7dade7da7f93d6f9151db1efe0946b629a75c"
+  url "https://github.com/gohugoio/hugo/archive/v0.71.1.tar.gz"
+  sha256 "4157a023059e199a1912d3c8026144c4b1c41cdbde7f1ffc826dd7ac01bb7b76"
   head "https://github.com/gohugoio/hugo.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "a5475404be99b2072cb4d092b41317877d8c86416405ffcdb6d5058bcb06c362" => :catalina
-    sha256 "240f349f7198311bded718c0c7883ece279281d715a16176a4a93cc92a5328d1" => :mojave
-    sha256 "4cff51a3dd71cb532bdca39a62650d46d2c489b62b71285abb28803e5bc39c6b" => :high_sierra
-    sha256 "fd6729ff4b8431c5c7c50eae366c84252bb62cd34cea8c8b8839296de1571ef4" => :x86_64_linux
+    sha256 "9762374091d493b7c4ba75b0a53ca15475cc3ba418e7ef255f7900fcb7fd6c51" => :catalina
+    sha256 "f2651ecf17010ce93db3c4d01a9dc4c247dfeee2c8076cc8bea4b245413c9694" => :mojave
+    sha256 "810cf23bd40a9dd650d90433faaa2ccb4cb7dbba48ad1be3fbc38faf9ad660f6" => :high_sierra
+    sha256 "a390db83ab4f5e487070285d30283b515f99baddecb53b94a7ab0900c33be665" => :x86_64_linux
   end
 
   depends_on "go" => :build

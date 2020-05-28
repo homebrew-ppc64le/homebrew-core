@@ -6,10 +6,11 @@ class LibtorrentRasterbar < Formula
 
   bottle do
     cellar :any
-    sha256 "607246a5ff355aa8dd2c9774923235dacb5b7aa973325f1a1eaf92e8763bb182" => :catalina
-    sha256 "4b67da54a4a7df152e7c8e2d19bc46ff4a2530a42097f936c40c1fc5bb9e41ff" => :mojave
-    sha256 "87449b6764ea679130f0b3be8913277fd36d122fb766e738b7bafba17bac117b" => :high_sierra
-    sha256 "1163e5df43acde02195869bf36d8d6033b9e22ea4b7c403ab18af969478a940a" => :x86_64_linux
+    rebuild 1
+    sha256 "806b247874bf4c2b43d16cfe5e7c8f074ec117abede5fa74234dc6c8735e0555" => :catalina
+    sha256 "cfb22dfd0ce143aa58d4e7da6b60bc31b2b751a52fb495edcf6cd612d6b62753" => :mojave
+    sha256 "b60b41febbc56c8405e2a496c6c97fa16671a3aa27329250c088173222fe214c" => :high_sierra
+    sha256 "e80881ed053e372a62b9c67df2d5f0761150dde39e4889504e259d5394d4f25a" => :x86_64_linux
   end
 
   head do
@@ -24,6 +25,8 @@ class LibtorrentRasterbar < Formula
   depends_on "boost-python3"
   depends_on "openssl@1.1"
   depends_on "python@3.8"
+
+  conflicts_with "libtorrent-rakshasa", :because => "they both use the same libname"
 
   def install
     pyver = Language::Python.major_minor_version(Formula["python@3.8"].bin/"python3").to_s.delete(".")

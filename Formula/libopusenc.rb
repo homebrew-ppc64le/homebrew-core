@@ -6,15 +6,15 @@ class Libopusenc < Formula
 
   bottle do
     cellar :any
-    sha256 "7a59056497c0d0fafecb5eba8aa72b6e95bca4535c054da33bcfad57799f6d29" => :catalina
-    sha256 "a44552641cccda9fe5068838fb6177a397384c626c1e4fc420b28bfa1161ea92" => :mojave
-    sha256 "56a5aad7c5af4f705864cffbb5f5cef59c576299dff0ae4529f3bd9a61aac82f" => :high_sierra
-    sha256 "82360661e53da4371b99fb7779aef23993ede434679c2d0c9d6bf1e4fe1978d6" => :sierra
-    sha256 "573d1e7edcfe07321e845677eed94c1fff1d4f7a3f7a84ae751a9d1ac8eca303" => :x86_64_linux
+    rebuild 1
+    sha256 "593106e48c86436fd1908c79f1ef54f206bb37f0983ccb3901190cebe6e78cea" => :catalina
+    sha256 "96a05dd8d0071fb38ed14f4f5b64af576baee3719a16fc8fc331ddfa1a4d65ec" => :mojave
+    sha256 "e5cfb0433abe565b11351f9d6ec3fb44852a8aeb99ef8f6710ee9d899eb97ab3" => :high_sierra
+    sha256 "ef69108275b1dd6b7e8dd5343742520c7f3798c836ac84f9511ef13954d892b7" => :x86_64_linux
   end
 
   head do
-    url "https://git.xiph.org/libopusenc.git"
+    url "https://gitlab.xiph.org/xiph/libopusenc.git"
 
     depends_on "autoconf" => :build
     depends_on "automake" => :build

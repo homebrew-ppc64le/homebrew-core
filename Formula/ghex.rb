@@ -3,20 +3,19 @@ class Ghex < Formula
   homepage "https://wiki.gnome.org/Apps/Ghex"
   url "https://download.gnome.org/sources/ghex/3.18/ghex-3.18.4.tar.xz"
   sha256 "c2d9c191ff5bce836618779865bee4059db81a3a0dff38bda3cc7a9e729637c0"
-  revision 1
+  revision 2
 
   bottle do
-    sha256 "74ef6e73cc29bce3ee6d7a8a97eb54b54d5794fbfe7e924c85d8cfdde0431d45" => :catalina
-    sha256 "7cbce6d7454244b0fb038dcae2ff4a73c687676205478f7c61ac5dd42cb96bd4" => :mojave
-    sha256 "30ba8e80ca6e3ff26752a8c2127ed6ed46d3b31d19c63c4ef8b737dfac7d9c23" => :high_sierra
-    sha256 "fc0d816f1e8224bce775f26c161847c31b0e11b21a8bef8a32717570083cdc59" => :x86_64_linux
+    sha256 "d19110bde790ffb5c9c07b7d4f836a40bde24524103ad0630e0e15041058e6c9" => :catalina
+    sha256 "6fee2b13fdf3c3f9eafbf92d6cd1cae208f5a1444e02b9c438e31e1333a02497" => :mojave
+    sha256 "429217a3f63b5c6a04e468390442a3ffb304d54c58c356191d93984ba097a0b8" => :high_sierra
+    sha256 "2750b349a752e2eb3e05d2fdd9afa302c51cf3657b093b9e7892710bc8340070" => :x86_64_linux
   end
 
   depends_on "itstool" => :build
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
-  depends_on "python" => :build
   depends_on "gtk+3"
   depends_on "hicolor-icon-theme"
 
@@ -28,7 +27,7 @@ class Ghex < Formula
     ENV["DESTDIR"] = "/"
 
     mkdir "build" do
-      system "meson", "--prefix=#{prefix}", ".."
+      system "meson", *std_meson_args, ".."
       system "ninja", "-v"
       system "ninja", "install", "-v"
     end
