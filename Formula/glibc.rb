@@ -145,8 +145,9 @@ class Glibc < Formula
     chmod 0755, [lib/"ld-#{version}.so", lib/"libc-#{version}.so"]
 
     # Install ld.so symlink.
-    ln_sf lib/"ld-linux-x86-64.so.2", HOMEBREW_PREFIX/"lib/ld.so"
-
+    ln_sf lib/"ld-linux-x86-64.so.2", HOMEBREW_PREFIX/"lib/ld.so" if Hardware::CPU.intel?
+    ln_sf lib/"ld-#{version}.so", HOMEBREW_PREFIX/"lib/ld.so" if Hardware::CPU.ppc64le?
+    
     # Symlink ligcc_s.so.1 where glibc can find it.
     # Fix the error: libgcc_s.so.1 must be installed for pthread_cancel to work
     ln_sf Formula["gcc"].opt_lib/"libgcc_s.so.1", lib if Formula["gcc"].installed?
