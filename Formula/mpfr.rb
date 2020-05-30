@@ -12,7 +12,7 @@ class Mpfr < Formula
     sha256 "bf5d21e7e8e549f7e8d07791a90f44a487f4c7151897b7c64d02928b5bd73520" => :high_sierra
     sha256 "4fb1860a481e24c70eefc8e5782030612840f1bb8f50586ca76a4c6c53629deb" => :sierra
     sha256 "cffaa9976a516130ac5b979eae7bdd62180ed8924bb52bf0b30935174b1cbab0" => :x86_64_linux
-    sha256 "4063c0516a1e9c431832439076dbb6c324568a3295a7a1e9591a6f1f34278c17" => :ppc64le_linux
+    sha256 "f69b77b18f9a763d8a4c608e24f92002f7a8959e7d373b4eb5785303ac978d83" => :ppc64le_linux
   end
 
   depends_on "gmp"
