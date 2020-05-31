@@ -62,7 +62,7 @@ class Glibc < Formula
 
   bottle do
     sha256 "654794e9e18c2401f1101a3fcf0a85eda448b4b969e9a99782a3f4f4659feda4" => :x86_64_linux
-    sha256 "af8533f0de3cca6cdcbef537634a6f1828179ca195aaaa1d2ac16878a7cc482f" => :ppc64le_linux
+    sha256 "775a902a2c235930ef0e39a7c612889c6d3aa86bc555b56f015ecf9976bbf9ca" => :ppc64le_linux
   end
 
   on_linux do
